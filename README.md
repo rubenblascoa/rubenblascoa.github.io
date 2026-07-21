@@ -20,6 +20,7 @@
 
 **Portfolio personal one-page: sistemas, bajo nivel y proyectos de hardware/software.**
 
+![Views](https://komarev.com/ghpvc/?username=rubenblascoa&repo=rubenblascoa.github.io&label=Views&icon=0&color=121011&style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20TailwindCSS%20%7C%20JS-black?style=flat-square)](#)
 [![Live Site](https://img.shields.io/badge/Live-Online-brightgreen?style=flat-square)](#)
