@@ -1,0 +1,115 @@
+# Ruben Blasco | Portfolio
+
+> Sitio web personal de Rubén Blasco Armengod: portfolio one-page estático (sin build ni frameworks pesados) centrado en sistemas, programación de bajo nivel y proyectos de hardware/software. Presenta trayectoria, proyectos destacados y un formulario de contacto funcional, con soporte bilingüe completo (Español/Inglés) y un fondo animado por Canvas inspirado en circuitos electrónicos.
+
+## Arquitectura y estructura
+
+El sitio es un único archivo HTML autocontenido, dividido lógicamente en las siguientes capas:
+
+### 1. Capa de presentación (secciones)
+- **#home (Hero)**: primera impresión y llamada a la acción principal. Título editorial con tipografía serif (Playfair Display) combinado con sans-serif (Inter), badge de disponibilidad animado con `pulse`, y doble CTA hacia proyectos y "Sobre mí".
+- **#about (Sobre mí)**: presentación personal y stack técnico. Layout de dos columnas con imagen de perfil en escala de grises que revela color al hover (`grayscale` → `grayscale-0`), tarjeta flotante con datos de contacto rápido y chips de especialización (Python, C++, IoT).
+- **#experience (Trayectoria)**: línea temporal de hitos académicos y de proyectos. Timeline vertical con línea de degradado y nodos de color por hito (actualidad, colaboraciones, certificaciones), tarjetas con efecto `card-glow` al hover.
+- **#repositorio (Proyectos Destacados)**: escaparate de proyectos relevantes. Tarjetas grandes alternadas (imagen/texto) con capturas reales, enlaces directos a repositorio de GitHub y sitio en vivo cuando aplica.
+- **#contacto (Contacto)**: captación de mensajes sin backend propio. Formulario enviado vía FormSubmit en modo AJAX (`/ajax/`), con honeypot anti-spam (`_honey`), plantilla de tabla, y feedback visual de éxito/error sin recargar la página.
+
+### 2. Fondo animado (Canvas)
+Bloque `<script>` con sistema de partículas "Tech Circuitry": tres sistemas independientes sobre `<canvas>`:
+- **Runner**: líneas tipo circuito que se mueven en ángulos rectos sobre una rejilla.
+- **MatrixChar**: dígitos binarios parpadeantes de baja opacidad.
+- **Star**: partículas de brillo pulsante.
+
+La animación se pausa automáticamente cuando la pestaña no está visible (`visibilitychange`) para ahorrar batería/CPU, y respeta `prefers-reduced-motion`.
+
+### 3. Sistema de internacionalización (i18n)
+Objeto `translations` + función `setLanguage()`: cambio de idioma Español/Inglés sin recargar la página ni depender de librerías externas. Usa atributos `data-es`/`data-en` sobre cada nodo de texto y `data-es-placeholder`/`data-en-placeholder` sobre los campos de formulario. Actualiza también el atributo `lang` del `<html>`, el título de la pestaña, y el estado visual (`aria-pressed`) del selector de idioma, tanto en escritorio como en el menú móvil.
+
+### 4. Rendimiento y accesibilidad
+- **Optimización de carga**: fuentes con `preconnect` + `display=swap` y `<noscript>` de respaldo; imagen del hero precargada (`rel="preload"`); `loading="lazy"` y `decoding="async"` en imágenes secundarias; `fetchpriority="high"` en la imagen crítica.
+- **Accesibilidad**: enlace "Saltar al contenido principal" para lectores de pantalla, atributos `aria-label`/`aria-pressed`/`aria-expanded` en controles interactivos, y reducción completa de animaciones bajo `prefers-reduced-motion`.
+
+## Características principales
+
+- **100% estático**: sin backend propio, sin build step — un único HTML desplegable en cualquier hosting estático.
+- **Bilingüe en tiempo real**: cambio instantáneo Español/Inglés, persistido en toda la interfaz (textos, placeholders, título de pestaña).
+- **Formulario de contacto funcional**: envío de mensajes vía FormSubmit con feedback de éxito/error, sin exponer backend propio.
+- **Fondo animado por Canvas**: sistema de partículas tipo "circuito" con parada automática al cambiar de pestaña.
+- **Diseño responsive**: menú móvil dedicado, grid adaptativo en todas las secciones, tipografía escalable.
+- **Efectos de interacción cuidados**: glassmorphism, glow en tarjetas al hover, revelado progresivo de secciones al hacer scroll (`IntersectionObserver`).
+
+## Stack e instalación
+
+- **Maquetado**: HTML5 semántico
+- **Estilos**: Tailwind CSS (build local, `/tailwind.min.css`) + CSS personalizado para animaciones
+- **Tipografía**: Google Fonts — Playfair Display, Inter, JetBrains Mono
+- **Interactividad**: JavaScript vanilla (sin frameworks)
+- **Formulario**: FormSubmit (modo AJAX) — https://formsubmit.co
+- **Hosting recomendado**: cualquier hosting estático gratuito (GitHub Pages, Cloudflare Pages, Netlify, Vercel)
+
+### Despliegue local
+1. Clonar el repositorio.
+2. Generar el CSS de Tailwind si se modifican clases nuevas: `npx tailwindcss -i input.css -o tailwind.min.css --minify`.
+3. Abrir `index.html` directamente en el navegador, o servirlo con cualquier servidor estático (`npx serve .`).
+
+### Despliegue en producción
+Al ser un sitio 100% estático, basta con subir el HTML y el CSS compilado a cualquier proveedor de hosting estático — no requiere variables de entorno ni backend.
+
+## Proyectos destacados
+
+### FondTracker — Personal Investment Tracker
+Aplicación web full-stack para el seguimiento en tiempo real de una cartera personal de fondos de inversión, ETFs y acciones. Permite registrar aportaciones, calcular rentabilidad histórica frente a precios de mercado en vivo (vía Yahoo Finance), gestionar múltiples usuarios de forma aislada y segura, y recibir resúmenes automáticos de cartera por WhatsApp según horario configurable.
+
+**Arquitectura backend:**
+- `src/server/index.ts`: punto de entrada del servidor Bun y enrutador principal de la API REST (20+ endpoints agrupados por dominio: autenticación, fondos, catálogo, cotizaciones, WhatsApp). Sirve la SPA (`/dashboard`, `/login`, `/register`) y recursos estáticos con protección contra path traversal.
+- `src/server/db.ts`: pool de conexión MySQL (`mysql2/promise`), `ensureSchema()` crea/migra de forma idempotente las tablas `users`, `investments`, `fund_history`, `settings`, `fund_catalog` y `fund_prices`.
+- `src/server/sentinel.ts`: motor de cálculo financiero — resuelve tickers, obtiene precios vía Yahoo Finance con caché en `fund_prices`, calcula en paralelo valor invertido, valor actual y plusvalía de cada fondo y de la cartera total.
+- `src/server/auth.ts`: registro, login y sesión, aislamiento de datos por `user_id`, hashing de contraseñas con Argon2.
+- `src/server/yahoo.ts`: cliente de datos de mercado — precios actuales e históricos por rango/intervalo, descubrimiento de ticker a partir del ISIN.
+- `src/server/digest.ts` + `src/server/whatsapp.ts`: scheduler de resúmenes periódicos de cartera, enviados vía API de CallMeBot a WhatsApp.
+- `src/client/`: dashboard SPA que consume la API REST (posiciones, gráficos históricos, alta/baja/edición de fondos, configuración de cuenta y notificaciones).
+
+**Características:**
+- Multiusuario y aislado, con autenticación por contraseña hasheada.
+- Cotización en tiempo real (Yahoo Finance) con caché local de respaldo.
+- Catálogo de fondos precargado con búsqueda FULLTEXT por ISIN, banco, categoría y nivel de riesgo.
+- Resúmenes por WhatsApp configurables (horario y zona horaria) vía CallMeBot.
+- Alto rendimiento: coalescencia de peticiones en paralelo, caché en memoria con TTL de 5 minutos, procesamiento unificado por ISIN único.
+- Despliegue 100% gratuito: backend en Render (free tier) + MySQL en Railway.
+- Auto-gestión de esquema de base de datos al arrancar, sin migraciones manuales.
+
+**Stack:** Bun (runtime), TypeScript, MySQL (compatible MariaDB en local), Yahoo Finance API, CallMeBot (WhatsApp).
+
+**Variables de entorno:** `HOST` (0.0.0.0), `PORT` (3741), `MYSQL_HOST` (127.0.0.1), `MYSQL_PORT` (3306), `MYSQL_USER` (root), `MYSQL_PASSWORD` (vacío), `MYSQL_DATABASE` (fondtracker).
+
+**Despliegue:** `bun install` → configurar variables de entorno de MySQL → `bun run start` (el esquema se crea automáticamente) → acceder a `http://localhost:3741`.
+
+### ESP32 Blasco OS
+Entorno de ejecución multiprograma y plataforma de ingeniería a bajo nivel diseñado exclusivamente para el microcontrolador ESP32-S3, accesible de forma remota y 100% inalámbrica vía Telnet y WebSockets.
+
+- **Planificación multinúcleo**: distribución eficiente de la carga de procesos en hilos FreeRTOS independientes (Core 0 y Core 1).
+- **Controladores de hardware**: estación de auditoría, lectura profunda y clonación en caliente de tarjetas RFID/NFC mediante bus SPI.
+- **Soporte y telemetría**: monitorización avanzada en tiempo real (PSRAM, CPU, Core Temp) con volcado histórico en LittleFS.
+
+Repositorio: https://github.com/rubenblascoa/esp32-panelcontrol
+
+## Sobre el autor
+
+Estudiante de la ESO, apasionado por la informática de sistemas, la programación a bajo nivel y la arquitectura de firmware. Se dedica de forma autodidacta a encapsular lógica de hardware compleja y diseñar entornos de ejecución asíncronos y robustos para microcontroladores.
+
+- **Enfoque actual:** optimización multinúcleo con FreeRTOS y desarrollo de herramientas de red inalámbricas.
+- **Especialización:** desarrollo estructurado en Python / C++ enfocado en IoT y automatización.
+
+**Stack tecnológico personal:**
+- Programación y bajo nivel: C++, Python, Arduino, PowerShell.
+- Desarrollo web y servidores: Django, MySQL, Apache, HTML5, CSS3.
+- Infraestructura y diseño: GitHub, Git, Cloudflare, Canva, Gimp, Sketch.
+
+## Contacto
+
+- GitHub: https://github.com/rubenblascoa
+- Instagram: https://instagram.com/rubenblascoa
+- Email: rubenblascoarmengod@gmail.com
+
+## Licencia
+
+- MIT License
