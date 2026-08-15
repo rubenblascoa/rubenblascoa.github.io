@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth"><head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title id="page-title" data-es="Ruben Blasco | Sistemas & Bajo Nivel" data-en="Ruben Blasco | Systems & Low Level">Ruben Blasco | Sistemas & Bajo Nivel</title>
+  <meta name="google-site-verification" content="aHy_MQeHgbroLj0LQRXSow49ys9zfcx5z3GUkpGKWts" />
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+  <title id="page-title" data-es="Rubén Blasco Armengod | Sistemas & Bajo Nivel" data-en="Rubén Blasco Armengod | Systems & Low Level">Rubén Blasco Armengod | Sistemas & Bajo Nivel</title>
 
   <!-- SEO & Social -->
-  <meta name="description" content="Rubén Blasco Armengod — Estudiante apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware. Proyectos ESP32, FreeRTOS, Python.">
+  <meta name="description" content="Rubén Blasco Armengod — Portfolio de desarrollador. Proyectos ESP32 Blasco OS, FondTracker, firmware embebido, FreeRTOS, Python y C++.">
+  <meta name="keywords" content="Ruben Blasco Armengod, Ruben Blasco, programacion de sistemas, bajo nivel, firmware, ESP32, FreeRTOS, C, Python, desarrollador, portfolio, ESP32 Blasco OS, Blasco OS, FondTracker, proyectos Python, microcontroladores, IoT">
   <meta name="author" content="Rubén Blasco Armengod">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Ruben Blasco | Sistemas & Bajo Nivel">
-  <meta property="og:description" content="Estudiante apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://rubenblascoa.github.io/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta property="og:title" content="Rubén Blasco Armengod | Desarrollador de Sistemas & Firmware">
+  <meta property="og:description" content="Portfolio de Rubén Blasco Armengod. Proyectos ESP32 Blasco OS, FondTracker, firmware embebido, FreeRTOS y Python.">
   <meta property="og:image" content="https://github.com/rubenblascoa.png">
+  <meta property="og:image:width" content="460">
+  <meta property="og:image:height" content="460">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rubenblascoa.github.io/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Rubén Blasco Armengod — Portfolio">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ruben Blasco | Sistemas & Bajo Nivel">
-  <meta name="twitter:description" content="Estudiante apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware.">
+  <meta name="twitter:title" content="Rubén Blasco Armengod | Desarrollador de Sistemas & Firmware">
+  <meta name="twitter:description" content="Portfolio de Rubén Blasco Armengod. Proyectos ESP32 Blasco OS, FondTracker, firmware y Python.">
   <meta name="twitter:image" content="https://github.com/rubenblascoa.png">
   <meta name="theme-color" content="#050505">
 
@@ -24,7 +33,7 @@
   <!-- Fonts optimized: preconnect + display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://github.com">
+  <link rel="preconnect" href="https://github.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
@@ -84,12 +93,13 @@
     /* Scroll Trigger Classes */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translate3d(0, 30px, 0);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
 
     /* staggered delays */
@@ -135,8 +145,8 @@
 
     /* Ticker marquee */
     @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
@@ -163,8 +173,11 @@
     }
 
     @media (max-width: 768px) {
-      .reveal-on-scroll { transform: translateY(20px); transition-duration: 0.5s; }
+      .reveal-on-scroll { transform: translate3d(0, 20px, 0); transition-duration: 0.5s; }
     }
+
+    /* noise: isolate into own compositor layer to avoid full-page repaints */
+    .noise::after { transform: translateZ(0); }
 
     /* Respect reduced motion preference */
     @media (prefers-reduced-motion: reduce) {
@@ -176,6 +189,9 @@
       .reveal-on-scroll { opacity: 1; transform: none; }
       #tech-canvas { display: none; }
     }
+    @media (prefers-reduced-motion: no-preference) {
+      #tech-canvas { display: block; }
+    }
 
     /* Performance hints for frequently animated elements */
     .ticker-track { will-change: transform; }
@@ -185,6 +201,56 @@
   </style>
 <link rel="stylesheet" href="/tailwind.min.css">  <!-- Preload critical hero image -->
   <link rel="preload" as="image" href="https://github.com/rubenblascoa.png">
+
+  <!-- Schema.org Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://rubenblascoa.github.io/#person",
+    "name": "Rubén Blasco Armengod",
+    "alternateName": "Ruben Blasco",
+    "url": "https://rubenblascoa.github.io/",
+    "image": "https://github.com/rubenblascoa.png",
+    "email": "rubenblascoarmengod@gmail.com",
+    "sameAs": [
+      "https://github.com/rubenblascoa",
+      "https://instagram.com/rubenblascoa"
+    ],
+    "jobTitle": "Desarrollador de Sistemas y Firmware",
+    "description": "Estudiante apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware. Especialista en ESP32, FreeRTOS, Python y C++.",
+    "knowsAbout": ["ESP32", "FreeRTOS", "Python", "C++", "Firmware", "Sistemas embebidos", "Bajo Nivel", "IoT", "WebSockets", "Telnet"],
+    "creator": [
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "ESP32 Blasco OS",
+        "description": "Entorno de ejecución multiprograma y plataforma de ingeniería a bajo nivel para ESP32-S3 accesible de forma inalámbrica vía Telnet y WebSockets.",
+        "codeRepository": "https://github.com/rubenblascoa/esp32-panelcontrol",
+        "url": "https://blascoos.qzz.io/",
+        "programmingLanguage": ["C++", "FreeRTOS"],
+        "author": { "@id": "https://rubenblascoa.github.io/#person" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "FondTracker",
+        "description": "Aplicación web para el seguimiento en tiempo real de una cartera de fondos de inversión y ETFs con resumen automático vía WhatsApp.",
+        "applicationCategory": "FinanceApplication",
+        "codeRepository": "https://github.com/rubenblascoa/fondtracker",
+        "url": "https://fondtracker.onrender.com/",
+        "programmingLanguage": ["TypeScript", "Bun", "MySQL"],
+        "author": { "@id": "https://rubenblascoa.github.io/#person" }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "Recopilación de Proyectos Python",
+        "description": "Colección de proyectos Python incluyendo interfaces gráficas, automatización y scripts de red.",
+        "codeRepository": "https://github.com/rubenblascoa/Recopilacion-de-Proyectos",
+        "programmingLanguage": "Python",
+        "author": { "@id": "https://rubenblascoa.github.io/#person" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8c777a1b3a6740bba8e3abf2031ad617"}'></script><!-- End Cloudflare Web Analytics -->
@@ -200,9 +266,9 @@
   <canvas id="tech-canvas" class="fixed top-0 left-0 w-full h-full z-0 block"></canvas>
   <div class="fixed top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-[#050505] z-0 pointer-events-none"></div>
 
-  <!-- Ambient light orbs -->
-  <div class="fixed top-1/4 -left-32 w-96 h-96 bg-brand-yellow/5 rounded-full blur-[150px] pointer-events-none z-0 pulse-glow"></div>
-  <div class="fixed bottom-1/4 -right-32 w-80 h-80 bg-brand-green/5 rounded-full blur-[120px] pointer-events-none z-0 pulse-glow" style="animation-delay: 1.5s;"></div>
+  <!-- Ambient light orbs (hidden on low-end via JS) -->
+  <div id="orb-yellow" class="fixed top-1/4 -left-32 w-96 h-96 bg-brand-yellow/5 rounded-full blur-[150px] pointer-events-none z-0 pulse-glow"></div>
+  <div id="orb-green" class="fixed bottom-1/4 -right-32 w-80 h-80 bg-brand-green/5 rounded-full blur-[120px] pointer-events-none z-0 pulse-glow" style="animation-delay: 1.5s;"></div>
 
   <div class="relative z-10 flex-grow">
 
@@ -222,6 +288,11 @@
           <a href="javascript:void(0)" data-target="about" class="nav-link text-sm font-medium text-text-secondary hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full" data-es="Sobre mí" data-en="About">Sobre mí</a>
           <a href="javascript:void(0)" data-target="experience" class="nav-link text-sm font-medium text-text-secondary hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full" data-es="Trayectoria" data-en="Timeline">Trayectoria</a>
           <a href="javascript:void(0)" data-target="repositorio" class="nav-link text-sm font-medium text-text-secondary hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full" data-es="Proyectos" data-en="Projects">Proyectos</a>
+
+          <a href="/cv.pdf" download class="nav-link text-sm font-medium text-brand-yellow hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1.5" data-es="CV" data-en="CV">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            CV
+          </a>
 
           <a href="javascript:void(0)" data-target="contacto" class="contact-btn px-6 py-2.5 rounded-full bg-brand-yellow text-black font-semibold text-sm hover:bg-[#fef08a] transition-all transform hover:scale-105 shadow-lg shadow-brand-yellow/10 hover:shadow-brand-yellow/25" data-es="Contacto" data-en="Contact">
             Contacto
@@ -261,32 +332,33 @@
 
   <!-- Hero Section -->
   <section id="home" class="pt-40 pb-20 px-6 max-w-4xl mx-auto flex flex-col items-center text-center min-h-screen justify-center">
-    <div class="reveal-on-scroll font-mono text-text-muted mb-8 text-sm md:text-base bg-white/5 px-5 py-2.5 rounded-xl border border-white/5 backdrop-blur-sm inline-flex items-center gap-2">
+    <h1 class="reveal-on-scroll font-mono text-text-muted mb-8 text-sm md:text-base bg-white/5 px-5 py-2.5 rounded-xl border border-white/5 backdrop-blur-sm inline-flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
       Rubén Blasco Armengod
       <span class="text-[10px] text-brand-green font-mono border border-brand-green/30 bg-brand-green/5 px-2 py-0.5 rounded-full" data-es="DISPONIBLE" data-en="AVAILABLE">DISPONIBLE</span>
-     </div>
+     </h1>
 
-    <h1 id="hero-title" class="reveal-on-scroll text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white mb-8 leading-tight tracking-tight">
-      "Transformando microcontroladores en <br>
-      <span class="italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500">plataformas inteligentes</span>"
-    </h1>
+    <h2 id="hero-title" class="reveal-on-scroll text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white mb-8 leading-tight tracking-tight">
+      Del chip al sistema: <br>
+      <span class="italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500">firmware con propósito propio</span>
+    </h2>
 
-    <p id="hero-desc" class="reveal-on-scroll text-text-secondary text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-      Estudiante de la ESO apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware. Creando entornos de ejecución asíncronos y robustos.
+    <p id="hero-desc" class="reveal-on-scroll text-white/70 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+      Con 15 años, ya tengo dos proyectos en producción real: un OS para microcontroladores reconocido por PCBWay, y una app financiera con automatización en tiempo real. Aprendo construyendo lo que otros no se atreven a intentar.
     </p>
 
     <div class="reveal-on-scroll flex flex-col sm:flex-row gap-4 mt-4">
       <a href="#repositorio" class="px-8 py-3.5 rounded-full bg-brand-yellow text-black font-semibold hover:scale-105 transition-transform shadow-lg shadow-brand-yellow/20 hover:shadow-xl hover:shadow-brand-yellow/30">
         <span data-es="Ver Mis Proyectos" data-en="View My Projects">Ver Mis Proyectos</span>
       </a>
-      <a href="#about" class="px-8 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/5 transition-all backdrop-blur-sm">
-        <span data-es="Sobre mí" data-en="About Me">Sobre mí</span>
+      <a href="/cv.pdf" download class="px-8 py-3.5 rounded-full border border-brand-yellow/40 text-brand-yellow hover:bg-brand-yellow/10 transition-all backdrop-blur-sm flex items-center gap-2 font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span data-es="Descargar CV" data-en="Download CV">Descargar CV</span>
       </a>
     </div>
 
     <div class="mt-24 text-text-muted animate-pulse">
-       <span class="font-mono text-sm uppercase tracking-[0.3em] opacity-50" data-scroll="true" data-es="Scrollear para explorar" data-en="Scroll to explore">Scrollear para explorar</span>
+       <span class="font-mono text-sm uppercase tracking-[0.3em] opacity-50" data-scroll="true" data-es="Explorar" data-en="Explore">Explorar</span>
        <div class="mt-4 flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce opacity-50"><path d="m7 13 5 5 5-5"></path><path d="m7 6 5 5 5-5"></path></svg>
        </div>
@@ -324,11 +396,11 @@
           <span class="text-text-secondary italic" data-es="asíncrona y robusta." data-en="asynchronous and robust.">asíncrona y robusta.</span>
         </h2>
         <div class="space-y-6 text-text-secondary text-lg leading-relaxed">
-          <p data-es="Estudiante apasionado por la informática de sistemas, la programación a bajo nivel y la arquitectura de firmware. Me dedico de forma autodidacta a encapsular lógica de hardware compleja y diseñar entornos de ejecución asíncronos y robustos para microcontroladores." data-en="Student passionate about systems engineering, low-level programming and firmware architecture. I am self-taught in encapsulating complex hardware logic and designing asynchronous and robust execution environments for microcontrollers.">
-            Estudiante apasionado por la informática de sistemas, la programación a bajo nivel y la arquitectura de firmware. Me dedico de forma autodidacta a encapsular lógica de hardware compleja y diseñar entornos de ejecución asíncronos y robustos para microcontroladores.
+          <p>
+            Con 15 años, ya tengo dos proyectos en producción real. Construí <span class="text-white font-medium">ESP32 Blasco OS</span> — un sistema operativo ligero para microcontroladores que puedes controlar desde el móvil sin un solo cable, con colaboración activa de PCBWay. Aprendo haciendo: empiezo con un problema real, entiendo el hardware hasta los registros, y no paro hasta que funciona.
           </p>
           <p>
-            <span data-es="Mi enfoque actual se centra en la" data-en="My current focus is on">Mi enfoque actual se centra en la</span> <span class="text-white font-medium" data-es="optimización multinúcleo con FreeRTOS" data-en="multicore optimization with FreeRTOS">optimización multinúcleo con FreeRTOS</span> <span data-es="y el desarrollo de herramientas de red inalámbricas. Especialización: Desarrollo estructurado en Python / C++ enfocado en IoT y automatización." data-en="and wireless network tools development. Specialization: Structured development in Python / C++ focused on IoT and automation.">y el desarrollo de herramientas de red inalámbricas. Especialización: Desarrollo estructurado en Python / C++ enfocado en IoT y automatización.</span>
+            <span data-es="Actualmente profundizo en" data-en="Currently deep in">Actualmente profundizo en</span> <span class="text-white font-medium" data-es="optimización multinúcleo con FreeRTOS" data-en="multicore optimization with FreeRTOS">optimización multinúcleo con FreeRTOS</span> <span data-es="y herramientas de red inalámbricas. Stack: C++ embebido, Python y TypeScript orientados a IoT y automatización." data-en="and wireless networking tools. Stack: embedded C++, Python and TypeScript focused on IoT and automation.">y herramientas de red inalámbricas. Stack: C++ embebido, Python y TypeScript orientados a IoT y automatización.</span>
           </p>
         </div>
         <div class="flex gap-4 pt-2">
@@ -401,30 +473,9 @@
     <div class="relative pl-8 sm:pl-12 space-y-12">
       <div class="absolute left-0 top-4 bottom-4 w-px bg-gradient-to-b from-brand-yellow via-white/10 to-transparent md:left-4"></div>
 
+      <!-- ESP32 Blasco OS x PCBWay -->
       <div class="reveal-on-scroll relative group">
-          <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-blue-400 shadow-[0_0_20px_rgba(96,165,250,0.4)] z-10"></div>
-          <div class="relative">
-              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-bold mb-4 text-sm tracking-wide bg-blue-400/20 text-blue-400 border border-blue-400/30">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
-                <span data-es="Actualidad" data-en="Present">Actualidad</span>
-              </div>
-              <div class="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 group-hover:border-blue-400/30 transition-all duration-500 card-glow">
-                  <h3 class="text-2xl font-bold text-white mb-2" data-es="Educación Secundaria Obligatoria" data-en="Secondary Education">Educación Secundaria Obligatoria</h3>
-                  <p class="text-text-secondary text-base leading-relaxed">
-                      <span data-es="Cursando actualmente 4º de la ESO, compaginando mis estudios con el desarrollo autodidacta de proyectos de hardware y software de bajo nivel." data-en="Currently in 4th year of secondary school, balancing my studies with self-taught development of low-level hardware and software projects.">
-                      Cursando actualmente 4º de la ESO, compaginando mis estudios con el desarrollo autodidacta de proyectos de hardware y software de bajo nivel.
-                      </span>
-                  </p>
-                  <div class="mt-4 flex items-center gap-2 text-xs text-text-muted font-mono">
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    <span data-es="En curso..." data-en="In progress...">En curso...</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <div class="reveal-on-scroll relative group">
-          <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-white/20 group-hover:bg-brand-yellow transition-colors z-10"></div>
+          <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-brand-yellow shadow-[0_0_20px_rgba(247,226,192,0.5)] z-10"></div>
           <div class="relative">
               <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-bold mb-4 text-sm tracking-wide bg-white/10 text-white group-hover:bg-brand-yellow group-hover:text-black transition-all">
                 <span class="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-black/30"></span>
@@ -437,13 +488,12 @@
                     </a>
                     <h3 class="text-2xl font-bold text-white" data-es="ESP32 Blasco OS x PCBWay" data-en="ESP32 Blasco OS x PCBWay">ESP32 Blasco OS x PCBWay</h3>
                   </div>
-                   <p class="text-text-secondary text-base leading-relaxed" data-es="Colaboración estratégica de PCBWay para el despliegue físico de ESP32 Blasco OS. El diseño de la placa base es crítico para la integridad de señal (SPI/I2C) y la disipación térmica necesaria para el monitoreo en tiempo real de los núcleos de la CPU." data-en="Strategic collaboration with PCBWay for the physical deployment of ESP32 Blasco OS. The board design is critical for signal integrity (SPI/I2C) and the thermal dissipation needed for real-time CPU core monitoring.">
-                       Colaboración estratégica de PCBWay para el despliegue físico de ESP32 Blasco OS. El diseño de la placa base es crítico para la integridad de señal (SPI/I2C) y la disipación térmica necesaria para el monitoreo en tiempo real de los núcleos de la CPU.
-                  </p>
+                   <p class="text-text-secondary text-base leading-relaxed" data-es="Colaboración estratégica con PCBWay para el despliegue físico del sistema. El diseño de PCB es crítico para la integridad de señal (SPI/I2C) y la disipación térmica necesaria para el monitoreo en tiempo real de los núcleos de la CPU en producción." data-en="Strategic partnership with PCBWay for physical deployment of the system. PCB design is critical for signal integrity (SPI/I2C) and the thermal dissipation required for real-time CPU core monitoring in production.">Colaboración estratégica con PCBWay para el despliegue físico del sistema. El diseño de PCB es crítico para la integridad de señal (SPI/I2C) y la disipación térmica necesaria para el monitoreo en tiempo real de los núcleos de la CPU en producción.</p>
               </div>
           </div>
       </div>
 
+      <!-- ESP32 Blasco OS -->
       <div class="reveal-on-scroll relative group">
           <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-brand-yellow shadow-[0_0_20px_rgba(247,226,192,0.5)] z-10"></div>
           <div class="relative">
@@ -453,9 +503,7 @@
               </div>
               <div class="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 group-hover:border-brand-yellow/30 transition-all duration-500 card-glow">
                    <h3 class="text-2xl font-bold text-white mb-2" data-es="ESP32 Blasco OS" data-en="ESP32 Blasco OS">ESP32 Blasco OS</h3>
-                  <p class="text-text-secondary text-base leading-relaxed mb-4" data-es="Un entorno de ejecución multiprograma y plataforma de ingeniería a bajo nivel diseñado exclusivamente para el microcontrolador ESP32-S3, accesible de forma remota y 100% inalámbrica vía Telnet y WebSockets. Incluye planificación multinúcleo eficiente en hilos FreeRTOS independientes." data-en="A multi-program execution environment and low-level engineering platform designed exclusively for the ESP32-S3 microcontroller, accessible remotely and 100% wirelessly via Telnet and WebSockets. Includes efficient multicore scheduling on independent FreeRTOS threads.">
-                      Un entorno de ejecución multiprograma y plataforma de ingeniería a bajo nivel diseñado exclusivamente para el microcontrolador ESP32-S3, accesible de forma remota y 100% inalámbrica vía Telnet y WebSockets. Incluye planificación multinúcleo eficiente en hilos FreeRTOS independientes.
-                  </p>
+                  <p class="text-text-secondary text-base leading-relaxed mb-4" data-es="OS ligero para ESP32-S3 con acceso 100% inalámbrico vía Telnet y WebSockets. Soporta +8 módulos hardware concurrentes con planificación multinúcleo en FreeRTOS. Control remoto completo desde cualquier dispositivo en red." data-en="Lightweight OS for ESP32-S3 with 100% wireless access via Telnet and WebSockets. Supports +8 concurrent hardware modules with multicore scheduling in FreeRTOS. Full remote control from any networked device.">OS ligero para ESP32-S3 con acceso 100% inalámbrico vía Telnet y WebSockets. Soporta +8 módulos hardware concurrentes con planificación multinúcleo en FreeRTOS. Control remoto completo desde cualquier dispositivo en red.</p>
                   <div class="pt-1 flex flex-wrap gap-3">
                       <a href="https://github.com/rubenblascoa/esp32-panelcontrol" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-yellow hover:underline decoration-brand-yellow/30 underline-offset-8 font-medium text-sm">
                          <span data-es="Ver Repositorio" data-en="View Repository">Ver Repositorio</span>
@@ -470,6 +518,7 @@
           </div>
       </div>
 
+      <!-- Recopilacion Python -->
       <div class="reveal-on-scroll relative group">
           <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-brand-green shadow-[0_0_20px_rgba(74,222,128,0.4)] z-10"></div>
           <div class="relative">
@@ -479,9 +528,7 @@
               </div>
               <div class="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 group-hover:border-brand-green/30 transition-all duration-500 card-glow">
                    <h3 class="text-2xl font-bold text-white mb-2" data-es="Recopilación de Proyectos Python" data-en="Python Projects Collection">Recopilación de Proyectos Python</h3>
-                  <p class="text-text-secondary text-base leading-relaxed mb-4" data-es="Colección de proyectos desarrollados durante el curso intensivo Python TOTAL de Federico Garay. Incluye interfaces gráficas, automatización, scripts de red y lógica backend avanzada." data-en="Collection of projects developed during Federico Garay's Python TOTAL course. Includes GUI applications, automation, network scripts, and advanced backend logic.">
-                      Colección de proyectos desarrollados durante el curso intensivo "Python TOTAL - Programador Avanzado en 16 días" de Federico Garay. Incluye interfaces gráficas, automatización, scripts de red y lógica backend avanzada.
-                  </p>
+                  <p class="text-text-secondary text-base leading-relaxed mb-4" data-es="30+ proyectos Python desarrollados de forma intensiva: interfaces gráficas con Tkinter, automatización de procesos, scripts de red y lógica backend avanzada con Django y MySQL." data-en="30+ Python projects developed intensively: Tkinter GUIs, process automation, network scripts, and advanced backend logic with Django and MySQL.">30+ proyectos Python desarrollados de forma intensiva: interfaces gráficas con Tkinter, automatización de procesos, scripts de red y lógica backend avanzada con Django y MySQL.</p>
                   <div class="pt-1">
                       <a href="https://github.com/rubenblascoa/Recopilacion-de-Proyectos" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-green hover:underline decoration-brand-green/30 underline-offset-8 font-medium text-sm">
                          <span data-es="Ver Repositorio" data-en="View Repository">Ver Repositorio</span>
@@ -492,6 +539,7 @@
           </div>
       </div>
 
+      <!-- Certificado Python -->
       <div class="reveal-on-scroll relative group">
           <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-white/20 group-hover:bg-brand-yellow transition-colors z-10"></div>
           <div class="relative">
@@ -501,8 +549,33 @@
               </div>
               <div class="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 group-hover:border-brand-yellow/30 transition-all duration-500 card-glow">
                   <h3 class="text-2xl font-bold text-white mb-2" data-es="Certificado de Python" data-en="Python Certificate">Certificado de Python</h3>
-                  <p class="text-text-secondary text-base leading-relaxed" data-es="Certificación oficial del curso Python TOTAL de Federico Garay, acreditando competencias en programación estructurada, orientada a objetos, módulos y automatización de procesos." data-en="Official certification from Federico Garay's Python TOTAL course, accrediting skills in structured programming, object-oriented programming, modules, and process automation.">
-                      Certificación oficial del curso "Python TOTAL - Programador Avanzado en 16 días" impartido por Federico Garay, acreditando competencias en programación estructurada, orientada a objetos, módulos, y automatización de procesos.
+                  <p class="text-text-secondary text-base leading-relaxed" data-es="Certificación oficial del curso Python TOTAL de Federico Garay, acreditando competencias en programación estructurada, orientada a objetos, módulos y automatización de procesos." data-en="Official certification from Federico Garay's Python TOTAL course, accrediting skills in structured programming, OOP, modules, and process automation.">Certificación oficial del curso Python TOTAL de Federico Garay, acreditando competencias en programación estructurada, orientada a objetos, módulos y automatización de procesos.</p>
+              </div>
+          </div>
+      </div>
+
+      <!-- Educacion Secundaria - al final como contexto -->
+      <div class="reveal-on-scroll relative group">
+          <div class="absolute -left-[39px] md:-left-[37px] top-6 w-5 h-5 rounded-full border-[3px] border-brand-bg bg-blue-400 shadow-[0_0_20px_rgba(96,165,250,0.4)] z-10"></div>
+          <div class="relative">
+              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-bold mb-4 text-sm tracking-wide bg-blue-400/20 text-blue-400 border border-blue-400/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span data-es="Actualidad" data-en="Present">Actualidad</span>
+              </div>
+              <div class="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 group-hover:border-blue-400/30 transition-all duration-500 card-glow">
+                  <h3 class="text-2xl font-bold text-white mb-2" data-es="Educación Secundaria Obligatoria" data-en="Secondary Education">Educación Secundaria Obligatoria</h3>
+                  <p class="text-text-secondary text-base leading-relaxed">
+                      <span data-es="Cursando 4º de la ESO, compaginando los estudios con desarrollo autodidacta de proyectos de hardware y software en producción real." data-en="Currently in 4th year of secondary school, balancing studies with self-taught development of production-level hardware and software projects.">Cursando 4º de la ESO, compaginando los estudios con desarrollo autodidacta de proyectos de hardware y software en producción real.</span>
+                  </p>
+                  <div class="mt-4 flex items-center gap-2 text-xs text-text-muted font-mono">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span data-es="En curso..." data-en="In progress...">En curso...</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section> automatización de procesos.
                   </p>
               </div>
           </div>
@@ -519,15 +592,14 @@
       <h2 class="text-4xl md:text-5xl font-serif text-white" data-es="Proyectos Destacados" data-en="Featured Projects">Proyectos Destacados</h2>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-white/[0.03] to-transparent border border-white/5 hover:border-brand-yellow/20 transition-all duration-500 group">
-       <div class="reveal-on-scroll space-y-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 p-8 md:p-10 rounded-[2rem] bg-gradient        <div class="reveal-on-scroll space-y-6">
           <div class="flex items-center gap-4">
           <span class="px-4 py-1 rounded-full bg-brand-yellow text-black text-xs font-bold font-mono">2026</span>
-          <span class="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-brand-yellow">ESP32-S3 / FreeRTOS</span>
+          <span class="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-brand-yellow">ESP32-S3 / FreeRTOS / C++</span>
       </div>
       <h3 class="text-3xl md:text-4xl font-bold text-white group-hover:text-brand-yellow transition-colors" data-es="ESP32 Blasco OS" data-en="ESP32 Blasco OS">ESP32 Blasco OS</h3>
-      <p class="text-text-secondary text-base leading-relaxed" data-es="Plataforma de ingeniería a bajo nivel que actúa como un Sistema Operativo ligero accesible vía Telnet y WebSockets. Permite encapsular y ejecutar múltiples proyectos de hardware en la misma placa con configuración dinámica en tiempo de ejecución." data-en="Low-level engineering platform that acts as a lightweight Operating System accessible via Telnet and WebSockets. Allows encapsulating and running multiple hardware projects on the same board with dynamic runtime configuration.">
-          Plataforma de ingeniería a bajo nivel que actúa como un "Sistema Operativo" ligero accesible vía Telnet y WebSockets. Permite encapsular y ejecutar múltiples proyectos de hardware en la misma placa con configuración dinámica en tiempo de ejecución.
+      <p class="text-text-secondary text-base leading-relaxed" data-es="Problema: reprogramar y reconectar físicamente el ESP32 cada vez que cambias de proyecto es insostenible. Solución: un OS ligero que ejecuta +8 módulos hardware en paralelo, gestionados en tiempo real 100% de forma inalámbrica vía Telnet y WebSockets. Resultado: colaboración con PCBWay para el despliegue en PCB de producción con arquitectura multinúcleo FreeRTOS." data-en="Problem: physically reprogramming and reconnecting the ESP32 for every project is unsustainable. Solution: a lightweight OS running +8 hardware modules in parallel, managed in real-time 100% wirelessly via Telnet and WebSockets. Result: partnership with PCBWay for production PCB deployment with FreeRTOS multicore architecture.">
+          Problema: reprogramar y reconectar físicamente el ESP32 cada vez que cambias de proyecto es insostenible. Solución: un OS ligero que ejecuta +8 módulos hardware en paralelo, gestionados en tiempo real 100% de forma inalámbrica. Resultado: colaboración con PCBWay para despliegue en PCB de producción.
       </p>
           <div class="pt-4 flex flex-wrap gap-4">
                <a href="https://blascoos.qzz.io/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-brand-yellow text-black font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-brand-yellow/20">
@@ -554,8 +626,8 @@
         <span class="px-4 py-1 rounded-full bg-blue-400/10 border border-blue-400/30 text-blue-400 text-xs font-mono">Bun / TypeScript / MySQL</span>
     </div>
     <h3 class="text-3xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors" data-es="FondTracker" data-en="FondTracker">FondTracker</h3>
-    <p class="text-text-secondary text-base leading-relaxed" data-es="Aplicación web para el seguimiento en tiempo real de una cartera de fondos de inversión y ETFs. Calcula rentabilidad al momento con precios de mercado en vivo, gestiona múltiples usuarios de forma aislada y envía resúmenes automáticos por WhatsApp." data-en="Web application for real-time tracking of an investment fund and ETF portfolio. Calculates live returns with real-time market prices, manages multiple isolated users, and sends automated portfolio summaries via WhatsApp.">
-        Aplicación web para el seguimiento en tiempo real de una cartera de fondos de inversión y ETFs. Calcula rentabilidad al momento con precios de mercado en vivo, gestiona múltiples usuarios de forma aislada y envía resúmenes automáticos por WhatsApp.
+    <p class="text-text-secondary text-base leading-relaxed" data-es="Problema: gestionar una cartera de fondos e ETFs requiere revisar varias plataformas a diario. Solución: FondTracker calcula la rentabilidad en tiempo real con precios de mercado en vivo, gestiona múltiples usuarios de forma aislada y envía resúmenes automáticos por WhatsApp sin intervención manual. Resultado: sistema en producción activo con datos de 15+ fondos actualizados en tiempo real." data-en="Problem: managing a fund/ETF portfolio means manually checking several platforms daily. Solution: FondTracker calculates live returns with real-time market prices, manages multiple isolated user portfolios, and sends automated WhatsApp summaries with no manual input. Result: live production system tracking 15+ funds in real-time.">
+        Problema: gestionar una cartera de fondos e ETFs requiere revisar varias plataformas a diario. Solución: FondTracker calcula la rentabilidad con precios de mercado en vivo, gestiona usuarios de forma aislada y envía resúmenes automáticos por WhatsApp. Sistema en producción activo con 15+ fondos en tiempo real.
     </p>
         <div class="pt-4 flex flex-wrap gap-4">
              <a href="https://fondtracker.onrender.com/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-blue-400 text-black font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-blue-400/20">
@@ -575,30 +647,7 @@
      </div>
   </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center p-8 md:p-10 rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-sm group hover:border-brand-green/20 transition-all duration-500 mt-16">
-       <div class="reveal-on-scroll order-2 lg:order-1 relative group/img cursor-pointer" onclick="window.open('https://github.com/rubenblascoa/Recopilacion-de-Proyectos', '_blank')">
-          <div class="bg-brand-card rounded-2xl p-2 border border-white/10 shadow-2xl overflow-hidden ring-1 ring-white/10 group-hover:ring-brand-green/30 transition-all duration-700">
-              <img src="https://github.com/user-attachments/assets/a9bc2611-8d1a-4842-b6e4-2a326a2c2af3" alt="Recopilación Proyectos Python" loading="lazy" decoding="async" class="w-full h-auto rounded-xl grayscale group-hover/img:grayscale-0 transition-all duration-700 scale-100 group-hover/img:scale-105">
-          </div>
-       </div>
-
-       <div class="reveal-on-scroll order-1 lg:order-2 space-y-6">
-          <div class="flex items-center gap-4">
-          <span class="px-4 py-1 rounded-full bg-brand-green/20 border border-brand-green/30 text-brand-green text-xs font-bold font-mono">2024</span>
-          <span class="px-4 py-1 rounded-full bg-brand-green/10 border border-brand-green/30 text-brand-green text-xs font-mono" data-es="Python / Programador Avanzado" data-en="Python / Advanced Programmer">Python / Programador Avanzado</span>
-          </div>
-            <h3 class="text-2xl md:text-3xl font-bold text-white group-hover:text-brand-green transition-colors" data-es="Recopilación de Proyectos Python" data-en="Python Projects Collection">Recopilación de Proyectos Python</h3>
-          <p class="text-text-secondary text-base leading-relaxed" data-es="Contiene la recopilación de los proyectos desarrollados durante el curso intensivo de 16 días. Incluye implementaciones de interfaces gráficas, gestión de terminales y lógica de backend avanzada." data-en="Contains the compilation of projects developed during the 16-day intensive course. Includes GUI implementations, terminal management, and advanced backend logic.">
-              Contiene la recopilación de los proyectos desarrollados durante el curso intensivo de 16 días. Incluye implementaciones de interfaces gráficas, gestión de terminales y lógica de backend avanzada.
-          </p>
-           <div class="pt-1">
-                <a href="https://github.com/rubenblascoa/Recopilacion-de-Proyectos" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-brand-green/10 border border-brand-green/30 text-brand-green font-bold hover:bg-brand-green/20 transition-all inline-flex items-center gap-2">
-                   <span data-es="GitHub Repo" data-en="GitHub Repo">GitHub Repo</span>
-                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-               </a>
-          </div>
-       </div>
-    </div>
+    <!-- Solo ESP32 Blasco OS y FondTracker como proyectos destacados -->
   </section>
 
   <!-- Contacto Section -->
@@ -648,7 +697,7 @@
 
         <div class="reveal-on-scroll bg-brand-card p-8 md:p-10 rounded-[2rem] border border-white/10 shadow-2xl relative">
           <form aria-label="Formulario de contacto" class="space-y-5" action="https://formsubmit.co/rubenblascoarmengod@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" id="_next" value="">
             <input type="hidden" name="_blacklist" value="spam,scam,phish">
@@ -709,7 +758,7 @@
               </a>
               <div class="text-center md:text-left">
                 <h3 class="text-white font-bold text-lg">Rubén Blasco Armengod</h3>
-                <p class="text-text-muted text-sm">Full-Stack Developer & Embedded Systems</p>
+                 <p class="text-text-muted text-sm" data-es="Desarrollador de Sistemas & Firmware" data-en="Systems & Firmware Developer">Desarrollador de Sistemas & Firmware</p>
               </div>
            </div>
 
@@ -726,6 +775,9 @@
               <a href="https://github.com/rubenblascoa" class="hover:text-white transition-colors hover:scale-110 inline-block" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
               </a>
+              <a href="https://www.linkedin.com/in/rubenblascoa/" class="hover:text-white transition-colors hover:scale-110 inline-block" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
               <a href="https://instagram.com/rubenblascoa" class="hover:text-white transition-colors hover:scale-110 inline-block" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
@@ -736,9 +788,32 @@
   </div>
 
   <script>
+    // =====================================================
+    // PERFORMANCE TIER DETECTION
+    // high  = modern PC/laptop (4+ cores, 4GB+ RAM)
+    // medium = average PC or recent phone
+    // low   = old/weak device (≤2 cores or ≤2GB RAM)
+    // =====================================================
+    const cores = navigator.hardwareConcurrency || 4;
+    const mem   = navigator.deviceMemory || 4; // GB, only in Chromium
+    let perfTier;
+    if (cores <= 2 || mem <= 2) {
+      perfTier = 'low';
+    } else if (cores <= 4 || mem <= 4) {
+      perfTier = 'medium';
+    } else {
+      perfTier = 'high';
+    }
+
+    // Remove expensive blurs on low-end
+    if (perfTier === 'low') {
+      document.getElementById('orb-yellow')?.remove();
+      document.getElementById('orb-green')?.remove();
+    }
+
     // Advanced "Tech Circuitry" Animation
     const canvas = document.getElementById('tech-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false }); // alpha:false = faster compositing
 
     let w, h;
     let grid = 50;
@@ -746,17 +821,35 @@
     let matrixChars = [];
     let mouse = { x: -100, y: -100 };
     let stars = [];
+    let isMobile = false;
+
+    // Offscreen canvas for static grid (pre-rendered once, reused every frame)
+    let gridCanvas = document.createElement('canvas');
+    let gridCtx = gridCanvas.getContext('2d');
+
+    function buildGrid() {
+      gridCanvas.width  = w;
+      gridCanvas.height = h;
+      gridCtx.strokeStyle = 'rgba(255, 255, 255, 0.012)';
+      gridCtx.lineWidth = 1;
+      gridCtx.beginPath();
+      for (let x = 0; x <= w; x += grid) { gridCtx.moveTo(x, 0); gridCtx.lineTo(x, h); }
+      for (let y = 0; y <= h; y += grid) { gridCtx.moveTo(0, y); gridCtx.lineTo(w, y); }
+      gridCtx.stroke();
+    }
 
     const colors = ['rgba(247, 226, 192, 0.25)', 'rgba(74, 222, 128, 0.25)', 'rgba(224, 242, 254, 0.25)', 'rgba(255, 105, 180, 0.2)'];
 
     function resize() {
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
+      isMobile = w < 768;
+      buildGrid();
     }
 
     window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     }, { passive: true });
 
     class Runner {
@@ -803,10 +896,12 @@
         ctx.lineWidth = this.thickness;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = this.color;
+        if (perfTier === 'high') {
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.color;
+        }
         ctx.stroke();
-        ctx.shadowBlur = 0;
+        if (perfTier === 'high') ctx.shadowBlur = 0;
         ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
         ctx.fillRect(this.x - 1.5, this.y - 1.5, 3, 3);
       }
@@ -829,7 +924,7 @@
 
        draw() {
           ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-          ctx.font = '10px monospace';
+          // ctx.font is set once before the loop — not here
           ctx.fillText(this.val, this.x, this.y);
        }
     }
@@ -859,74 +954,114 @@
       }
     }
 
+    // Particle counts per tier
+    const COUNTS = {
+      high:   { runners: 50, matrix: 60, stars: 100 },
+      medium: { runners: 30, matrix: 35, stars: 60  },
+      low:    { runners: 10, matrix: 0,  stars: 30  },
+    };
+
     function init() {
       resize();
       runners = [];
       matrixChars = [];
       stars = [];
-      for (let i = 0; i < 50; i++) runners.push(new Runner());
-      for (let i = 0; i < 60; i++) matrixChars.push(new MatrixChar());
-      for (let i = 0; i < 100; i++) stars.push(new Star());
+      const c = isMobile
+        ? { runners: 15, matrix: 20, stars: 40 }
+        : COUNTS[perfTier];
+      for (let i = 0; i < c.runners; i++) runners.push(new Runner());
+      for (let i = 0; i < c.matrix;  i++) matrixChars.push(new MatrixChar());
+      for (let i = 0; i < c.stars;   i++) stars.push(new Star());
     }
 
-    window.addEventListener('resize', init, { passive: true });
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(init, 150);
+    }, { passive: true });
     init();
     let time = 0;
     let animationId;
+
+    // FPS cap — low-end targets 30fps, others uncapped (browser syncs to 60Hz)
+    const TARGET_MS = perfTier === 'low' ? 1000 / 30 : 0;
+    let lastFrameTime = 0;
 
     // Pause canvas animation when tab is not visible (saves CPU/battery)
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         cancelAnimationFrame(animationId);
       } else {
-        animationId = requestAnimationFrame(animate);
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          animationId = requestAnimationFrame(animate);
+        }
       }
     });
 
-    function animate() {
+    function animate(timestamp) {
+      // FPS throttle for low-end
+      if (TARGET_MS > 0) {
+        const elapsed = timestamp - lastFrameTime;
+        if (elapsed < TARGET_MS) {
+          animationId = requestAnimationFrame(animate);
+          return;
+        }
+        lastFrameTime = timestamp - (elapsed % TARGET_MS);
+      }
+
       time++;
       ctx.fillStyle = 'rgba(5, 5, 5, 0.12)';
       ctx.fillRect(0, 0, w, h);
 
-      // grid lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.012)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let x = 0; x <= w; x += grid) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
-      for (let y = 0; y <= h; y += grid) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
-      ctx.stroke();
+      // Draw pre-rendered grid (single drawImage call vs hundreds of path ops)
+      if (perfTier !== 'low') {
+        ctx.drawImage(gridCanvas, 0, 0);
+      }
 
-      // mouse highlight
-      const mx = Math.floor(mouse.x / grid) * grid;
-      const my = Math.floor(mouse.y / grid) * grid;
-      if (mx >= 0 && my >= 0) {
-          ctx.shadowBlur = 20;
-          ctx.shadowColor = 'rgba(247, 226, 192, 0.15)';
+      // mouse highlight (desktop only)
+      if (!isMobile && perfTier !== 'low') {
+        const mx = Math.floor(mouse.x / grid) * grid;
+        const my = Math.floor(mouse.y / grid) * grid;
+        if (mx >= 0 && my >= 0) {
+          if (perfTier === 'high') {
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = 'rgba(247, 226, 192, 0.15)';
+          }
           ctx.strokeStyle = 'rgba(247, 226, 192, 0.15)';
           ctx.strokeRect(mx, my, grid, grid);
-          ctx.shadowBlur = 0;
+          if (perfTier === 'high') ctx.shadowBlur = 0;
+        }
       }
 
       stars.forEach(s => { s.update(time); s.draw(time); });
-      matrixChars.forEach(m => { m.update(); m.draw(); });
+
+      // Set font once for all MatrixChar draws
+      if (matrixChars.length) {
+        ctx.font = '10px monospace';
+        matrixChars.forEach(m => { m.update(); m.draw(); });
+      }
+
       runners.forEach(r => { r.update(); r.draw(); });
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     }
 
-    animationId = requestAnimationFrame(animate);
+    // Only start the canvas if reduced-motion is not preferred
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      animationId = requestAnimationFrame(animate);
+    }
 
     // ===== COMPLETE BILINGUAL SYSTEM =====
     const translations = {
       es: {
-        heroTitle: '"Transformando microcontroladores en <br><span class=\'italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500\'>plataformas inteligentes</span>"',
-        heroDesc: 'Estudiante de la ESO apasionado por la programación de sistemas, bajo nivel y arquitectura de firmware. Creando entornos de ejecución asíncronos y robustos.',
-        scrollText: 'Scrollear para explorar',
+        heroTitle: 'Del chip al sistema: <br><span class=\'italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500\'>firmware con propósito propio</span>',
+        heroDesc: 'Con 15 años, ya tengo dos proyectos en producción real: un OS para microcontroladores reconocido por PCBWay, y una app financiera con automatización en tiempo real. Aprendo construyendo lo que otros no se atreven a intentar.',
+        scrollText: 'Explorar',
       },
       en: {
-        heroTitle: '"Transforming microcontrollers into <br><span class=\'italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500\'>intelligent platforms</span>"',
-        heroDesc: 'High school student passionate about systems programming, low-level architecture, and firmware. Creating asynchronous and robust execution environments.',
-        scrollText: 'Scroll to explore',
+        heroTitle: 'From chip to system: <br><span class=\'italic bg-clip-text text-transparent bg-gradient-to-r from-brand-yellow via-gray-300 to-gray-500\'>purposefully written firmware</span>',
+        heroDesc: 'At 15, I already have two production projects: a microcontroller OS recognized by PCBWay, and a real-time financial automation app. I learn by building what others won\'t attempt.',
+        scrollText: 'Explore',
       }
     };
 
