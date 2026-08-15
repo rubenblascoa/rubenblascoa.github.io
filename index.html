@@ -277,13 +277,20 @@
   <nav aria-label="Navegación principal" class="fixed top-0 w-full z-50 bg-[#050505]/70 backdrop-blur-xl border-b border-white/5" style="backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex justify-between items-center h-20">
-        <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'});" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-brand-yellow/50 transition-all duration-300 ring-1 ring-white/5 group-hover:ring-brand-yellow/20">
-            <img src="https://github.com/rubenblascoa.png" alt="Ruben Blasco" fetchpriority="high" width="40" height="40" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-          </div>
-          <span class="font-semibold text-lg tracking-wide text-white group-hover:text-brand-yellow transition-colors uppercase tracking-tighter">Ruben B.</span>
-           <span class="text-[10px] text-brand-green font-mono border border-brand-green/30 bg-brand-green/5 px-2 py-0.5 rounded-full" data-es="DISPONIBLE" data-en="AVAILABLE">DISPONIBLE</span>
-         </a>
+        <div class="flex items-center gap-6">
+          <a href="javascript:void(0)" onclick="window.scrollTo({top:0,behavior:'smooth'});" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-brand-yellow/50 transition-all duration-300 ring-1 ring-white/5 group-hover:ring-brand-yellow/20">
+              <img src="https://github.com/rubenblascoa.png" alt="Ruben Blasco" fetchpriority="high" width="40" height="40" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+            </div>
+            <span class="font-semibold text-lg tracking-wide text-white group-hover:text-brand-yellow transition-colors uppercase tracking-tighter">Ruben B.</span>
+             <span class="text-[10px] text-brand-green font-mono border border-brand-green/30 bg-brand-green/5 px-2 py-0.5 rounded-full" data-es="DISPONIBLE" data-en="AVAILABLE">DISPONIBLE</span>
+           </a>
+           
+           <a href="/cv.pdf" download class="hidden sm:flex nav-link text-sm font-medium text-brand-yellow hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full items-center gap-1.5" data-es="CV" data-en="CV">
+             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+             CV
+           </a>
+        </div>
 
          <div class="hidden md:flex items-center gap-8">
           <a href="javascript:void(0)" data-target="about" class="nav-link text-sm font-medium text-text-secondary hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full" data-es="Sobre mí" data-en="About">Sobre mí</a>
@@ -294,10 +301,6 @@
             Contacto
           </a>
 
-          <a href="/cv.pdf" download class="nav-link text-sm font-medium text-brand-yellow hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-brand-yellow after:transition-all after:duration-300 hover:after:w-full flex items-center gap-1.5" data-es="CV" data-en="CV">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            CV
-          </a>
 
           <div class="flex items-center gap-1.5 bg-white/5 p-0.5 rounded-full border border-white/10 ml-4" style="backdrop-filter: blur(8px);" role="group" aria-label="Cambiar idioma">
             <button onclick="setLanguage('es')" id="lang-es" aria-label="Cambiar a español" aria-pressed="true" class="px-3 py-1.5 rounded-full text-xs font-bold transition-all bg-brand-yellow text-black">ES</button>
