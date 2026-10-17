@@ -14,20 +14,20 @@
   </picture>
 </h3>
 
-**Español** 
+**Español · English** 
 
 ---
 
-**Portfolio personal one-page: sistemas, bajo nivel y proyectos de hardware/software.**
+**Portfolio cinemático: del chip al sistema, contado como una película con scroll.**
 
 ![Views](https://komarev.com/ghpvc/?username=rubenblascoa&repo=rubenblascoa.github.io&label=Views&icon=0&color=121011&style=flat-square)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20TailwindCSS%20%7C%20JS-black?style=flat-square)](#)
-[![Live Site](https://img.shields.io/badge/Live-Online-brightgreen?style=flat-square)](#)
+[![Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20GSAP%20%7C%20Three.js-black?style=flat-square)](#)
+[![Live Site](https://img.shields.io/badge/Live-Online-brightgreen?style=flat-square)](https://rubenblascoa.github.io/)
 
-Sitio web personal de **Rubén Blasco Armengod**, construido como una página única (*single-page*) estática, sin dependencias de *build* ni frameworks pesados. Presenta trayectoria, proyectos destacados y un formulario de contacto funcional, con soporte bilingüe completo (Español/Inglés) y un fondo animado por Canvas inspirado en circuitos electrónicos.
+Sitio web personal de **Rubén Blasco Armengod**, una única página estática y sin *build* que cuenta su trabajo como una película (inspirada en la web de GTA VI): el logo RB se llena de blanco al cargar, la cámara lo atraviesa para presentarle y, después, la placa real de **ESP32 Blasco OS** se dibuja desde sus archivos Gerber, se despieza en capas y se convierte en un modelo 3D antes de dar paso a los proyectos.
 
-[Ver el sitio](#) · [Reportar un Error](#) · [Sugerir una mejora](#)
+[Ver el sitio](https://rubenblascoa.github.io/) · [Reportar un Error](https://github.com/rubenblascoa/rubenblascoa.github.io/issues) · [Sugerir una mejora](https://github.com/rubenblascoa/rubenblascoa.github.io/issues)
 
 ---
 
@@ -35,72 +35,64 @@ Sitio web personal de **Rubén Blasco Armengod**, construido como una página ú
 
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:folder-tree.svg?color=white"><img src="https://api.iconify.design/lucide:folder-tree.svg?color=black" width="26" align="center"></picture> Arquitectura y Estructura
 
-El sitio es un único archivo HTML autocontenido, dividido lógicamente en las siguientes capas:
+```
+index.html                 La película completa (HTML, CSS y la lógica de las escenas)
+assets/cinematic/
+  pcb-data.js              Capas de la placa generadas desde los Gerber reales (pistas, pads, taladros, serigrafía)
+  pcb3d.js                 Modelo 3D de la placa en Three.js (portado de la landing de Blasco OS)
+  pcb3d-top/bottom.webp    Texturas de las dos caras de la placa
+  og.jpg · favicon.svg     Tarjeta para redes (1200×630) e icono RB
+  *-login.jpg              Capturas actuales de Blasco OS y FondTracker
+```
 
-### 1. Capa de Presentación (Secciones)
-* **`#home` (Hero)**
-  * **Propósito:** Primera impresión y llamada a la acción principal.
-  * **Lógica detallada:** Título editorial con tipografía serif (`Playfair Display`) combinado con texto sans-serif (`Inter`), badge de disponibilidad animado con `pulse`, y doble CTA hacia proyectos y sección "Sobre mí".
-* **`#about` (Sobre mí)**
-  * **Propósito:** Presentación personal y stack técnico principal.
-  * **Lógica detallada:** Layout de dos columnas con imagen de perfil en escala de grises que revela color al pasar el ratón (`grayscale` → `grayscale-0`), tarjeta flotante con datos de contacto rápido, y chips de especialización (Python, C++, IoT).
-* **`#experience` (Trayectoria)**
-  * **Propósito:** Línea temporal de hitos académicos y de proyectos.
-  * **Lógica detallada:** Timeline vertical con línea de degradado y nodos de color por hito (actualidad, colaboraciones, certificaciones), cada tarjeta con efecto `card-glow` al hover.
-* **`#repositorio` (Proyectos Destacados)**
-  * **Propósito:** Escaparate de los proyectos más relevantes.
-  * **Lógica detallada:** Tarjetas grandes alternadas (imagen/texto) con capturas reales de cada proyecto, enlaces directos a repositorio de GitHub y sitio en vivo cuando aplica.
-* **`#contacto` (Contacto)**
-  * **Propósito:** Captación de mensajes directos sin backend propio.
-  * **Lógica detallada:** Formulario enviado vía **FormSubmit** en modo AJAX (`/ajax/`), con honeypot anti-spam (`_honey`), plantilla de tabla, y feedback visual de éxito/error sin recargar la página.
+### 1. Escenas (una sola página con scroll)
+* **Carga**
+  * **Lógica detallada:** El monograma RB (SVG) se llena con una ola blanca que sigue el progreso real de carga (fuentes y página), con una duración mínima para que se vea entera.
+* **`#intro` — 00 · Sobre mí**
+  * **Lógica detallada:** El RB es una máscara SVG: la cámara atraviesa el palo de la R, la pantalla se funde a negro y aparece la presentación. El manifiesto se ilumina palabra a palabra y al fondo corre, en un `<canvas>`, código real del firmware de Blasco OS. Al pie, el stack tecnológico en bucle.
+* **`#story` — 01 a 03 · La placa**
+  * **Lógica detallada:** Las 174 pistas se dibujan desde el ESP32 hacia fuera; aparecen sustrato, plano de cobre, pads y serigrafía; la placa se despieza en una vista 3D por capas (CSS 3D) y, al aplanarse, el plano se convierte en el modelo 3D real, que la cámara recorre hasta el sello de la serigrafía.
+* **`#os` y `#ft` — Protagonistas**
+  * **Lógica detallada:** Cada proyecto entra como una tarjeta que se abre hasta llenar la pantalla, con sus datos, terminal animada o gráfica, y captura actual del sitio en vivo.
+* **`#timeline` — Trayectoria**
+  * **Lógica detallada:** Línea temporal horizontal que avanza con el scroll vertical.
+* **`#end` — Créditos**
+  * **Lógica detallada:** El RB vuelve a llenarse de blanco, como en la carga, y cierra con el contacto.
 
-### 2. Fondo Animado (Canvas)
-* **Bloque `<script>` — Sistema de partículas "Tech Circuitry"**
-  * **Propósito:** Fondo decorativo dinámico que refuerza la temática de sistemas/hardware.
-  * **Lógica detallada:** Tres sistemas independientes renderizados sobre `<canvas>`: `Runner` (líneas tipo circuito que se mueven en ángulos rectos sobre una rejilla), `MatrixChar` (dígitos binarios parpadeantes de baja opacidad) y `Star` (partículas de brillo pulsante). La animación se pausa automáticamente cuando la pestaña no está visible (`visibilitychange`) para ahorrar batería/CPU, y respeta `prefers-reduced-motion`.
+### 2. Rendimiento
+* **Carga:** solo se espera a las fuentes y a la página; Three.js (minificado) y las texturas se descargan en paralelo y la puesta a punto del 3D (compilación de *shaders*, subida de texturas y sombras) ocurre durante la pantalla de carga.
+* **Animación:** las capas que aparecen con fundido tienen su propia capa de GPU, la serigrafía (miles de trazos) no se redibuja fotograma a fotograma, y el lienzo 3D y el de código solo pintan mientras se ven.
+* **Accesibilidad:** `prefers-reduced-motion` desactiva las animaciones continuas; enlace para saltar al contacto; textos alternativos en todas las imágenes.
 
-### 3. Sistema de Internacionalización (i18n)
-* **Objeto `translations` + función `setLanguage()`**
-  * **Propósito:** Cambio de idioma Español/Inglés sin recargar la página ni depender de librerías externas.
-  * **Lógica detallada:** Usa atributos `data-es` / `data-en` sobre cada nodo de texto y `data-es-placeholder` / `data-en-placeholder` sobre los campos de formulario. Actualiza también el atributo `lang` del `<html>`, el título de la pestaña, y el estado visual (`aria-pressed`) del selector de idioma, tanto en la versión de escritorio como en el menú móvil.
+### 3. Idiomas
+* Español e inglés en la misma página, con selector **ES / EN** en la barra superior: el texto cambia sin recargar ni perder la posición.
+* Cada idioma tiene su URL (`/` y `/?lang=en`) y se recuerda la elección del visitante. Los textos en inglés viven en atributos `data-en` junto al original.
 
-### 4. Rendimiento y Accesibilidad
-* **Optimización de carga**
-  * **Lógica detallada:** Fuentes cargadas con `preconnect` + `display=swap` y `<noscript>` de respaldo; imagen del hero precargada (`rel="preload"`); atributos `loading="lazy"` y `decoding="async"` en imágenes secundarias; `fetchpriority="high"` en la imagen crítica.
-* **Accesibilidad**
-  * **Lógica detallada:** Enlace "Saltar al contenido principal" para lectores de pantalla, atributos `aria-label`/`aria-pressed`/`aria-expanded` en controles interactivos, y reducción completa de animaciones bajo `prefers-reduced-motion`.
-
----
-
-## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:list.svg?color=white"><img src="https://api.iconify.design/lucide:list.svg?color=black" width="26" align="center"></picture> Características Principales
-
-* **100% Estático:** Sin backend propio, sin *build step* — un único HTML desplegable en cualquier hosting estático.
-* **Bilingüe en Tiempo Real:** Cambio instantáneo Español/Inglés, persistido visualmente en toda la interfaz (textos, placeholders, título de pestaña).
-* **Formulario de Contacto Funcional:** Envío de mensajes vía FormSubmit con feedback de éxito/error, sin exponer ningún backend propio.
-* **Fondo Animado por Canvas:** Sistema de partículas tipo "circuito" con parada automática al cambiar de pestaña, respetuoso con el rendimiento y las preferencias de accesibilidad.
-* **Diseño Responsive:** Menú móvil dedicado, *grid* adaptativo en todas las secciones, y tipografía escalable.
-* **Efectos de Interacción Cuidados:** *Glassmorphism*, *glow* en tarjetas al hover, revelado progresivo de secciones al hacer scroll (`IntersectionObserver`).
+### 4. SEO
+* Título, descripción, `canonical`, Open Graph de perfil y Twitter con tarjeta de 1200×630.
+* Datos estructurados (JSON-LD): `WebSite`, `ProfilePage`, `Person`, `SoftwareSourceCode` (ESP32 Blasco OS) y `SoftwareApplication` (FondTracker).
+* `hreflang` (es · en · x-default) en la página y en el sitemap.
+* `sitemap.xml` con imágenes, `robots.txt` y `llms.txt` para buscadores con IA.
 
 ---
 
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:hard-drive.svg?color=white"><img src="https://api.iconify.design/lucide:hard-drive.svg?color=black" width="26" align="center"></picture> Stack e Instalación
 
-* **Maquetado:** HTML5 semántico
-* **Estilos:** [Tailwind CSS](https://tailwindcss.com) (build local, `/tailwind.min.css`) + CSS personalizado para animaciones
-* **Tipografía:** Google Fonts — `Playfair Display`, `Inter`, `JetBrains Mono`
-* **Interactividad:** JavaScript vanilla (sin frameworks)
-* **Formulario:** [FormSubmit](https://formsubmit.co) (modo AJAX)
-* **Hosting recomendado:** Cualquier hosting estático gratuito (GitHub Pages, Cloudflare Pages, Netlify, Vercel)
+* **Maquetado:** HTML5 semántico + CSS propio
+* **Animación:** [GSAP](https://gsap.com) + ScrollTrigger, scroll suave con [Lenis](https://lenis.darkroom.engineering)
+* **3D:** [Three.js](https://threejs.org) 0.160
+* **Tipografía:** Google Fonts — `Big Shoulders Display`, `Inter`, `JetBrains Mono`, `Playfair Display`
+* **Hosting:** GitHub Pages (cualquier hosting estático sirve)
 
 ### Despliegue local
 
 1. Clona el repositorio.
-2. Genera el CSS de Tailwind si modificas clases nuevas: `npx tailwindcss -i input.css -o tailwind.min.css --minify`.
-3. Abre `index.html` directamente en el navegador, o sírvelo con cualquier servidor estático (`npx serve .`).
+2. Sírvelo con cualquier servidor estático, por ejemplo `python -m http.server` o `npx serve .`.
+3. Abre `http://localhost:8000/`. (Abrir `index.html` con doble clic no basta: el modelo 3D se carga como módulo y el navegador lo bloquea en `file://`.)
 
 ### Despliegue en producción
 
-Al ser un sitio 100% estático, basta con subir el HTML y el CSS compilado a cualquier proveedor de hosting estático — no requiere variables de entorno ni backend.
+Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere *build*, variables de entorno ni backend.
 
 ---
 
@@ -109,5 +101,6 @@ Al ser un sitio 100% estático, basta con subir el HTML y el CSS compilado a cua
 Desarrollado por **Rubén Blasco Armengod**.
 
 * **GitHub:** [@rubenblascoa](https://github.com/rubenblascoa)
+* **LinkedIn:** [rubenblascoa](https://www.linkedin.com/in/rubenblascoa/)
 * **Instagram:** [@rubenblascoa](https://instagram.com/rubenblascoa)
 * **Email:** rubenblascoarmengod@gmail.com
