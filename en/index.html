@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<!-- Generado por tools/build-en.mjs a partir de index.html. No editar a mano. -->
+<html lang="en" class="is-loading">
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="aHy_MQeHgbroLj0LQRXSow49ys9zfcx5z3GUkpGKWts">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rubén Blasco Armengod | Firmware, ESP32 &amp; embedded systems</title>
+  <meta name="description" content="Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.">
+  <meta name="author" content="Rubén Blasco Armengod">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://rubenblascoa.github.io/en/">
+  <link rel="alternate" hreflang="es" href="https://rubenblascoa.github.io/">
+  <link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://rubenblascoa.github.io/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  <script>
+  /* Los enlaces antiguos (?lang=en) y quien eligió inglés antes van a /en/ antes de cargar nada */
+  (function () {
+    if (document.documentElement.lang !== 'es') return;
+    var q = new URLSearchParams(location.search).get('lang'), saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if (q === 'en' || (q !== 'es' && saved === 'en')) location.replace('/en/');
+  })();
+  /* URL siempre limpia: sin index.html, sin ?lang ni #sección (la película empieza siempre desde el principio) */
+  (function () {
+    var clean = location.pathname.replace(/index\.html$/, '');
+    if (clean !== location.pathname || location.search || location.hash) history.replaceState(null, '', clean);
+  })();
+  </script>
+
+  <!-- Redes sociales: tarjeta 1200×630 -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Rubén Blasco Armengod — Portfolio">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:url" content="https://rubenblascoa.github.io/en/">
+  <meta property="og:title" content="Rubén Blasco Armengod — From chip to system">
+  <meta property="og:description" content="Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.">
+  <meta property="og:image" content="https://rubenblascoa.github.io/assets/cinematic/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rubén Blasco Armengod — Firmware, ESP32 &amp; embedded systems">
+  <meta property="profile:first_name" content="Rubén">
+  <meta property="profile:last_name" content="Blasco Armengod">
+  <meta property="profile:username" content="rubenblascoa">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rubén Blasco Armengod — From chip to system">
+  <meta name="twitter:description" content="Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.">
+  <meta name="twitter:image" content="https://rubenblascoa.github.io/assets/cinematic/og.jpg">
+  <meta name="twitter:image:alt" content="Rubén Blasco Armengod — Firmware, ESP32 &amp; embedded systems">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/cinematic/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/cinematic/apple-touch-icon.png">
+
+  <!-- Fuentes sin bloquear el render; las CDN de los scripts, ya conectadas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap"></noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://rubenblascoa.github.io/#website",
+        "url": "https://rubenblascoa.github.io/",
+        "name": "Rubén Blasco Armengod — Portfolio",
+        "inLanguage": [
+          "es",
+          "en"
+        ],
+        "publisher": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://rubenblascoa.github.io/en/#webpage",
+        "url": "https://rubenblascoa.github.io/en/",
+        "name": "Rubén Blasco Armengod | Firmware, ESP32 & embedded systems",
+        "description": "Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://rubenblascoa.github.io/#website"
+        },
+        "about": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        },
+        "mainEntity": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://rubenblascoa.github.io/assets/cinematic/og.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "dateModified": "2026-10-18",
+        "hasPart": [
+          {
+            "@id": "https://rubenblascoa.github.io/#blasco-os"
+          },
+          {
+            "@id": "https://rubenblascoa.github.io/#fondtracker"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://rubenblascoa.github.io/#person",
+        "name": "Rubén Blasco Armengod",
+        "givenName": "Rubén",
+        "familyName": "Blasco Armengod",
+        "alternateName": [
+          "Ruben Blasco",
+          "Rubén Blasco",
+          "Ruben Blasco Armengod",
+          "rubenblascoa"
+        ],
+        "url": "https://rubenblascoa.github.io/",
+        "image": "https://github.com/rubenblascoa.png",
+        "email": "mailto:rubenblascoarmengod@gmail.com",
+        "jobTitle": "Systems and firmware developer",
+        "description": "High school student and self-taught firmware and embedded systems developer, open to sponsorships and collaborations. Learns by doing: starts with a real problem, understands the hardware down to the registers and doesn’t stop until it works.",
+        "knowsLanguage": [
+          "es",
+          "en"
+        ],
+        "knowsAbout": [
+          "Firmware",
+          "Embedded systems",
+          "Low-level programming",
+          "ESP32",
+          "ESP32-S3",
+          "FreeRTOS",
+          "C++",
+          "Python",
+          "TypeScript",
+          "IoT",
+          "PCB design",
+          "WebSockets",
+          "Telnet",
+          "Cloudflare Tunnel",
+          "MySQL"
+        ],
+        "sameAs": [
+          "https://github.com/rubenblascoa",
+          "https://www.linkedin.com/in/rubenblascoa/",
+          "https://instagram.com/rubenblascoa"
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://rubenblascoa.github.io/#blasco-os",
+        "name": "ESP32 Blasco OS",
+        "description": "Multi-program runtime for the ESP32-S3: FreeRTOS with one core for networking, storage and OTA and another dedicated to the hardware, wireless access over Telnet, WebSockets and Cloudflare Tunnel, and the Blasco AI assistant.",
+        "url": "https://blascoos.qzz.io/",
+        "codeRepository": "https://github.com/rubenblascoa/esp32-panelcontrol",
+        "programmingLanguage": [
+          "C++"
+        ],
+        "runtimePlatform": "ESP32-S3 · FreeRTOS",
+        "image": "https://rubenblascoa.github.io/assets/cinematic/blascoos-login.jpg",
+        "author": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        },
+        "creator": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://rubenblascoa.github.io/#fondtracker",
+        "name": "FondTracker",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "Real-time tracking of investment funds and ETFs: prices from Yahoo Finance and QueFondos, adding funds by ISIN and automatic summaries over WhatsApp.",
+        "url": "https://fondtracker.onrender.com/",
+        "sameAs": "https://github.com/rubenblascoa/fondtracker",
+        "image": "https://rubenblascoa.github.io/assets/cinematic/fondtracker-login.jpg",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "author": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        },
+        "creator": {
+          "@id": "https://rubenblascoa.github.io/#person"
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }</script>
+
+  <style>
+    :root {
+      --ink: #050505;
+      --ink-2: #0c0c0c;
+      --cream: #F7E2C0;
+      --copper: #C9A063;
+      --gold: #E8C27A;
+      --silk: #F2EFE8;
+      --bottom: #3E7C6B;
+      --green: #4ADE80;
+      --muted: rgba(242, 239, 232, .72);
+      --line: rgba(242, 239, 232, .12);
+      --display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --serif: 'Playfair Display', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--ink); }
+    body {
+      background: var(--ink);
+      color: var(--silk);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--cream); }
+    .skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--cream); color: var(--ink); padding: 8px 12px; }
+    .skip:focus { left: 8px; }
+
+    /* ---------- Película: grano, viñeta, letterbox ---------- */
+    .grain {
+      position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 1s steps(6) infinite;
+    }
+    @keyframes grain {
+      0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+      60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
+    }
+    .vignette { position: fixed; inset: 0; z-index: 80; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.65) 100%); }
+    .bar { position: fixed; left: 0; right: 0; height: 0; background: #000; z-index: 85; pointer-events: none; }
+    .bar.top { top: 0; } .bar.bot { bottom: 0; }
+
+    /* ---------- HUD ---------- */
+    .hud {
+      position: fixed; inset: 0 0 auto 0; z-index: 98; display: flex; align-items: center; justify-content: space-between;
+      padding: 18px clamp(16px, 4vw, 40px); font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+      mix-blend-mode: difference; pointer-events: none; white-space: nowrap;
+    }
+    .hud a { pointer-events: auto; text-decoration: none; }
+    .mark { display: flex; align-items: center; gap: 10px; }
+    .mark b { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: 0; }
+    .chapter { display: flex; gap: 12px; align-items: center; }
+    .chapter .num { color: var(--gold); }
+    .hud-side { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); flex: 1 1 0; }
+    .hud-side:last-child { justify-content: flex-end; }
+    .status { display: inline-flex; align-items: center; gap: 8px; color: var(--green); }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(74,222,128,.6); animation: live 2s ease-out infinite; }
+    @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(74,222,128,.55); } 70%, 100% { box-shadow: 0 0 0 8px rgba(74,222,128,0); } }
+    .gh { display: inline-flex; align-items: center; gap: 8px; opacity: .85; }
+    .gh svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hud .gh:hover { opacity: 1; }
+    .nav { display: inline-flex; gap: clamp(12px, 1.6vw, 22px); pointer-events: auto; }
+    .nav a { opacity: .85; transition: opacity .2s, color .2s; }
+    .nav a:hover { opacity: 1; color: var(--gold); }
+    .nav a:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+    .lang { display: inline-flex; pointer-events: auto; }
+    .lang button { background: none; border: 0; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; padding: 4px 5px; cursor: pointer; opacity: .45; transition: opacity .2s, color .2s; }
+    .lang button:hover { opacity: .8; }
+    .lang button[aria-pressed="true"] { opacity: 1; color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    .lang button + button::before { content: '/'; margin-right: 10px; opacity: .4; color: var(--silk); }
+    .lang button:focus-visible { outline: 1px solid var(--gold); outline-offset: 2px; }
+    .progress { position: fixed; left: 0; bottom: 0; height: 2px; width: 100%; z-index: 98; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--copper), var(--gold)); }
+
+    /* ---------- Carga: el logo RB se llena de blanco ---------- */
+    html.is-loading, html.is-loading body { overflow: hidden; }
+    .loader { position: fixed; inset: 0; z-index: 95; background: var(--ink); display: grid; place-items: center; }
+    .loader .rb { width: var(--logoW, 50vw); height: auto; display: block; overflow: visible; }
+    .rb-outline { fill: none; stroke: rgba(242,239,232,.35); stroke-width: .6; }
+    .rb-wave { fill: #fff; animation: wave 1.3s linear infinite; }
+    @keyframes wave { to { transform: translateX(-105px); } }
+    .ld-meta {
+      position: absolute; left: 0; right: 0; bottom: clamp(28px, 8vh, 72px); display: flex; justify-content: space-between;
+      padding: 0 clamp(16px, 4vw, 40px); font-family: var(--mono); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted);
+    }
+    .ld-meta b { color: var(--silk); font-weight: 500; }
+
+    /* ---------- 00 · Quién soy: el logo es la ventana ---------- */
+    #intro { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: var(--ink); }
+    .intro-img { position: absolute; inset: 0; background: #fff; }
+    .intro-img canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .gl-slot { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+    .intro-shade { position: absolute; inset: 0; opacity: 0; background: linear-gradient(90deg, rgba(5,5,5,.94) 20%, rgba(5,5,5,.7) 60%, rgba(5,5,5,.5)), linear-gradient(0deg, var(--ink), transparent 50%); }
+    .intro-mask { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .intro-cap {
+      position: absolute; left: 0; right: 0; top: calc(50% + var(--logoW, 50vw) * .2857 + 28px); text-align: center; opacity: 0;
+      font-family: var(--mono); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted);
+    }
+    .intro-cap b { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(18px, 2.2vw, 28px); letter-spacing: .14em; color: var(--silk); margin-bottom: 8px; }
+    .who {
+      position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center;
+      gap: clamp(24px, 5vw, 80px); padding: 90px clamp(16px, 6vw, 96px) 60px; opacity: 0;
+    }
+    .who .title { font-size: clamp(3.4rem, min(10vw, 17vh), 11rem); line-height: .84; }
+    .who .line { display: block; overflow: hidden; padding: .14em 0 .04em; margin-top: -.14em; }
+    .who .line > span { display: block; }
+    .who .role { margin-top: 26px; display: block; }
+    .who-side { display: grid; gap: 22px; max-width: 470px; }
+    .portrait { display: flex; align-items: center; gap: 16px; }
+    .portrait img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.1); border: 1px solid rgba(232,194,122,.5); }
+    .portrait p { font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); line-height: 1.8; }
+    .portrait p b { color: var(--silk); font-weight: 500; }
+    .statement { font-size: clamp(20px, min(2.1vw, 3.4vh), 30px); line-height: 1.35; font-weight: 400; color: var(--silk); }
+    .statement .w { opacity: .14; }
+    .bio { font-size: 15px; line-height: 1.65; color: var(--muted); max-width: 46ch; }
+    .facts { list-style: none; border-top: 1px solid var(--line); }
+    .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+    .facts li b { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 2px; }
+    .who .reveal-i { opacity: 0; }
+    .stack {
+      position: absolute; left: 0; right: 0; bottom: clamp(16px, 4vh, 40px); overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    .stack-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .stack-track span {
+      display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    }
+    .stack-track span::after { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .7; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Escena principal: la placa ---------- */
+    #story { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+    .stage {
+      position: absolute; inset: 0; display: grid; place-items: center; perspective: 1800px; perspective-origin: 50% 40%;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,160,99,.10), transparent 70%), var(--ink);
+    }
+    .cam { position: relative; transform-style: preserve-3d; will-change: transform; }
+    .board {
+      position: relative; width: min(88vw, 150vh); aspect-ratio: 124.968 / 64.516;
+      transform-style: preserve-3d;
+    }
+    .ly { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .ly svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    .ly-sub {
+      background: linear-gradient(135deg, rgba(20,20,20,.86), rgba(10,10,10,.8)); border: 1px solid rgba(232,194,122,.25); border-radius: .4%;
+      box-shadow: 0 40px 120px rgba(0,0,0,.8);
+    }
+    .tr { fill: none; stroke: var(--copper); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 2; stroke-dashoffset: 1; }
+    .tr-pour { stroke-dasharray: none; }
+    .tr-pour { stroke: rgba(201,160,99,.55); }
+    .pour { fill: #2b2116; fill-rule: evenodd; }
+    .pad, .via { fill: var(--gold); }
+    .silk { fill: none; stroke: var(--silk); stroke-linecap: round; stroke-linejoin: round; }
+    .silk-fill { fill: var(--silk); fill-rule: evenodd; }
+    .drills circle { fill: var(--ink); }
+    .b-fill { fill: #10231d; fill-rule: evenodd; }
+    .b-tr { fill: none; stroke: var(--bottom); stroke-linecap: round; }
+    .b-pad { fill: var(--bottom); }
+    .ly-pour, .ly-pads, .ly-silk, .ly-bottom, .ly-sub { opacity: 0; }
+    .ly-pour, .ly-pads, .ly-silk, .ly-bottom { will-change: opacity, transform; }
+
+    .cap { position: absolute; z-index: 5; opacity: 0; pointer-events: none; }
+    .cap .kicker, .kicker {
+      font-family: var(--mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+    }
+    .kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
+    .title {
+      font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: .86; letter-spacing: -.005em;
+      font-size: clamp(3rem, 9vw, 9.5rem);
+    }
+    .title em { text-transform: none; font-size: .78em; letter-spacing: -.01em; }
+    .lede { max-width: 34ch; margin-top: 22px; font-size: clamp(15px, 1.25vw, 18px); line-height: 1.6; color: var(--muted); }
+    .cap-left { left: clamp(16px, 6vw, 96px); bottom: clamp(48px, 12vh, 140px); text-shadow: 0 2px 30px rgba(0,0,0,.9); }
+    .cap-center { inset: 0; display: grid; place-items: center; text-align: center; }
+    .cap-center .lede { margin-inline: auto; }
+
+    .legend {
+      position: absolute; right: clamp(16px, 5vw, 80px); top: 50%; transform: translateY(-50%); z-index: 5; opacity: 0;
+      font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; list-style: none;
+      display: grid; gap: 18px;
+    }
+    .legend { text-shadow: 0 1px 12px #000, 0 0 2px #000; }
+    .legend li { display: grid; grid-template-columns: 14px auto; gap: 12px; align-items: center; color: var(--muted); }
+    .legend i { width: 14px; height: 14px; display: block; border: 1px solid var(--line); }
+    .legend .dims { color: var(--silk); margin-top: 10px; grid-template-columns: auto; }
+
+    .scrim { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 0% 100%, rgba(5,5,5,.92), rgba(5,5,5,.55) 45%, transparent 75%); }
+    .blackout { position: absolute; inset: 0; background: var(--ink); opacity: 0; z-index: 4; pointer-events: none; }
+    .logo-title { font-size: clamp(2.6rem, 8.5vw, 9rem); }
+    .logo-title .x { color: var(--gold); font-weight: 500; padding: 0 .12em; }
+    .logo-title small { display: block; font-size: .42em; color: var(--muted); letter-spacing: .02em; margin-top: .25em; }
+
+    .scroll-cue {
+      position: absolute; bottom: 28px; right: clamp(16px, 4vw, 40px); z-index: 6; font-family: var(--mono); font-size: 11px;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--muted); display: grid; justify-items: center; gap: 10px;
+    }
+    .scroll-cue span { width: 1px; height: 42px; background: linear-gradient(var(--gold), transparent); animation: cue 1.8s ease-in-out infinite; transform-origin: top; }
+    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+    /* ---------- Protagonistas ---------- */
+    .hero { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+    .hero-bg { position: absolute; inset: -6%; background-size: cover; background-position: center; filter: grayscale(.35) contrast(1.1) brightness(.5); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 18%, rgba(5,5,5,.6) 55%, rgba(5,5,5,.15)), linear-gradient(0deg, var(--ink), transparent 40%); }
+    .hero-inner {
+      position: relative; z-index: 2; height: 100%; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center;
+      gap: clamp(24px, 4vw, 64px); padding: 80px clamp(16px, 6vw, 96px) 40px;
+    }
+    .role { font-family: var(--mono); font-size: 12px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+    .name {
+      font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: .8; margin: 14px 0 8px;
+      font-size: clamp(3.4rem, min(10vw, 15vh), 10.5rem); letter-spacing: -.01em;
+      background: linear-gradient(100deg, var(--silk), var(--cream) 30%, var(--gold) 60%, var(--copper)) 0 0 / 200% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .name.alt { background-image: linear-gradient(100deg, var(--silk), #b8f5cf 30%, var(--green) 60%, #1f9d55); }
+    .tagline { font-size: clamp(16px, min(1.5vw, 2.4vh), 21px); line-height: 1.5; max-width: 30ch; color: var(--silk); font-weight: 400; }
+    .specs { list-style: none; margin-top: clamp(14px, 2.6vh, 26px); border-top: 1px solid var(--line); max-width: 520px; }
+    .specs li {
+      display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: clamp(6px, 1.2vh, 12px) 0; border-bottom: 1px solid var(--line);
+      font-size: clamp(13px, 1.7vh, 14px); line-height: 1.5; color: var(--muted);
+    }
+    .specs li b { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 3px; }
+    .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(16px, 3vh, 28px); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none; border: 1px solid var(--line); transition: background .25s, color .25s, border-color .25s;
+    }
+    .btn.solid { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+    .btn:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+    .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    .visual { position: relative; display: grid; gap: 14px; max-height: calc(100svh - 150px); }
+    .visual .shot img { max-height: 30vh; object-fit: cover; object-position: top; }
+    .term {
+      background: rgba(8,8,8,.86); border: 1px solid var(--line); font-family: var(--mono); font-size: clamp(11px, 1vw, 13px); line-height: 1.85;
+      padding: 18px 20px; color: var(--muted); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .term .l { opacity: 0; white-space: pre; overflow: hidden; text-overflow: ellipsis; }
+    .tele .l { white-space: nowrap; }
+    .tele-head {
+      display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+      font-size: .85em; letter-spacing: .16em; text-transform: uppercase; color: var(--silk);
+    }
+    .tele-live { display: inline-flex; align-items: center; gap: 8px; color: var(--green); letter-spacing: .08em; }
+    .tele-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: live 2s ease-out infinite; }
+    .tele-row { display: flex; align-items: center; gap: 14px; }
+    .tele-row b { flex: 0 0 66px; font-weight: 500; color: var(--gold); }
+    .tele-row .d { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .tele-row.up .d { color: var(--silk); font-variant-numeric: tabular-nums; }
+    .tele-row.m .d { flex: 1 0 auto; }   /* con barra: encoge la barra, no el texto */
+    .meter { flex: 0 1 34%; min-width: 36px; height: 6px; background: rgba(242,239,232,.08); }
+    .meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); transition: width .9s ease; }
+    .tele-row .v { flex: 0 0 40px; text-align: right; color: var(--silk); font-variant-numeric: tabular-nums; }
+    .shot { border: 1px solid var(--line); overflow: hidden; background: #0b0b0b; }
+    .shot img { width: 100%; display: block; }
+    .shot figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 14px; color: var(--muted); border-top: 1px solid var(--line); }
+
+    .chart { width: 100%; height: min(20vh, 200px); display: block; }
+    .chart .grid line { stroke: var(--line); }
+    .chart .lineP { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 1 2; stroke-dashoffset: 1; }
+    .chart .area { fill: url(#ftArea); opacity: 0; }
+    .bubble {
+      justify-self: end; max-width: 300px; background: #0f2a1c; border: 1px solid rgba(74,222,128,.25); padding: 12px 14px; font-size: 13px; line-height: 1.5;
+      border-radius: 14px 14px 2px 14px; color: var(--silk);
+    }
+    .bubble small { display: block; font-family: var(--mono); font-size: 11px; color: rgba(74,222,128,.8); margin-bottom: 4px; letter-spacing: .1em; }
+
+    /* ---------- Línea temporal horizontal ---------- */
+    #timeline { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+    .tl-head { position: absolute; top: 90px; left: clamp(16px, 6vw, 96px); z-index: 2; }
+    .tl-track { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; gap: clamp(24px, 4vw, 64px); padding: 0 12vw 0 clamp(16px, 6vw, 96px); will-change: transform; }
+    .tl-rail { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, var(--copper), rgba(201,160,99,.1)); }
+    .tl-item { position: relative; flex: 0 0 min(76vw, 420px); padding-top: 64px; }
+    .tl-item:first-child { margin-left: min(40vw, 420px); }
+    .tl-year { font-family: var(--display); font-weight: 900; font-size: clamp(5rem, 12vw, 11rem); line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(232,194,122,.6); }
+    .tl-item h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.6rem, 2.6vw, 2.4rem); margin: 18px 0 10px; letter-spacing: .01em; }
+    .tl-item p { color: var(--muted); line-height: 1.6; font-size: 15px; max-width: 36ch; }
+    .tl-item a { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .tl-item.now .tl-year { color: var(--gold); -webkit-text-stroke: 0; }
+
+    /* ---------- Créditos: ¿Hablamos? y el RB vuelve a llenarse ---------- */
+    #end { position: relative; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; background: var(--ink); }
+    .final { text-align: center; padding: 100px clamp(16px, 6vw, 96px) 60px; }
+    .final > div > * { opacity: 0; }
+    .final .rb { width: min(220px, 40vw); height: auto; display: block; margin: 0 auto 30px; overflow: visible; }
+    .final .rb-outline { stroke: rgba(242,239,232,.45); }
+    .final h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(2.6rem, 7vw, 6.5rem); line-height: .9; }
+    .final .lede { margin: 18px auto 0; max-width: 44ch; }
+    .contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+    button.btn { background: transparent; color: inherit; cursor: pointer; }
+    .fine { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+    .fine a { text-decoration: none; color: var(--cream); }
+    .fine a:hover { color: var(--gold); }
+    .hero, #timeline { background: var(--ink-2); }
+
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; align-content: center; padding-top: 68px; padding-bottom: 20px; gap: 14px; }
+      /* En móvil solo queda la captura del sitio en vivo */
+      .hero .visual .term, .hero .visual .chart, .hero .visual .bubble { display: none; }
+      .visual .shot img { max-height: 22vh; }
+      .hero-bg::after { background: linear-gradient(0deg, var(--ink) 30%, rgba(5,5,5,.55)); }
+      .specs li { grid-template-columns: 1fr; gap: 2px; padding: 6px 0; font-size: 13px; }
+      .legend { right: 16px; top: 76px; transform: none; gap: 8px; }
+      .name { font-size: 16vw; }
+      .mark span, .gh span, #chName { display: none; }
+      .cap-left { bottom: 16vh; right: 16px; }
+      .who { grid-template-columns: 1fr; align-content: center; gap: 28px; padding-top: 80px; padding-bottom: 76px; }
+      .who .title { font-size: 17vw; }
+      .facts { display: none; }
+      .bio { font-size: 14px; }
+      .status span { display: none; }
+    }
+    /* ---------- Sin película (GSAP no ha cargado): todo visible, como una página normal ---------- */
+    .no-film #intro, .no-film .hero, .no-film #timeline { height: auto; min-height: 100vh; min-height: 100svh; overflow: visible; }
+    .no-film .intro-img, .no-film .intro-mask, .no-film .intro-cap, .no-film .scroll-cue, .no-film #story,
+    .no-film .progress, .no-film .chapter, .no-film .tl-rail { display: none; }
+    .no-film .intro-shade { opacity: 1; }
+    .no-film .who { position: relative; opacity: 1; min-height: 100vh; min-height: 100svh; }
+    .no-film .who .reveal-i, .no-film .term .l, .no-film .chart .area, .no-film .final > div > * { opacity: 1; }
+    .no-film .chart .lineP { stroke-dasharray: none; }
+    .no-film .tl-track { position: relative; height: auto; flex-wrap: wrap; align-items: flex-start; padding-top: 180px; padding-bottom: 80px; }
+    .no-film .tl-item:first-child { margin-left: 0; }
+
+    .rotate { display: none; }
+    @media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+      /* Móvil en horizontal: las escenas no caben a esa altura */
+      .rotate {
+        position: fixed; inset: 0; z-index: 99; display: grid; place-content: center; justify-items: center; gap: 14px;
+        padding: 24px; text-align: center; background: var(--ink);
+      }
+      .rotate svg { width: 44px; height: 44px; fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-linecap: round; animation: turn 2.4s ease-in-out infinite; }
+      .rotate p { font-family: var(--display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: .04em; }
+      .rotate small { font-size: 14px; color: var(--muted); }
+    }
+    @keyframes turn { 0%, 30% { transform: rotate(90deg); } 60%, 100% { transform: rotate(0); } }
+    @media (min-width: 861px) and (max-width: 1180px) {
+      /* Tablet: la barra solo cabe con lo esencial */
+      .mark span, .status span, #chName, .gh span { display: none; }
+    }
+    @media (max-width: 860px) and (max-height: 899px) {
+      /* Móviles bajos: la captura y la bio no caben junto a las fichas */
+      .hero .visual, .bio { display: none; }
+    }
+    @media (max-width: 860px) {
+      .visual .shot img { max-height: 15vh; }
+      .hero-inner { padding-top: 62px; }
+      .name { font-size: 14vw; margin-top: 8px; }
+      .tagline { font-size: 15px; }
+      .specs li { padding: 5px 0; }
+      .hero .ctas { flex-wrap: nowrap; gap: 8px; }
+      .hero .btn { padding: 11px 13px; font-size: 11px; letter-spacing: .08em; white-space: nowrap; }
+      .who { gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      .hud { letter-spacing: .06em; }
+      .hud .gh, .chapter { display: none; }
+      .nav { gap: 12px; }
+      .nav a { white-space: nowrap; }
+      .lang button + button::before { margin-right: 6px; }
+    }
+    @media (max-width: 400px) {
+      .hud { font-size: 10px; letter-spacing: .04em; }
+      .nav { gap: 10px; }
+    }
+    @media (max-height: 820px) and (min-width: 861px) {
+      .hero-inner { padding-top: 70px; padding-bottom: 24px; }
+      .name { font-size: clamp(3.4rem, min(10vw, 13vh), 10rem); }
+      .specs li { padding: 7px 0; line-height: 1.4; }
+    }
+    @media (max-height: 700px) and (min-width: 861px) {
+      .specs li { padding: 5px 0; }
+      .name { font-size: clamp(3rem, min(10vw, 12vh), 10rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .grain, .scroll-cue span, .rb-wave, .status i, .stack-track, .tele-live i, .rotate svg { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#end" data-es="Saltar al contacto">Skip to contact</a>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="rb" viewBox="0 0 210 120">
+      <defs><clipPath id="rbClip"><path clip-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/></clipPath></defs>
+      <g clip-path="url(#rbClip)"><g id="rbLevel" transform="translate(0 124)"><path class="rb-wave" d="M0 4q13.125-6 26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0t26.25 0V140H0Z"/></g></g>
+      <path class="rb-outline" fill-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/>
+    </svg>
+    <div class="ld-meta"><span>Rubén Blasco Armengod</span><span><b id="ldPct">000</b> %</span></div>
+  </div>
+  <script>
+  /* La carga empieza antes que GSAP: el logo se llena con el progreso real */
+  (function () {
+    var root = document.documentElement;
+    // Los enlaces internos nunca tocan la URL; si se pulsan durante la carga, el salto se hace al terminar
+    document.addEventListener('click', function (e) {
+      // «Copiar correo»: si el portapapeles no está disponible, abre el correo
+      var copy = e.target.closest && e.target.closest('#copyMail');
+      if (copy) {
+        var mail = 'rubenblascoarmengod@gmail.com';
+        if (!navigator.clipboard) { location.href = 'mailto:' + mail; return; }
+        navigator.clipboard.writeText(mail).then(function () {
+          if (copy.__was) return;   // ya muestra «Copiado»
+          copy.__was = copy.innerHTML;
+          copy.textContent = root.lang === 'en' ? 'Copied ✓' : 'Copiado ✓';
+          setTimeout(function () { copy.innerHTML = copy.__was; copy.__was = null; }, 2000);
+        }, function () { location.href = 'mailto:' + mail; });
+        return;
+      }
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      e.preventDefault();
+      if (window.__goto) window.__goto(a.getAttribute('href')); else window.__pending = a.getAttribute('href');
+    });
+    function size() {
+      var w = innerWidth, h = innerHeight;
+      root.style.setProperty('--logoW', Math.min(w * (w < 700 ? .78 : .5), h * .8) + 'px');
+    }
+    size(); addEventListener('resize', size);
+    // Solo se espera a lo que se ve al entrar: fuentes y página. El 3D y las capturas llegan después
+    var total = 2, done = 0, t0 = performance.now();
+    var MIN = matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 1400;
+    function tick() { done++; }
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(tick);
+    addEventListener('load', tick);
+    setTimeout(function () { done = total; }, 9000);
+    var shown = 0, lvl = document.getElementById('rbLevel'), pct = document.getElementById('ldPct');
+    window.__loaded = new Promise(function (res) {
+      (function frame(now) {
+        var target = Math.min(done / total, (now - t0) / MIN, 1);
+        shown += (target - shown) * .1;
+        if (target - shown < .003) shown = target;
+        lvl.setAttribute('transform', 'translate(0 ' + (124 - 132 * shown) + ')');
+        pct.textContent = ('00' + Math.round(shown * 100)).slice(-3);
+        if (shown >= 1) res(); else requestAnimationFrame(frame);
+      })(t0);
+    });
+  })();
+  </script>
+  <div class="rotate" role="status">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+    <p data-es="Gira el móvil">Turn your phone</p>
+    <small data-es="Esta película está pensada para verse en vertical.">This film is made to be watched upright.</small>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="bar top" aria-hidden="true"></div>
+  <div class="bar bot" aria-hidden="true"></div>
+
+  <header class="hud">
+    <div class="hud-side">
+      <a class="mark" href="#intro" aria-label="Home" data-es-label="Inicio"><b>RB</b><span>Rubén Blasco</span></a>
+      <span class="status" data-es="&lt;i aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Disponible para colaborar&lt;/span&gt;"><i aria-hidden="true"></i><span>Open to collaborate</span></span>
+    </div>
+    <div class="chapter" aria-live="polite"><span class="num" id="chNum">00</span><span id="chName" data-es="Sobre mí">About me</span></div>
+    <div class="hud-side">
+      <nav class="nav" aria-label="Sections" data-es-label="Secciones">
+        <a href="#who" data-es="Sobre mí">About</a><a href="#os" data-es="Proyectos">Projects</a><a href="#end" data-es="Contacto">Contact</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma · Language">
+        <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+      <a class="gh" href="https://github.com/rubenblascoa" target="_blank" rel="noopener" aria-label="Rubén Blasco on GitHub" data-es-label="GitHub de Rubén Blasco">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg><span>GitHub</span>
+      </a>
+    </div>
+  </header>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <main>
+    <!-- 00 · Quién soy: el logo RB es una ventana y la cámara la atraviesa -->
+    <section id="intro" aria-labelledby="whoName">
+      <div class="intro-img" id="introImg"><canvas id="codeField" aria-hidden="true"></canvas></div>
+      <div class="intro-shade" id="introShade"></div>
+      <svg class="intro-mask" id="introMask" aria-hidden="true">
+        <defs>
+          <mask id="rbHole" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+            <rect width="100%" height="100%" fill="#fff"/>
+            <path class="hole" fill="#000" fill-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/>
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="#050505" mask="url(#rbHole)"/>
+        <path class="hole" fill="none" stroke="rgba(242,239,232,.4)" stroke-width="1" vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/>
+      </svg>
+      <p class="intro-cap" id="introCap" data-es="&lt;b&gt;Rubén Blasco Armengod&lt;/b&gt;Firmware · Sistemas · Hardware"><b>Rubén Blasco Armengod</b>Firmware · Systems · Hardware</p>
+
+      <div class="who" id="who">
+        <div>
+          <p class="kicker reveal-i" data-es="00 — Sobre mí">00 — About me</p>
+          <h1 class="title" id="whoName">
+            <span class="line"><span>Rubén</span></span>
+            <span class="line"><span>Blasco</span></span>
+            <span class="line"><span><em>Armengod.</em></span></span>
+          </h1>
+          <span class="role reveal-i" data-es="Estudiante de Bachillerato · Abierto a patrocinios y colaboraciones">High school student · Open to sponsorships and collaborations</span>
+        </div>
+        <div class="who-side">
+          <div class="portrait reveal-i">
+            <img src="https://github.com/rubenblascoa.png" alt="Rubén Blasco Armengod" width="64" height="64" decoding="async">
+            <p data-es="&lt;b&gt;Estudiante y autodidacta&lt;/b&gt;&lt;br&gt;Firmware · Sistemas · Hardware"><b>Student and self-taught</b><br>Firmware · Systems · Hardware</p>
+          </div>
+          <p class="statement" id="statement" data-es-text="Dos proyectos en producción real. Aprendo haciendo: empiezo con un problema real, entiendo el hardware hasta los registros y no paro hasta que funciona.">Two projects in real production. I learn by doing: I start with a real problem, understand the hardware down to the registers and don’t stop until it works.</p>
+          <p class="bio reveal-i" data-es="Construí ESP32 Blasco OS, un sistema operativo ligero para microcontroladores que puedes controlar desde el móvil sin un solo cable. Actualmente profundizo en optimización multinúcleo con FreeRTOS y herramientas de red inalámbricas. Stack: C++ embebido, Python y TypeScript orientados a IoT y automatización.">I built ESP32 Blasco OS, a lightweight operating system for microcontrollers that you can control from your phone without a single cable. I’m currently going deep into multicore optimisation with FreeRTOS and wireless networking tools. Stack: embedded C++, Python and TypeScript focused on IoT and automation.</p>
+          <ul class="facts reveal-i">
+            <li data-es="&lt;b&gt;En producción&lt;/b&gt;2 proyectos reales"><b>In production</b>2 real projects</li>
+            <li data-es="&lt;b&gt;Stack principal&lt;/b&gt;C++ · Python · IoT"><b>Main stack</b>C++ · Python · IoT</li>
+            <li data-es="&lt;b&gt;Ahora&lt;/b&gt;Multinúcleo con FreeRTOS"><b>Now</b>Multicore with FreeRTOS</li>
+          </ul>
+        </div>
+        <div class="stack reveal-i" aria-label="Tech stack" data-es-label="Stack tecnológico">
+          <div class="stack-track"><span>C++</span><span>Python</span><span>TypeScript</span><span>FreeRTOS</span><span>ESP32-S3</span><span>Arduino</span><span>Django</span><span>MySQL</span><span>Bun</span><span>PowerShell</span><span>Cloudflare</span><span>Git</span><span>HTML5</span><span>CSS3</span><span>Canva</span><span>MFRC522</span><span>DHT11</span><span>HC-SR04</span><span>NeoPixel</span><span aria-hidden="true">C++</span><span aria-hidden="true">Python</span><span aria-hidden="true">TypeScript</span><span aria-hidden="true">FreeRTOS</span><span aria-hidden="true">ESP32-S3</span><span aria-hidden="true">Arduino</span><span aria-hidden="true">Django</span><span aria-hidden="true">MySQL</span><span aria-hidden="true">Bun</span><span aria-hidden="true">PowerShell</span><span aria-hidden="true">Cloudflare</span><span aria-hidden="true">Git</span><span aria-hidden="true">HTML5</span><span aria-hidden="true">CSS3</span><span aria-hidden="true">Canva</span><span aria-hidden="true">MFRC522</span><span aria-hidden="true">DHT11</span><span aria-hidden="true">HC-SR04</span><span aria-hidden="true">NeoPixel</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-cue" id="cue" aria-hidden="true" style="opacity:0">Scroll<span></span></div>
+    </section>
+
+    <!-- Capítulos 01–03: una sola toma continua sobre la placa real -->
+    <section id="story" aria-label="The story of the ESP32 Blasco OS board" data-es-label="La historia de la placa ESP32 Blasco OS">
+      <div class="stage">
+        <div class="cam" id="cam">
+          <div class="board" id="board">
+            <div class="ly ly-bottom" id="lyBottom"></div>
+            <div class="ly ly-sub" id="lySub"></div>
+            <div class="ly ly-pour" id="lyPour"></div>
+            <div class="ly ly-top" id="lyTop"></div>
+            <div class="ly ly-pads" id="lyPads"></div>
+            <div class="ly ly-silk" id="lySilk"></div>
+          </div>
+        </div>
+        <div class="gl-slot" id="glStory"><canvas id="gl" aria-hidden="true"></canvas></div>
+      </div>
+
+      <div class="scrim" aria-hidden="true"></div>
+      <div class="blackout" id="blackout"></div>
+
+      <div class="cap cap-left" id="capA">
+        <p class="kicker" data-es="Capítulo 01 — El trazado">Chapter 01 — The layout</p>
+        <h2 class="title" data-es="Todo empieza&lt;br&gt;con &lt;em&gt;una línea.&lt;/em&gt;">It all starts<br>with <em>a single line.</em></h2>
+      </div>
+      <div class="cap cap-left" id="capB">
+        <p class="kicker" data-es="ESP32 Blasco OS · Capa superior">ESP32 Blasco OS · Top layer</p>
+        <h2 class="title" data-es="&lt;span data-stat=&quot;tracks&quot;&gt;174&lt;/span&gt; pistas.&lt;br&gt;&lt;span data-stat=&quot;vias&quot;&gt;131&lt;/span&gt; vías."><span data-stat="tracks">174</span> tracks.<br><span data-stat="vias">131</span> vias.</h2>
+        <p class="lede" data-es="No es una ilustración. Es el diseño real de mi placa, dibujado a partir de los archivos Gerber que mandé a fabricar.">It’s not an illustration. It’s the real design of my board, drawn from the Gerber files I sent to be manufactured.</p>
+      </div>
+      <div class="cap cap-left" id="capC">
+        <p class="kicker" data-es="Capítulo 02 — Anatomía">Chapter 02 — Anatomy</p>
+        <h2 class="title" data-es="Dos capas&lt;br&gt;de cobre.&lt;br&gt;&lt;em&gt;Una idea.&lt;/em&gt;">Two copper<br>layers.<br><em>One idea.</em></h2>
+      </div>
+      <ul class="legend" id="legend" aria-label="Board layers" data-es-label="Capas de la placa">
+        <li data-es="&lt;i style=&quot;background:var(--silk)&quot;&gt;&lt;/i&gt;Serigrafía"><i style="background:var(--silk)"></i>Silkscreen</li>
+        <li data-es="&lt;i style=&quot;background:var(--gold)&quot;&gt;&lt;/i&gt;Cobre superior"><i style="background:var(--gold)"></i>Top copper</li>
+        <li data-es="&lt;i style=&quot;background:#141414&quot;&gt;&lt;/i&gt;Sustrato"><i style="background:#141414"></i>Substrate</li>
+        <li data-es="&lt;i style=&quot;background:var(--bottom)&quot;&gt;&lt;/i&gt;Cobre inferior"><i style="background:var(--bottom)"></i>Bottom copper</li>
+        <li class="dims" data-es="124,97 × 64,52 mm · &lt;span data-stat=&quot;drills&quot;&gt;307&lt;/span&gt; taladros">124.97 × 64.52 mm · <span data-stat="drills">307</span> drill holes</li>
+      </ul>
+      <div class="cap cap-left" id="capD">
+        <p class="kicker" data-es="Capítulo 03 — Fabricada">Chapter 03 — Manufactured</p>
+        <h2 class="title" data-es="Y entonces&lt;br&gt;&lt;em&gt;se hizo real.&lt;/em&gt;">And then<br><em>it became real.</em></h2>
+        <p class="lede" data-es="Del archivo al objeto: cada componente en su sitio y mi nombre en la serigrafía.">From file to object: every component in its place and my name on the silkscreen.</p>
+      </div>
+      <div class="cap cap-center" id="capE">
+        <div>
+          <p class="kicker" style="justify-content:center" data-es="Colaboración oficial">Official collaboration</p>
+          <h2 class="title logo-title">PCBWay<span class="x">×</span>Rubén<small>Blasco Armengod</small></h2>
+        </div>
+      </div>
+      <div class="cap cap-center" id="capF">
+        <div>
+          <h2 class="title" data-es="Del chip&lt;br&gt;&lt;em&gt;al sistema.&lt;/em&gt;">From the chip<br><em>to the system.</em></h2>
+          <p class="lede" data-es="Aprendo construyendo lo que otros no se atreven a intentar. Estos son los protagonistas.">I learn by building what others don’t dare to try. These are the leading roles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Protagonista 01 -->
+    <section class="hero" id="os" aria-labelledby="osName" data-chapter="04" data-chapter-name="Protagonista 01">
+      <div class="hero-bg" style="background-image:radial-gradient(ellipse at 78% 35%, rgba(232,194,122,.13), transparent 60%), radial-gradient(ellipse at 15% 85%, rgba(201,160,99,.10), transparent 55%); filter:none"></div>
+      <div class="hero-inner">
+        <div class="copy">
+          <p class="role" data-es="Protagonista 01 · 2026">Leading role 01 · 2026</p>
+          <h2 class="name" id="osName">Blasco<br>OS</h2>
+          <p class="tagline" data-es="Varios programas de hardware en la misma placa, controlados &lt;em&gt;sin un solo cable.&lt;/em&gt;">Several hardware programs on the same board, controlled <em>without a single cable.</em></p>
+          <ul class="specs">
+            <li data-es="&lt;b&gt;Núcleos&lt;/b&gt;FreeRTOS: el Core 0 lleva red, almacenamiento y OTA; el Core 1 se dedica solo al hardware."><b>Cores</b>FreeRTOS: Core 0 handles networking, storage and OTA; Core 1 is dedicated to the hardware.</li>
+            <li data-es="&lt;b&gt;Acceso&lt;/b&gt;Telnet, WebSockets y Cloudflare Tunnel con HMAC-SHA256: desde internet, sin IP pública."><b>Access</b>Telnet, WebSockets and Cloudflare Tunnel with HMAC-SHA256: from the internet, with no public IP.</li>
+            <li data-es="&lt;b&gt;Blasco AI&lt;/b&gt;Asistente con Gemini que recibe la telemetría en vivo en cada mensaje."><b>Blasco AI</b>A Gemini-powered assistant that receives live telemetry with every message.</li>
+            <li data-es="&lt;b&gt;Hardware&lt;/b&gt;NFC, DHT11 y HC-SR04 con autorrecuperación y pines reasignables desde el portal cautivo."><b>Hardware</b>NFC, DHT11 and HC-SR04 with auto-recovery and pins you can remap from the captive portal.</li>
+            <li data-es="&lt;b&gt;En marcha&lt;/b&gt;+2.000 horas de uptime sin problemas y +2.000 filas en su base de datos."><b>Running</b>2,000+ hours of uptime without issues and 2,000+ rows in its database.</li>
+          </ul>
+          <div class="ctas">
+            <a class="btn solid" href="https://blascoos.qzz.io/" data-es="Ver la web ↗" target="_blank" rel="noopener">Visit the site ↗</a>
+            <a class="btn" href="https://github.com/rubenblascoa/esp32-panelcontrol" target="_blank" rel="noopener" data-es="Código en GitHub">Code on GitHub</a>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="term tele" role="img" aria-label="Sample Blasco OS telemetry: load of both cores, sensors and 2,000+ hours of uptime" data-es-label="Telemetría de ejemplo de Blasco OS: carga de los dos núcleos, sensores y más de 2.000 horas de uptime">
+            <div class="tele-head"><span data-es="Blasco OS · Telemetría">Blasco OS · Telemetry</span><span class="tele-live"><i aria-hidden="true"></i>v0.3.0</span></div>
+            <div class="l tele-row m"><b>Core 0</b><span class="d" data-es="red · OTA">network · OTA</span><span class="meter"><i id="t-c0"></i></span><span class="v" id="t-c0v">64 %</span></div>
+            <div class="l tele-row m"><b>Core 1</b><span class="d">hardware</span><span class="meter"><i id="t-c1"></i></span><span class="v" id="t-c1v">41 %</span></div>
+            <div class="l tele-row"><b>DHT11</b><span class="d" id="t-env">23,4 °C · 48 %</span></div>
+            <div class="l tele-row"><b>HC-SR04</b><span class="d" id="t-dist">112 cm</span></div>
+            <div class="l tele-row"><b>NFC</b><span class="d"><span data-es="última tarjeta">last card</span> · 04:A2:9F:1C</span></div>
+            <div class="l tele-row up"><b>Uptime</b><span class="d" id="t-up">2.000 h 14 min 07 s</span></div>
+          </div>
+          <figure class="shot">
+            <img src="/assets/cinematic/blascoos-login.jpg" data-es-alt="Acceso al panel de control de ESP32 Blasco OS" alt="ESP32 Blasco OS control panel sign-in" width="1440" height="900" loading="lazy" decoding="async">
+            <figcaption data-es="blascoos.qzz.io · acceso al panel · OS v0.3.0">blascoos.qzz.io · panel sign-in · OS v0.3.0</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Protagonista 02 -->
+    <section class="hero" id="ft" aria-labelledby="ftName" data-chapter="05" data-chapter-name="Protagonista 02">
+      <div class="hero-bg" style="background-image:radial-gradient(ellipse at 75% 40%, rgba(74,222,128,.10), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(201,160,99,.12), transparent 55%); filter:none"></div>
+      <div class="hero-inner">
+        <div class="copy">
+          <p class="role" data-es="Protagonista 02 · 2026">Leading role 02 · 2026</p>
+          <h2 class="name alt" id="ftName">Fond<br>Tracker</h2>
+          <p class="tagline" data-es="Revisar varias plataformas cada día para saber cómo va tu cartera. &lt;em&gt;O dejar que te lo cuente una app.&lt;/em&gt;">Checking several platforms every day to see how your portfolio is doing. <em>Or letting an app tell you.</em></p>
+          <ul class="specs">
+            <li data-es="&lt;b&gt;Precios&lt;/b&gt;Motor híbrido: Yahoo Finance para ETFs y QueFondos para fondos españoles. +490 fondos."><b>Prices</b>Hybrid engine: Yahoo Finance for ETFs and QueFondos for Spanish funds. 490+ funds.</li>
+            <li data-es="&lt;b&gt;ISIN&lt;/b&gt;Escribes el ISIN y resuelve solo el ticker, la divisa, la gestora y la categoría."><b>ISIN</b>Type the ISIN and it works out the ticker, currency, fund manager and category on its own.</li>
+            <li data-es="&lt;b&gt;WhatsApp&lt;/b&gt;Resúmenes automáticos de rentabilidad y plusvalías, directos al móvil."><b>WhatsApp</b>Automatic summaries of returns and capital gains, straight to your phone.</li>
+            <li data-es="&lt;b&gt;Seguridad&lt;/b&gt;Usuarios aislados con JWT HMAC-SHA256, Bcrypt y MySQL 8. Open source, MIT."><b>Security</b>Isolated users with JWT HMAC-SHA256, Bcrypt and MySQL 8. Open source, MIT.</li>
+            <li data-es="&lt;b&gt;En uso&lt;/b&gt;+300 fondos en seguimiento."><b>In use</b>300+ funds being tracked.</li>
+          </ul>
+          <div class="ctas">
+            <a class="btn solid" href="https://fondtracker.onrender.com/" data-es="Abrir la app ↗" target="_blank" rel="noopener">Open the app ↗</a>
+            <a class="btn" href="https://github.com/rubenblascoa/fondtracker" target="_blank" rel="noopener" data-es="Código en GitHub">Code on GitHub</a>
+          </div>
+        </div>
+        <div class="visual">
+          <svg class="chart" viewBox="0 0 600 300" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="ftArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E8C27A" stop-opacity=".28"/><stop offset="1" stop-color="#E8C27A" stop-opacity="0"/></linearGradient></defs>
+            <g class="grid"><line x1="0" x2="600" y1="60" y2="60"/><line x1="0" x2="600" y1="140" y2="140"/><line x1="0" x2="600" y1="220" y2="220"/></g>
+            <path class="area" d="M0 230 C40 225 60 210 90 214 S150 180 180 186 240 150 270 160 330 120 360 126 420 100 450 92 520 70 600 40 L600 300 L0 300Z"/>
+            <path class="lineP" pathLength="1" d="M0 230 C40 225 60 210 90 214 S150 180 180 186 240 150 270 160 330 120 360 126 420 100 450 92 520 70 600 40"/>
+          </svg>
+          <div class="bubble" data-es="&lt;small&gt;FondTracker · WhatsApp&lt;/small&gt;Tu resumen de cartera está listo: valor actual, aportado y plusvalía de cada fondo."><small>FondTracker · WhatsApp</small>Your portfolio summary is ready: current value, amount invested and gain for each fund.</div>
+          <figure class="shot">
+            <img src="/assets/cinematic/fondtracker-login.jpg" data-es-alt="Pantalla de acceso de FondTracker con Google y GitHub" alt="FondTracker sign-in screen with Google and GitHub" width="1040" height="604" loading="lazy" decoding="async">
+            <figcaption data-es="fondtracker.onrender.com · acceso con Google y GitHub">fondtracker.onrender.com · sign in with Google and GitHub</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Línea temporal -->
+    <section id="timeline" aria-labelledby="tlTitle" data-chapter="06" data-chapter-name="Trayectoria">
+      <div class="tl-head">
+        <p class="kicker" data-es="Capítulo 06">Chapter 06</p>
+        <h2 class="title" id="tlTitle" data-es="Trayectoria" style="font-size:clamp(2.4rem,5vw,4.5rem)">Journey</h2>
+      </div>
+      <div class="tl-track" id="tlTrack">
+        <div class="tl-rail"></div>
+        <article class="tl-item">
+          <div class="tl-year">2024</div>
+          <h3 data-es="Certificado de Python">Python certificate</h3>
+          <p data-es="Curso Python TOTAL de Federico Garay: programación estructurada, orientada a objetos y automatización.">“Python TOTAL” course by Federico Garay: structured and object-oriented programming and automation.</p>
+        </article>
+        <article class="tl-item">
+          <div class="tl-year">2024</div>
+          <h3 data-es="30+ proyectos Python">30+ Python projects</h3>
+          <p data-es="Interfaces con Tkinter, automatización, scripts de red y backend con Django y MySQL. Aprender a base de construir.">Tkinter interfaces, automation, networking scripts and backends with Django and MySQL. Learning by building.</p>
+          <a href="https://github.com/rubenblascoa/Recopilacion-de-Proyectos" target="_blank" rel="noopener" data-es="Ver repositorio">View repository</a>
+        </article>
+        <article class="tl-item">
+          <div class="tl-year">2026</div>
+          <h3>ESP32 Blasco OS</h3>
+          <p data-es="OS ligero para ESP32-S3 con acceso inalámbrico, +8 módulos hardware y planificación multinúcleo en FreeRTOS.">Lightweight OS for the ESP32-S3 with wireless access, 8+ hardware modules and multicore scheduling on FreeRTOS.</p>
+          <a href="https://github.com/rubenblascoa/esp32-panelcontrol" target="_blank" rel="noopener" data-es="Ver repositorio">View repository</a>
+        </article>
+        <article class="tl-item">
+          <div class="tl-year">2026</div>
+          <h3>Blasco OS × PCBWay</h3>
+          <p data-es="Colaboración con PCBWay para fabricar la placa: integridad de señal en SPI/I²C y disipación para la telemetría de los núcleos.">Collaboration with PCBWay to manufacture the board: signal integrity on SPI/I²C and heat dissipation for the cores’ telemetry.</p>
+          <a href="https://pcbway.com" target="_blank" rel="noopener">PCBWay</a>
+        </article>
+        <article class="tl-item now">
+          <div class="tl-year" data-es="Hoy">Today</div>
+          <h3 data-es="Lo siguiente">What’s next</h3>
+          <p data-es="Estudiante, compaginando los estudios con proyectos de hardware y software en producción real. Optimización multinúcleo y herramientas de red inalámbricas.">Student, combining my studies with hardware and software projects running in real production. Multicore optimisation and wireless networking tools.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Créditos: el RB se vuelve a llenar y ¿hablamos? -->
+    <section id="end" aria-labelledby="endTitle" data-chapter="07" data-chapter-name="Créditos">
+      <div class="final" id="final">
+        <div>
+          <svg class="rb" viewBox="0 0 210 120" aria-hidden="true">
+            <defs><clipPath id="rbClipEnd"><path clip-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/></clipPath></defs>
+            <g clip-path="url(#rbClipEnd)"><rect id="rbEndFill" x="0" y="0" width="210" height="120" fill="#fff" transform="translate(0 120)"/></g>
+            <path class="rb-outline" fill-rule="evenodd" d="M10 10H68Q94 10 94 36V42Q94 60 80 65L100 110H74L56 68H34V110H10ZM34 30V50H64Q70 50 70 44V36Q70 30 64 30ZM112 10H170Q196 10 196 34V40Q196 52 186 58Q200 64 200 78V84Q200 110 174 110H112ZM136 30V48H166Q172 48 172 42V36Q172 30 166 30ZM136 68V90H170Q176 90 176 84V74Q176 68 170 68Z"/>
+          </svg>
+          <h2 id="endTitle" data-es="¿Hablamos?">Let’s talk.</h2>
+          <p class="lede" data-es="Siempre abierto a hablar de hardware, arquitectura de sistemas o del futuro del bajo nivel.">Always open to talking about hardware, systems architecture or the future of low-level development.</p>
+          <div class="contact">
+            <a class="btn solid" href="mailto:rubenblascoarmengod@gmail.com" title="rubenblascoarmengod@gmail.com" data-es="Escríbeme ✉">Email me ✉</a>
+            <button type="button" class="btn" id="copyMail" title="rubenblascoarmengod@gmail.com" data-es="Copiar correo">Copy email</button>
+            <a class="btn" href="https://github.com/rubenblascoa" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/rubenblascoa/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://instagram.com/rubenblascoa" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <p class="fine"><span>© 2026 Rubén Blasco Armengod</span><a href="#intro" data-es="Volver al inicio ↑">Back to top ↑</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <noscript><p style="padding:24px;text-align:center">Este portfolio necesita JavaScript · This portfolio needs JavaScript. Contacto / contact: <a href="https://github.com/rubenblascoa">GitHub</a> · <a href="mailto:rubenblascoarmengod@gmail.com">rubenblascoarmengod@gmail.com</a></p></noscript>
+
+  <script src="/assets/cinematic/pcb-data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    let gl = null;   // la placa 3D se carga cuando la intro ya está en pantalla
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    // Sin GSAP (CDN bloqueada o caída) no hay película: se enseña todo como una página normal
+    if (!window.gsap || !window.ScrollTrigger || !window.PCB) { staticPage(); return; }
+    function staticPage() {
+      const root = document.documentElement;
+      root.classList.add('no-film');
+      $('#t-c0').style.width = '64%'; $('#t-c1').style.width = '41%';
+      $('#rbEndFill').setAttribute('transform', 'translate(0 0)');
+      const go = href => { const t = $(href === '#who' ? '#intro' : href); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+      $$('.lang button').forEach(b => {
+        b.setAttribute('aria-pressed', String(b.dataset.lang === root.lang));
+        b.addEventListener('click', () => {
+          try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+          location.href = b.dataset.lang === 'en' ? '/en/' : '/';
+        });
+      });
+      window.__loaded.then(() => {
+        $('#loader').remove();
+        root.classList.remove('is-loading');
+        window.__goto = go;
+        if (window.__pending) go(window.__pending);
+      });
+    }
+
+    /* ---------- 1. Montar la placa desde los Gerber ---------- */
+    const P = window.PCB;
+    const svg = (inner) => `<svg viewBox="0 0 ${P.w} ${P.h}" preserveAspectRatio="none" aria-hidden="true">${inner}</svg>`;
+    const L = P.layers;
+    $('#lyBottom').innerHTML = svg(`<g opacity=".9">${L.bottom}</g>`);
+    $('#lyPour').innerHTML = svg(`<g class="pour">${L.pour}</g><g class="pour-tracks"></g>`);
+    $('#lyTop').innerHTML = svg(`<g class="tracks">${L.tracks}</g>`);
+    $('#lyPads').innerHTML = svg(`<g class="pads">${L.pads}</g><g class="drills">${L.drills}</g>`);
+    // Los contornos del plano de cobre no se dibujan uno a uno: aparecen con el plano
+    const pourTracks = $('#lyPour .pour-tracks');
+    $$('#lyTop .tr-pour').forEach(p => pourTracks.appendChild(p));
+    $('#lySilk').innerHTML = svg(`<g class="silk-text">${L.silkText}</g><g class="silk-art">${L.silkArt}</g>`);
+    $$('[data-stat]').forEach(el => { el.textContent = P.stats[el.dataset.stat]; });
+
+    // Puntos de interés (fracción de la placa)
+    const ESP32 = [0.477, 0.376];
+
+    // Las pistas se dibujan desde el ESP32 hacia fuera
+    const tracks = $$('#lyTop .tr').map(p => {
+      const m = /M(-?[\d.]+) (-?[\d.]+)/.exec(p.getAttribute('d'));
+      const dx = +m[1] / P.w - ESP32[0], dy = (+m[2] / P.h - ESP32[1]) * 0.52;
+      return { p, d: Math.hypot(dx, dy) };
+    }).sort((a, b) => a.d - b.d).map(o => o.p);
+    const firstLine = tracks.shift();
+
+    // Vistas de la cámara 3D: intro y placa fabricada. vals() hace que se recalculen al redimensionar
+    const vals = fn => Object.fromEntries(Object.keys(fn()).map(k => [k, () => fn()[k]]));
+    // Geometría de la placa (mm) para encuadrar la cámara 3D antes de que el modelo haya cargado
+    const PW = 124.968, PD = 64.516, FOV = 30;
+    const storyView = { px: 98, py: 142, pz: 186, tx: 0, ty: 0, tz: 2, td: 0, ex: 0, idle: 0, ox: 0, oy: 0 };
+    const pcbPoint = (px, py) => ({ x: px * PW / 1280 - PW / 2, z: py * PW / 1280 - PD / 2 });
+    const topDown = boardPx => ({ px: 0, py: .8 + PW * innerHeight / (boardPx * 2 * Math.tan(FOV / 2 * Math.PI / 180)), pz: .001, tx: 0, ty: .8, tz: 0, td: 1 });
+    let story = null, intro = null;
+
+    /* ---------- Idioma ---------- */
+    // Cada página trae su idioma escrito (/ en español, /en/ en inglés) y guarda el otro en data-es / data-en
+    const BASE = document.documentElement.lang === 'en' ? 'en' : 'es', ALT = BASE === 'es' ? 'en' : 'es';
+    const PATH = { es: '/', en: '/en/' };
+    let lang = BASE;
+
+    /* ---------- 2. Scroll suave ---------- */
+    gsap.registerPlugin(ScrollTrigger);
+    // La película siempre empieza desde el principio
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    let lenis = null;
+    if (!reduce && window.Lenis) {
+      lenis = window.lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
+      lenis.stop();
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    // Una escena fijada no está donde dice su offsetTop: se salta al inicio de su ScrollTrigger
+    // Los clics los recoge el script de la carga (sin tocar la URL) y llegan aquí
+    const goTo = href => {
+      const t = $(href); if (!t) return;
+      const pin = ScrollTrigger.getAll().find(st => st.pin && st.trigger === t);
+      // En un protagonista se para cuando ya se ve todo (fichas, telemetría y gráfica);
+      // en el resto, 1 px dentro de la escena, no en el borde con la anterior
+      const y = t.id === 'intro' ? 0 : t.id === 'who' ? intro.scrollTrigger.labelToScroll('about')
+        : pin && t.classList.contains('hero') ? pin.start + (pin.end - pin.start) * .7
+        : pin ? pin.start + 1 : t.getBoundingClientRect().top + scrollY;
+      if (lenis) lenis.scrollTo(y, { duration: Math.min(3, .8 + Math.abs(y - scrollY) / 6000) });
+      else window.scrollTo(0, y);
+    };
+
+    /* ---------- 3. HUD ---------- */
+    const chNum = $('#chNum'), chName = $('#chName'), prog = $('#progress');
+    const CH = {
+      es: { '00': 'Sobre mí', '01': 'El trazado', '02': 'Anatomía', '03': 'Fabricada', '03b': 'Del chip al sistema', '04': 'Protagonista 01', '05': 'Protagonista 02', '06': 'Trayectoria', '07': 'Créditos' },
+      en: { '00': 'About me', '01': 'The layout', '02': 'Anatomy', '03': 'Manufactured', '03b': 'From chip to system', '04': 'Leading role 01', '05': 'Leading role 02', '06': 'Journey', '07': 'Credits' }
+    };
+    let lastCh = '', chKey = '00';
+    function setChapter(n, key) {
+      if (n + key === lastCh) return;
+      lastCh = n + key; chKey = key;
+      chNum.textContent = n; chName.textContent = CH[lang][key];
+      gsap.fromTo([chNum, chName], { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: .4, stagger: .05 });
+    }
+    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: s => { gsap.set(prog, { scaleX: s.progress }); syncGL(); } });
+
+    // Cada lienzo solo se pinta mientras se ve: el código en la intro, la placa 3D en el capítulo 03
+    function syncGL() {
+      if (!intro || !story) return;
+      setField(scrollY < intro.scrollTrigger.end - 4);
+      if (!gl) return;
+      const y = scrollY, st = story.scrollTrigger, t = story.time();
+      board.style.visibility = t > 7.25 ? 'hidden' : '';   // el plano SVG cede el sitio a la placa real
+      gl.setActive(y >= st.start && y <= st.end && t > 6.3 && t < 10.4);
+    }
+
+    /* ---------- 4. 00 · Quién soy: las letras se llenan con el código de Blasco OS ---------- */
+    // Fragmentos reales del firmware (main.ino y tareas.cpp)
+    const CODE = [
+      'void setup() {',
+      '  Serial.begin(115200);',
+      '  cargarConfigHardware();',
+      '  cargarCredencialesWeb();',
+      '  Wire.begin(8, 9);',
+      '  i2cMutex = xSemaphoreCreateMutex();',
+      '  spiMutex = xSemaphoreCreateMutex();',
+      '  fsmMutex = xSemaphoreCreateMutex();',
+      '  cpuMutex = xSemaphoreCreateMutex();',
+      '  lcd.init();',
+      '  lcd.print("ZENITH SYSTEM...");',
+      '  cmdQueue = xQueueCreate(10, sizeof(char*));',
+      '  server = new AsyncWebServer(80);',
+      '  ws = new AsyncWebSocket("/ws");',
+      '  pinMode(TRIG_PIN, OUTPUT);',
+      '  pinMode(ECHO_PIN, INPUT);',
+      '  WiFi.mode(WIFI_STA);',
+      '  configTime(3600, 0, "pool.ntp.org");',
+      '  xTaskCreatePinnedToCore(taskCore0, "RedTask", 16384, NULL, 1, NULL, 0);',
+      '  xTaskCreatePinnedToCore(taskCore1, "AppTask", 16384, NULL, 1, NULL, 1);',
+      '  xTaskCreatePinnedToCore(taskDHT, "DHTTask", 4096, NULL, 0, NULL, 1);',
+      '}',
+      '',
+      'void taskCore1(void * pvParameters) {',
+      '  uint32_t inicioCiclo1 = micros();',
+      '  for(;;) {',
+      '    uint32_t ahora = micros();',
+      '    tiempoCicloCore[1] = ahora - inicioCiclo1;',
+      '    if (millis() - tiempoUltimoLCD >= 3000) actualizarLCD();',
+      '    bool hayEspectadoresLED = ws->count() > 0;',
+      '    pixel.setPixelColor(0, pixel.Color(0, 0, 70));',
+      '    pixel.show();',
+      '  }',
+      '}',
+      '',
+      'static const size_t PROXY_CHUNK_SIZE = 12288;',
+      'struct TunnelReq { bool pendiente; String id, method, path, body; };',
+      'String jsonStr(const String& s) {',
+      '  r.reserve(s.length() * 2);',
+      '  case \'\\n\': r += "\\\\n"; break;',
+      '}',
+      ''
+    ];
+    const field = $('#codeField'), fctx = field.getContext('2d');
+    const code = { dark: 0, push: 0 };   // dark: tinta sobre crema → oro tenue sobre negro
+    let fieldOn = false, fieldRaf = 0, fw = 1, fh = 1, fdpr = 1;
+    function sizeField() {
+      fdpr = Math.min(devicePixelRatio, 1.5); fw = innerWidth; fh = innerHeight;
+      field.width = fw * fdpr; field.height = fh * fdpr;
+    }
+    sizeField(); addEventListener('resize', sizeField);
+    const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+    function drawField(time) {
+      // Blanco puro como el RB de la carga; el código solo aparece cuando la luz se apaga
+      const d = code.dark, bg = mix([255, 255, 255], [5, 5, 5], d), fg = [232, 194, 122];
+      const alpha = .18 * Math.max(0, (d - .7) / .3);
+      fctx.setTransform(fdpr, 0, 0, fdpr, 0, 0);
+      fctx.fillStyle = `rgb(${bg})`; fctx.fillRect(0, 0, fw, fh);
+      if (alpha <= 0) return;
+      const fs = fw < 700 ? 11 : 13, lh = Math.round(fs * 1.8), colW = fw < 700 ? fw : Math.max(440, fw / 3);
+      fctx.font = `400 ${fs}px "JetBrains Mono", ui-monospace, monospace`;
+      fctx.textBaseline = 'top';
+      const off = (reduce ? 0 : time * .014) + code.push;
+      for (let c = 0; c * colW < fw; c++) {
+        const shift = off * (1 + c * .22) + c * 9 * lh;   // cada columna a su ritmo
+        const first = Math.floor(shift / lh);
+        fctx.save(); fctx.beginPath(); fctx.rect(c * colW, 0, colW - 24, fh); fctx.clip();
+        for (let r = -1; r < fh / lh + 1; r++) {
+          const i = first + r, line = CODE[((i % CODE.length) + CODE.length) % CODE.length];
+          const hot = Math.abs(i * 7 + c * 3) % 19 === 0;
+          fctx.fillStyle = `rgba(${fg},${hot ? Math.min(1, alpha * 1.8) : alpha})`;
+          fctx.fillText(line, c * colW + 28, r * lh - (shift % lh));
+        }
+        fctx.restore();
+      }
+    }
+    function fieldLoop(t) { drawField(t); fieldRaf = fieldOn ? requestAnimationFrame(fieldLoop) : 0; }
+    function setField(on) {
+      fieldOn = on;
+      if (on && !fieldRaf) fieldRaf = requestAnimationFrame(fieldLoop);
+    }
+    setField(true);
+
+    // Agujero con forma de RB: el punto (ox,oy) del logo va al centro de la pantalla con escala s
+    const RB_W = 210, RB_C = [105, 60], STEM = [22, 60];
+    const holes = $$('#introMask .hole');
+    const hole = { p: 0 };
+    const logoW = () => Math.min(innerWidth * (innerWidth < 700 ? .78 : .5), innerHeight * .8);
+    function placeHole() {
+      const s0 = logoW() / RB_W, s1 = Math.max(innerWidth, innerHeight) / 9;
+      const p = hole.p, k = Math.min(1, p * 1.5), e = 1 - Math.pow(1 - k, 3);
+      const s = s0 * Math.pow(s1 / s0, p);
+      const ox = RB_C[0] + (STEM[0] - RB_C[0]) * e, oy = RB_C[1];
+      const t = `translate(${innerWidth / 2} ${innerHeight / 2}) scale(${s}) translate(${-ox} ${-oy})`;
+      holes.forEach(h => h.setAttribute('transform', t));
+    }
+    placeHole();
+    addEventListener('resize', placeHole);
+
+    // Cada palabra del manifiesto se enciende con el scroll
+    const stmt = $('#statement'), stmtText = { [BASE]: stmt.textContent.trim(), [ALT]: stmt.dataset[ALT + 'Text'] };
+    const stmtLit = { p: 0 };
+    function paintStatement() {
+      const ws = stmt.children, n = ws.length;
+      for (let i = 0; i < n; i++) ws[i].style.opacity = .14 + .86 * Math.min(1, Math.max(0, stmtLit.p * n - i));
+    }
+    function buildStatement() {
+      stmt.innerHTML = stmtText[lang].split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
+      paintStatement();
+    }
+    buildStatement();
+
+    intro = gsap.timeline({
+      defaults: { ease: 'none' },
+      onUpdate: () => syncGL(),
+      scrollTrigger: {
+        trigger: '#intro', start: 'top top', end: () => '+=' + window.innerHeight * 3.5,
+        pin: true, scrub: reduce ? true : 1, invalidateOnRefresh: true, anticipatePin: 1,
+        onToggle: s => s.isActive && setChapter('00', '00')
+      }
+    });
+    intro
+      .fromTo(['#introCap', '#cue'], { opacity: 1 }, { opacity: 0, duration: .3 }, 0)
+      .to(hole, { p: 1, duration: 1.6, ease: 'power2.in', onUpdate: placeHole }, 0)
+      .set('#introMask', { autoAlpha: 0 }, 1.6)
+      .set('#who', { opacity: 1 }, 1.6)
+      .to('#introShade', { opacity: 1, duration: .6 }, 1.5)
+      .fromTo('#who .line > span', { yPercent: 110 }, { yPercent: 0, duration: .6, stagger: .12, ease: 'power3.out' }, 1.9)
+      .fromTo('#who .reveal-i', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, stagger: .15, ease: 'power2.out' }, 2.2)
+      .to(stmtLit, { p: 1, duration: 1.4, onUpdate: paintStatement }, 2.6)
+      .addLabel('about', 4.1)   // presentación completa: aquí lleva el enlace «Sobre mí»
+      // salida: todo se va a negro para que empiece la placa
+      .to('#who', { opacity: 0, y: -50, duration: .5, ease: 'power2.in' }, 4.3)
+      .to('#introImg', { opacity: 0, duration: .6 }, 4.4)
+      .to({}, { duration: .3 });
+
+    intro
+      .fromTo('#introImg', { scale: 1 }, { scale: 1.3, duration: 1.6, ease: 'power2.in' }, 0)
+      .to(code, { push: () => innerHeight * 1.4, duration: 4.5 }, 0)
+      .to(code, { dark: 1, duration: .45, ease: 'power1.inOut' }, 1.4)
+      .to('#introImg', { scale: 1, duration: 2.8, ease: 'power1.out' }, 1.7);
+
+    /* ---------- 5. La toma continua sobre la placa ---------- */
+    const cam = $('#cam'), board = $('#board');
+    // Encuadra el punto (px,py) de la placa en el centro con zoom s
+    const focus = (px, py, s) => ({
+      x: () => -s * (px - 0.5) * board.offsetWidth,
+      y: () => -s * (py - 0.5) * board.offsetHeight,
+      scale: s
+    });
+    const caps = id => $(id);
+    // En vertical la placa es estrecha: la cámara se queda más cerca
+    const near = () => (innerWidth < 700 ? 1.7 : 1);
+    const capIn = (tl, id, at) => tl.fromTo(caps(id), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .5, ease: 'power3.out' }, at);
+    const capOut = (tl, id, at) => tl.to(caps(id), { opacity: 0, y: -30, duration: .4, ease: 'power2.in' }, at);
+    const chapters = [[0, '01', '01'], [3.7, '02', '02'], [5.6, '03', '03'], [10.2, '03', '03b']];
+
+    gsap.set(cam, focus(ESP32[0], ESP32[1], 3.4));
+
+    // Al llegar a la placa: se dibuja la primera línea
+    let capAIn = null;
+    ScrollTrigger.create({
+      trigger: '#story', start: 'top 45%', once: true,
+      onEnter: () => {
+        gsap.to(firstLine, { strokeDashoffset: 0, duration: reduce ? 0 : 1.6, ease: 'power2.inOut' });
+        capAIn = gsap.fromTo('#capA', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: reduce ? 0 : 1, delay: .3, ease: 'power3.out' });
+      }
+    });
+
+    story = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: '#story', start: 'top top', end: () => '+=' + window.innerHeight * 6.5,
+        pin: true, scrub: reduce ? true : 1, invalidateOnRefresh: true, anticipatePin: 1,
+        onToggle: s => s.isActive && syncStoryChapter()
+      },
+      // El HUD sigue a lo que se ve (la animación), no a la barra de scroll
+      onUpdate: () => {
+        // Si se baja muy rápido, la entrada del título no debe pisar al scroll
+        if (capAIn && story.time() > 1.1) { capAIn.kill(); capAIn = null; gsap.set('#capA', { opacity: 0 }); }
+        syncStoryChapter(); syncGL();
+      }
+    });
+    function syncStoryChapter() {
+      if (!story.scrollTrigger || !story.scrollTrigger.isActive) return;
+      const t = story.time();
+      let c = chapters[0];
+      for (const ch of chapters) if (t >= ch[0]) c = ch;
+      setChapter(c[1], c[2]);
+    }
+
+    story
+      // 01 · las pistas se dibujan y la cámara se aleja
+      .to(tracks, { strokeDashoffset: 0, duration: .9, stagger: { amount: 2.3 } }, 0)
+      .to(cam, { ...focus(0.5, 0.5, near()), duration: 3.2, ease: 'power1.inOut' }, 0.1)
+      .to('#lySub', { opacity: 1, duration: .8 }, 1.2)
+      .to('#lyPads', { opacity: 1, duration: .6 }, 2.0)
+      .to('#lyPour', { opacity: .75, duration: .8 }, 2.4)
+      .to('#lySilk', { opacity: 1, duration: .9 }, 2.5);
+    story.fromTo('#capA', { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: .4, ease: 'power2.in', immediateRender: false }, 0.7);
+    capIn(story, '#capB', 1.1);
+    capOut(story, '#capB', 3.1);
+
+    // 02 · vista explosionada en 3D
+    story
+      .to('#lyBottom', { opacity: 1, duration: .4 }, 3.6)
+      .to(board, { rotationX: 56, rotationZ: -24, duration: 1.3, ease: 'power2.inOut' }, 3.7)
+      .to(cam, { ...focus(innerWidth > 860 ? 0.36 : 0.5, 0.56, innerWidth > 860 ? 0.68 : 0.9), duration: 1.3, ease: 'power2.inOut' }, 3.7)
+      .to('#lyBottom', { z: -320, duration: 1.2, ease: 'power2.out' }, 4.0)
+      .to('#lySub', { z: -160, duration: 1.2, ease: 'power2.out' }, 4.0)
+      .to(['#lyPour', '#lyTop', '#lyPads'], { z: 10, duration: 1.2, ease: 'power2.out' }, 4.0)
+      .to('#lySilk', { z: 170, duration: 1.2, ease: 'power2.out' }, 4.0)
+      .fromTo('#legend', { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: .5 }, 4.4)
+      .to('#legend', { opacity: 0, duration: .3 }, 5.6);
+    capIn(story, '#capC', 3.9);
+    capOut(story, '#capC', 5.6);
+
+    // 03 · se aplana… y el plano se convierte en la placa de verdad
+    story
+      .to(['#lyBottom', '#lySub', '#lyPour', '#lyTop', '#lyPads', '#lySilk'], { z: 0, duration: 1, ease: 'power2.inOut' }, 5.8)
+      .to(board, { rotationX: 0, rotationZ: 0, duration: 1, ease: 'power2.inOut' }, 5.8)
+      .to(cam, { ...focus(0.5, 0.5, near()), duration: 1, ease: 'power2.inOut' }, 5.8);
+    {
+      // Cámara cenital con la placa exactamente del tamaño del plano SVG: el relevo no se nota
+      const top = () => ({ ...topDown(board.offsetWidth * near()), ox: 0, oy: 0, idle: 0 });
+      const real = () => innerWidth < 860
+        ? { px: 46, py: 128, pz: 150, tx: 0, ty: 0, tz: 6, td: 0, ox: 0, oy: -0.14, idle: 1 }
+        : { px: 84, py: 78, pz: 138, tx: -4, ty: 0, tz: 4, td: 0, ox: 0.16, oy: 0, idle: 1 };
+      // Sello "PCBWay × Rubén Blasco Armengod" en la serigrafía
+      const seal = pcbPoint(510, 610), sx = seal.x + 3.5, sz = seal.z - 2;
+      Object.assign(storyView, top());
+      story
+        .to('#glStory', { opacity: 1, duration: .6 }, 6.6)
+        .fromTo(storyView, vals(top), { ...vals(real), duration: 1.4, ease: 'power2.inOut' }, 7.0)
+        .to(storyView, { px: sx + 4, py: 44, pz: sz + 40, tx: sx, ty: 0, tz: sz, ox: 0, oy: 0, idle: 0, duration: .9, ease: 'power1.inOut' }, 8.4)
+        .to(storyView, { px: sx + .4, py: 4.2, pz: sz + 2.4, tx: sx, tz: sz - .2, duration: 1, ease: 'power3.in' }, 9.3);
+      capIn(story, '#capD', 7.2);
+      capOut(story, '#capD', 8.3);
+    }
+
+    // 03 · la cámara atraviesa el sello PCBWay × Rubén
+    story
+      .to('.bar', { height: '7vh', duration: .8, ease: 'power2.out' }, 8.6)
+      .to('#blackout', { opacity: 1, duration: .45 }, 9.95)
+      .to('.bar', { height: 0, duration: .6 }, 11.4);
+    capIn(story, '#capE', 10.1);
+    capOut(story, '#capE', 11.0);
+    capIn(story, '#capF', 11.2);
+    story.to({}, { duration: .6 }); // pausa final
+
+    /* ---------- 6. Protagonistas ---------- */
+    $$('.hero').forEach(sec => {
+      const bg = $('.hero-bg', sec), name = $('.name', sec);
+      const items = $$('.tagline, .specs li, .ctas', sec);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sec, start: 'top top', end: () => '+=' + window.innerHeight * 1.6, pin: true, scrub: reduce ? true : 1,
+          onToggle: s => s.isActive && setChapter(sec.dataset.chapter, sec.dataset.chapter)
+        }
+      });
+      tl.fromTo(bg, { scale: 1.25 }, { scale: 1, duration: 3, ease: 'none' }, 0)
+        .fromTo(name, { backgroundPosition: '0% 30%' }, { backgroundPosition: '100% 70%', duration: 3, ease: 'none' }, 0)
+        .fromTo(items, { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: .12, duration: .5, ease: 'power2.out' }, .3)
+        .fromTo($$('.visual > *', sec), { opacity: 0, y: 60 }, { opacity: 1, y: 0, stagger: .25, duration: .7, ease: 'power2.out' }, .5);
+      $$('.term .l', sec).forEach((l, i) => tl.to(l, { opacity: 1, duration: .1 }, .9 + i * .15));
+      if ($('.chart', sec)) {
+        tl.to($('.lineP', sec), { strokeDashoffset: 0, duration: 1.4, ease: 'power1.inOut' }, .8)
+          .to($('.area', sec), { opacity: 1, duration: .6 }, 1.8);
+      }
+      tl.to({}, { duration: .6 });
+    });
+
+    // Cada protagonista entra como una tarjeta que se abre hasta llenar la pantalla, con su nombre ya dentro
+    $$('.hero, #timeline').forEach(sec => {
+      const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: sec, start: 'top bottom', end: 'top top', scrub: true } });
+      if (!reduce) tl.fromTo(sec, { clipPath: 'inset(9% 7% 0% 7% round 22px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', duration: 1 }, 0);
+      const head = $$('.role, .name', sec);
+      if (head.length) tl.fromTo(head, { opacity: 0, yPercent: 40 }, { opacity: 1, yPercent: 0, duration: .5, stagger: .1, ease: 'power2.out' }, .45);
+    });
+
+    /* ---------- 7. Trayectoria horizontal ---------- */
+    const track = $('#tlTrack');
+    const tlSec = $('#timeline');
+    gsap.to(track, {
+      x: () => -(track.scrollWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: tlSec, start: 'top top', end: () => '+=' + (track.scrollWidth - window.innerWidth),
+        pin: true, scrub: reduce ? true : 1, invalidateOnRefresh: true,
+        onToggle: s => s.isActive && setChapter(tlSec.dataset.chapter, tlSec.dataset.chapter)
+      }
+    });
+
+    /* ---------- 8. Créditos: el RB se vuelve a llenar, como en la carga ---------- */
+    const rbEnd = $('#rbEndFill'), endFill = { k: 0 };
+    ScrollTrigger.create({
+      trigger: '#end', start: 'top 60%',
+      onEnter: () => setChapter('07', '07'),
+      onLeaveBack: () => setChapter('06', '06')
+    });
+    gsap.timeline({ scrollTrigger: { trigger: '#end', start: 'top 85%', end: 'top 15%', scrub: reduce ? true : 1 } })
+      .to(endFill, { k: 1, duration: 1, ease: 'power1.inOut', onUpdate: () => rbEnd.setAttribute('transform', `translate(0 ${120 - 120 * endFill.k})`) }, 0)
+      .fromTo('#final > div > *', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6, stagger: .08, ease: 'power2.out' }, .15);
+
+    /* ---------- Teclado: si el foco cae en algo que la película aún no ha enseñado, la escena avanza hasta ahí ---------- */
+    let focusSec = null;
+    document.addEventListener('focusin', e => {
+      const el = e.target;
+      if (!el.matches(':focus-visible') || el.closest('.hud, .skip')) return;
+      const item = el.closest('.tl-item');
+      if (item) {
+        // Trayectoria horizontal: el scroll que deja la tarjeta a la vista
+        const pin = ScrollTrigger.getAll().find(st => st.pin && st.trigger === tlSec);
+        const p = Math.min(1, Math.max(0, (item.offsetLeft - innerWidth * .3) / (track.scrollWidth - innerWidth)));
+        const y = pin.start + p * (pin.end - pin.start);
+        if (lenis) lenis.scrollTo(y, { duration: .8 }); else window.scrollTo(0, y);
+        focusSec = tlSec;
+        return;
+      }
+      const sec = el.closest('#intro, .hero, #end');
+      if (!sec || sec === focusSec) return;
+      focusSec = sec;
+      goTo(sec.id === 'intro' ? '#who' : '#' + sec.id);
+    });
+    document.addEventListener('focusout', e => { if (!focusSec || !focusSec.contains(e.relatedTarget)) focusSec = null; });
+
+    /* ---------- Telemetría de ejemplo de Blasco OS: solo se mueve mientras se ve ---------- */
+    const T = { c0: 64, c1: 41, t: 23.4, h: 48, d: 112, up: 2000 * 3600 + 14 * 60 + 7 };
+    // 'always': en español, toLocaleString escribiría «2000» sin el punto de los miles
+    const num = (v, dec = 0) => v.toLocaleString(lang === 'en' ? 'en-US' : 'es-ES', { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: 'always' });
+    const pad = v => String(v).padStart(2, '0');
+    function paintTele() {
+      for (const k of ['c0', 'c1']) { $('#t-' + k).style.width = T[k] + '%'; $(`#t-${k}v`).textContent = Math.round(T[k]) + ' %'; }
+      $('#t-env').textContent = `${num(T.t, 1)} °C · ${Math.round(T.h)} %`;
+      $('#t-dist').textContent = `${Math.round(T.d)} cm`;
+      $('#t-up').textContent = `${num(Math.floor(T.up / 3600))} h ${pad(Math.floor(T.up / 60) % 60)} min ${pad(T.up % 60)} s`;
+    }
+    {
+      // Paseo aleatorio dentro de márgenes realistas; el uptime avanza segundo a segundo
+      const walk = (v, min, max, step) => Math.min(max, Math.max(min, v + (Math.random() - .5) * step));
+      const tick = () => {
+        T.up++; T.c0 = walk(T.c0, 42, 82, 10); T.c1 = walk(T.c1, 28, 62, 8);
+        T.t = walk(T.t, 22.8, 24.4, .2); T.h = walk(T.h, 45, 51, 1); T.d = walk(T.d, 104, 120, 6);
+        paintTele();
+      };
+      let timer = 0;
+      paintTele();
+      new IntersectionObserver(([e]) => {
+        clearInterval(timer);
+        timer = e.isIntersecting && !reduce ? setInterval(tick, 1000) : 0;
+      }).observe($('.tele'));
+    }
+
+    /* ---------- Cambio de idioma ---------- */
+    // Los mismos textos que escribe tools/build-en.mjs en la cabecera de /en/
+    const META = {
+      es: { title: 'Rubén Blasco Armengod | Firmware, ESP32 y sistemas embebidos',
+            desc: 'Rubén Blasco Armengod, desarrollador de firmware y sistemas embebidos. Proyectos: ESP32 Blasco OS (FreeRTOS, ESP32-S3) y FondTracker, seguimiento de fondos en tiempo real.',
+            locale: 'es_ES' },
+      en: { title: 'Rubén Blasco Armengod | Firmware, ESP32 & embedded systems',
+            desc: 'Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.',
+            locale: 'en_US' }
+    };
+    function applyLang(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      const alt = l !== BASE;
+      $$(`[data-${ALT}]`).forEach(el => {
+        if (el.__base == null) el.__base = el.innerHTML;
+        el.innerHTML = alt ? el.dataset[ALT] : el.__base;
+      });
+      for (const [suffix, attr] of [['label', 'aria-label'], ['alt', 'alt']]) {
+        const key = ALT + suffix[0].toUpperCase() + suffix.slice(1);
+        $$(`[data-${ALT}-${suffix}]`).forEach(el => {
+          if (el['__base' + attr] == null) el['__base' + attr] = el.getAttribute(attr);
+          el.setAttribute(attr, alt ? el.dataset[key] : el['__base' + attr]);
+        });
+      }
+      $$('[data-stat]').forEach(el => { el.textContent = P.stats[el.dataset.stat]; });
+      buildStatement();
+      paintTele();   // los decimales y los miles cambian de formato
+      chName.textContent = CH[l][chKey];
+      const m = META[l];
+      document.title = m.title;
+      $('meta[name="description"]').content = m.desc;
+      $('meta[property="og:locale"]').content = m.locale;
+      $('link[rel="canonical"]').href = 'https://rubenblascoa.github.io' + PATH[l];
+      $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+    }
+    $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    $$('.lang button').forEach(b => b.addEventListener('click', () => {
+      const l = b.dataset.lang;
+      if (l === lang) return;
+      applyLang(l);
+      try { localStorage.setItem('lang', l); } catch (e) {}
+      history.replaceState(null, '', PATH[l]);
+      ScrollTrigger.refresh();   // los textos cambian de largo: la trayectoria horizontal se vuelve a medir
+    }));
+
+    /* ---------- 9. Fin de la carga: el RB blanco se convierte en ventana ---------- */
+    // La placa 3D se prepara en paralelo desde ya: su puesta a punto (≈ un fotograma largo) cae durante la carga,
+    // no mientras se hace scroll. La carga no la espera
+    import('/assets/cinematic/pcb3d.js')
+      .then(m => m.createPCB3D($('#gl')))
+      .then(api => { gl = api; gl.use(storyView); syncGL(); })
+      .catch(e => console.warn('Vista 3D no disponible:', e));
+    syncGL();
+    window.__loaded.then(() => {
+      gsap.timeline({
+        delay: reduce ? 0 : .35,
+        onComplete: () => {
+          $('#loader').remove();
+          document.documentElement.classList.remove('is-loading');
+          if (lenis) lenis.start();
+          ScrollTrigger.refresh();
+          syncGL();
+          window.__goto = goTo;
+          if (window.__pending) { goTo(window.__pending); window.__pending = null; }
+        }
+      })
+        .to('#loader', { opacity: 0, duration: reduce ? 0 : 1.1, ease: 'power2.inOut' })
+        .from(code, { push: -120, duration: reduce ? 0 : 2.2, ease: 'power2.out' }, 0)
+        .from(['#introCap', '#cue'], { y: 14, duration: .8, stagger: .15, ease: 'power3.out' }, .6);
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  })();
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8c777a1b3a6740bba8e3abf2031ad617"}'></script>
+</body>
+</html>

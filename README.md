@@ -36,7 +36,9 @@ Sitio web personal de **Rubén Blasco Armengod**, una única página estática y
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:folder-tree.svg?color=white"><img src="https://api.iconify.design/lucide:folder-tree.svg?color=black" width="26" align="center"></picture> Arquitectura y Estructura
 
 ```
-index.html                 La película completa (HTML, CSS y la lógica de las escenas)
+index.html                 La película completa (HTML, CSS y la lógica de las escenas), en español
+en/index.html              La misma página en inglés, generada (no se edita a mano)
+tools/build-en.mjs         Genera en/index.html a partir de index.html
 assets/cinematic/
   pcb-data.js              Capas de la placa generadas desde los Gerber reales (pistas, pads, taladros, serigrafía)
   pcb3d.js                 Modelo 3D de la placa en Three.js (portado de la landing de Blasco OS)
@@ -62,16 +64,18 @@ assets/cinematic/
 ### 2. Rendimiento
 * **Carga:** solo se espera a las fuentes y a la página; Three.js (minificado) y las texturas se descargan en paralelo y la puesta a punto del 3D (compilación de *shaders*, subida de texturas y sombras) ocurre durante la pantalla de carga.
 * **Animación:** las capas que aparecen con fundido tienen su propia capa de GPU, la serigrafía (miles de trazos) no se redibuja fotograma a fotograma, y el lienzo 3D y el de código solo pintan mientras se ven.
-* **Accesibilidad:** `prefers-reduced-motion` desactiva las animaciones continuas; enlace para saltar al contacto; textos alternativos en todas las imágenes.
+* **Accesibilidad:** `prefers-reduced-motion` desactiva las animaciones continuas; enlace para saltar al contacto; textos alternativos en todas las imágenes; con el teclado, la escena avanza hasta el enlace que recibe el foco.
+* **A prueba de fallos:** si GSAP no carga (CDN caída o bloqueada), la web se enseña como una página normal, sin película pero completa. En un móvil en horizontal aparece un aviso para girarlo.
 
 ### 3. Idiomas
-* Español e inglés en la misma página, con selector **ES / EN** en la barra superior: el texto cambia sin recargar ni perder la posición.
-* Cada idioma tiene su URL (`/` y `/?lang=en`) y se recuerda la elección del visitante. Los textos en inglés viven en atributos `data-en` junto al original.
+* Español en `/` e inglés en `/en/`: cada página trae su idioma ya escrito en el HTML, que es lo que leen los buscadores.
+* El selector **ES / EN** de la barra superior cambia el texto sin recargar ni perder la posición, actualiza la URL y recuerda la elección del visitante. Los enlaces antiguos `/?lang=en` llevan a `/en/`.
+* Los textos en inglés se escriben en `index.html`, en atributos `data-en` junto al original. **Después de cambiar `index.html`, ejecuta `node tools/build-en.mjs`** para regenerar `en/index.html` (el script avisa si algo no cuadra en vez de generar una página a medias).
 
 ### 4. SEO
 * Título, descripción, `canonical`, Open Graph de perfil y Twitter con tarjeta de 1200×630.
 * Datos estructurados (JSON-LD): `WebSite`, `ProfilePage`, `Person`, `SoftwareSourceCode` (ESP32 Blasco OS) y `SoftwareApplication` (FondTracker).
-* `hreflang` (es · en · x-default) en la página y en el sitemap.
+* `hreflang` (es → `/` · en → `/en/` · x-default) en las dos páginas y en el sitemap.
 * `sitemap.xml` con imágenes, `robots.txt` y `llms.txt` para buscadores con IA.
 
 ---
@@ -92,7 +96,7 @@ assets/cinematic/
 
 ### Despliegue en producción
 
-Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere *build*, variables de entorno ni backend.
+Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere variables de entorno ni backend. Solo hay que regenerar la versión en inglés (`node tools/build-en.mjs`) antes de subir si has tocado `index.html`.
 
 ---
 

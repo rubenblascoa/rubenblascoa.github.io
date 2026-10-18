@@ -10,11 +10,25 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://rubenblascoa.github.io/">
   <link rel="alternate" hreflang="es" href="https://rubenblascoa.github.io/">
-  <link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/?lang=en">
+  <link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/en/">
   <link rel="alternate" hreflang="x-default" href="https://rubenblascoa.github.io/">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <meta name="theme-color" content="#050505">
   <meta name="color-scheme" content="dark">
+  <script>
+  /* Los enlaces antiguos (?lang=en) y quien eligió inglés antes van a /en/ antes de cargar nada */
+  (function () {
+    if (document.documentElement.lang !== 'es') return;
+    var q = new URLSearchParams(location.search).get('lang'), saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    if (q === 'en' || (q !== 'es' && saved === 'en')) location.replace('/en/');
+  })();
+  /* URL siempre limpia: sin index.html, sin ?lang ni #sección (la película empieza siempre desde el principio) */
+  (function () {
+    var clean = location.pathname.replace(/index\.html$/, '');
+    if (clean !== location.pathname || location.search || location.hash) history.replaceState(null, '', clean);
+  })();
+  </script>
 
   <!-- Redes sociales: tarjeta 1200×630 -->
   <meta property="og:type" content="profile">
@@ -37,8 +51,8 @@
   <meta name="twitter:image" content="https://rubenblascoa.github.io/assets/cinematic/og.jpg">
   <meta name="twitter:image:alt" content="Rubén Blasco Armengod — Firmware, ESP32 y sistemas embebidos">
 
-  <link rel="icon" type="image/svg+xml" href="assets/cinematic/favicon.svg">
-  <link rel="apple-touch-icon" href="assets/cinematic/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/cinematic/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/cinematic/apple-touch-icon.png">
 
   <!-- Fuentes sin bloquear el render; las CDN de los scripts, ya conectadas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +131,7 @@
         "image": "https://github.com/rubenblascoa.png",
         "email": "mailto:rubenblascoarmengod@gmail.com",
         "jobTitle": "Desarrollador de sistemas y firmware",
-        "description": "Estudiante y desarrollador autodidacta de firmware y sistemas embebidos. Aprende haciendo: empieza con un problema real, entiende el hardware hasta los registros y no para hasta que funciona.",
+        "description": "Estudiante de Bachillerato y desarrollador autodidacta de firmware y sistemas embebidos, abierto a patrocinios y colaboraciones. Aprende haciendo: empieza con un problema real, entiende el hardware hasta los registros y no para hasta que funciona.",
         "knowsLanguage": [
           "es",
           "en"
@@ -201,7 +215,7 @@
       --silk: #F2EFE8;
       --bottom: #3E7C6B;
       --green: #4ADE80;
-      --muted: rgba(242, 239, 232, .55);
+      --muted: rgba(242, 239, 232, .72);
       --line: rgba(242, 239, 232, .12);
       --display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
       --sans: 'Inter', system-ui, sans-serif;
@@ -241,7 +255,7 @@
     .hud {
       position: fixed; inset: 0 0 auto 0; z-index: 98; display: flex; align-items: center; justify-content: space-between;
       padding: 18px clamp(16px, 4vw, 40px); font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
-      mix-blend-mode: difference; pointer-events: none;
+      mix-blend-mode: difference; pointer-events: none; white-space: nowrap;
     }
     .hud a { pointer-events: auto; text-decoration: none; }
     .mark { display: flex; align-items: center; gap: 10px; }
@@ -256,6 +270,10 @@
     .gh { display: inline-flex; align-items: center; gap: 8px; opacity: .85; }
     .gh svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .hud .gh:hover { opacity: 1; }
+    .nav { display: inline-flex; gap: clamp(12px, 1.6vw, 22px); pointer-events: auto; }
+    .nav a { opacity: .85; transition: opacity .2s, color .2s; }
+    .nav a:hover { opacity: 1; color: var(--gold); }
+    .nav a:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
     .lang { display: inline-flex; pointer-events: auto; }
     .lang button { background: none; border: 0; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; padding: 4px 5px; cursor: pointer; opacity: .45; transition: opacity .2s, color .2s; }
     .lang button:hover { opacity: .8; }
@@ -273,7 +291,7 @@
     @keyframes wave { to { transform: translateX(-105px); } }
     .ld-meta {
       position: absolute; left: 0; right: 0; bottom: clamp(28px, 8vh, 72px); display: flex; justify-content: space-between;
-      padding: 0 clamp(16px, 4vw, 40px); font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted);
+      padding: 0 clamp(16px, 4vw, 40px); font-family: var(--mono); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted);
     }
     .ld-meta b { color: var(--silk); font-weight: 500; }
 
@@ -287,7 +305,7 @@
     .intro-mask { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .intro-cap {
       position: absolute; left: 0; right: 0; top: calc(50% + var(--logoW, 50vw) * .2857 + 28px); text-align: center; opacity: 0;
-      font-family: var(--mono); font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted);
     }
     .intro-cap b { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(18px, 2.2vw, 28px); letter-spacing: .14em; color: var(--silk); margin-bottom: 8px; }
     .who {
@@ -301,14 +319,14 @@
     .who-side { display: grid; gap: 22px; max-width: 470px; }
     .portrait { display: flex; align-items: center; gap: 16px; }
     .portrait img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.1); border: 1px solid rgba(232,194,122,.5); }
-    .portrait p { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); line-height: 1.8; }
+    .portrait p { font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); line-height: 1.8; }
     .portrait p b { color: var(--silk); font-weight: 500; }
     .statement { font-size: clamp(20px, min(2.1vw, 3.4vh), 30px); line-height: 1.35; font-weight: 400; color: var(--silk); }
     .statement .w { opacity: .14; }
     .bio { font-size: 15px; line-height: 1.65; color: var(--muted); max-width: 46ch; }
     .facts { list-style: none; border-top: 1px solid var(--line); }
     .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--muted); }
-    .facts li b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 2px; }
+    .facts li b { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 2px; }
     .who .reveal-i { opacity: 0; }
     .stack {
       position: absolute; left: 0; right: 0; bottom: clamp(16px, 4vh, 40px); overflow: hidden;
@@ -316,7 +334,7 @@
     }
     .stack-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
     .stack-track span {
-      display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: .22em;
+      display: inline-flex; align-items: center; gap: 22px; padding-right: 22px; font-family: var(--mono); font-size: 12px; letter-spacing: .22em;
       text-transform: uppercase; color: var(--muted); white-space: nowrap;
     }
     .stack-track span::after { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: .7; }
@@ -355,7 +373,7 @@
 
     .cap { position: absolute; z-index: 5; opacity: 0; pointer-events: none; }
     .cap .kicker, .kicker {
-      font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold);
       display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
     }
     .kicker::before { content: ''; width: 28px; height: 1px; background: currentColor; }
@@ -371,7 +389,7 @@
 
     .legend {
       position: absolute; right: clamp(16px, 5vw, 80px); top: 50%; transform: translateY(-50%); z-index: 5; opacity: 0;
-      font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; list-style: none;
+      font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; list-style: none;
       display: grid; gap: 18px;
     }
     .legend { text-shadow: 0 1px 12px #000, 0 0 2px #000; }
@@ -386,7 +404,7 @@
     .logo-title small { display: block; font-size: .42em; color: var(--muted); letter-spacing: .02em; margin-top: .25em; }
 
     .scroll-cue {
-      position: absolute; bottom: 28px; right: clamp(16px, 4vw, 40px); z-index: 6; font-family: var(--mono); font-size: 10px;
+      position: absolute; bottom: 28px; right: clamp(16px, 4vw, 40px); z-index: 6; font-family: var(--mono); font-size: 11px;
       letter-spacing: .3em; text-transform: uppercase; color: var(--muted); display: grid; justify-items: center; gap: 10px;
     }
     .scroll-cue span { width: 1px; height: 42px; background: linear-gradient(var(--gold), transparent); animation: cue 1.8s ease-in-out infinite; transform-origin: top; }
@@ -400,7 +418,7 @@
       position: relative; z-index: 2; height: 100%; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center;
       gap: clamp(24px, 4vw, 64px); padding: 80px clamp(16px, 6vw, 96px) 40px;
     }
-    .role { font-family: var(--mono); font-size: 11px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+    .role { font-family: var(--mono); font-size: 12px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
     .name {
       font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: .8; margin: 14px 0 8px;
       font-size: clamp(3.4rem, min(10vw, 15vh), 10.5rem); letter-spacing: -.01em;
@@ -414,7 +432,7 @@
       display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: clamp(6px, 1.2vh, 12px) 0; border-bottom: 1px solid var(--line);
       font-size: clamp(13px, 1.7vh, 14px); line-height: 1.5; color: var(--muted);
     }
-    .specs li b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 3px; }
+    .specs li b { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); padding-top: 3px; }
     .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(16px, 3vh, 28px); }
     .btn {
       display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .12em;
@@ -430,14 +448,25 @@
       background: rgba(8,8,8,.86); border: 1px solid var(--line); font-family: var(--mono); font-size: clamp(11px, 1vw, 13px); line-height: 1.85;
       padding: 18px 20px; color: var(--muted); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     }
-    .term .bar3 { display: flex; gap: 6px; margin-bottom: 12px; }
-    .term .bar3 i { width: 8px; height: 8px; border-radius: 50%; background: #2a2a2a; }
     .term .l { opacity: 0; white-space: pre; overflow: hidden; text-overflow: ellipsis; }
-    .term .p { color: var(--green); }
-    .term .g { color: var(--gold); }
+    .tele .l { white-space: nowrap; }
+    .tele-head {
+      display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+      font-size: .85em; letter-spacing: .16em; text-transform: uppercase; color: var(--silk);
+    }
+    .tele-live { display: inline-flex; align-items: center; gap: 8px; color: var(--green); letter-spacing: .08em; }
+    .tele-live i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: live 2s ease-out infinite; }
+    .tele-row { display: flex; align-items: center; gap: 14px; }
+    .tele-row b { flex: 0 0 66px; font-weight: 500; color: var(--gold); }
+    .tele-row .d { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .tele-row.up .d { color: var(--silk); font-variant-numeric: tabular-nums; }
+    .tele-row.m .d { flex: 1 0 auto; }   /* con barra: encoge la barra, no el texto */
+    .meter { flex: 0 1 34%; min-width: 36px; height: 6px; background: rgba(242,239,232,.08); }
+    .meter i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--gold)); transition: width .9s ease; }
+    .tele-row .v { flex: 0 0 40px; text-align: right; color: var(--silk); font-variant-numeric: tabular-nums; }
     .shot { border: 1px solid var(--line); overflow: hidden; background: #0b0b0b; }
     .shot img { width: 100%; display: block; }
-    .shot figcaption { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 14px; color: var(--muted); border-top: 1px solid var(--line); }
+    .shot figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 10px 14px; color: var(--muted); border-top: 1px solid var(--line); }
 
     .chart { width: 100%; height: min(20vh, 200px); display: block; }
     .chart .grid line { stroke: var(--line); }
@@ -447,7 +476,7 @@
       justify-self: end; max-width: 300px; background: #0f2a1c; border: 1px solid rgba(74,222,128,.25); padding: 12px 14px; font-size: 13px; line-height: 1.5;
       border-radius: 14px 14px 2px 14px; color: var(--silk);
     }
-    .bubble small { display: block; font-family: var(--mono); font-size: 10px; color: rgba(74,222,128,.8); margin-bottom: 4px; letter-spacing: .1em; }
+    .bubble small { display: block; font-family: var(--mono); font-size: 11px; color: rgba(74,222,128,.8); margin-bottom: 4px; letter-spacing: .1em; }
 
     /* ---------- Línea temporal horizontal ---------- */
     #timeline { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
@@ -459,7 +488,7 @@
     .tl-year { font-family: var(--display); font-weight: 900; font-size: clamp(5rem, 12vw, 11rem); line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(232,194,122,.6); }
     .tl-item h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.6rem, 2.6vw, 2.4rem); margin: 18px 0 10px; letter-spacing: .01em; }
     .tl-item p { color: var(--muted); line-height: 1.6; font-size: 15px; max-width: 36ch; }
-    .tl-item a { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .tl-item a { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
     .tl-item.now .tl-year { color: var(--gold); -webkit-text-stroke: 0; }
 
     /* ---------- Créditos: ¿Hablamos? y el RB vuelve a llenarse ---------- */
@@ -471,33 +500,92 @@
     .final h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(2.6rem, 7vw, 6.5rem); line-height: .9; }
     .final .lede { margin: 18px auto 0; max-width: 44ch; }
     .contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
-    .mail { display: inline-block; margin-top: 30px; font-family: var(--display); font-weight: 800; font-size: clamp(1.3rem, 3.4vw, 2.8rem); text-decoration: none; border-bottom: 2px solid var(--copper); padding-bottom: 4px; overflow-wrap: anywhere; }
-    .mail:hover { color: var(--gold); }
-    .fine { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; font-family: var(--mono); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+    button.btn { background: transparent; color: inherit; cursor: pointer; }
+    .fine { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
     .fine a { text-decoration: none; color: var(--cream); }
     .fine a:hover { color: var(--gold); }
     .hero, #timeline { background: var(--ink-2); }
 
     @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; align-content: center; padding-top: 80px; gap: 20px; }
-      .hero .visual { display: none; }
+      .hero-inner { grid-template-columns: 1fr; align-content: center; padding-top: 68px; padding-bottom: 20px; gap: 14px; }
+      /* En móvil solo queda la captura del sitio en vivo */
+      .hero .visual .term, .hero .visual .chart, .hero .visual .bubble { display: none; }
+      .visual .shot img { max-height: 22vh; }
       .hero-bg::after { background: linear-gradient(0deg, var(--ink) 30%, rgba(5,5,5,.55)); }
-      .specs li { grid-template-columns: 1fr; gap: 2px; padding: 9px 0; }
+      .specs li { grid-template-columns: 1fr; gap: 2px; padding: 6px 0; font-size: 13px; }
       .legend { right: 16px; top: 76px; transform: none; gap: 8px; }
-      .name { font-size: 19vw; }
+      .name { font-size: 16vw; }
       .mark span, .gh span, #chName { display: none; }
       .cap-left { bottom: 16vh; right: 16px; }
-      .who { grid-template-columns: 1fr; align-content: center; gap: 28px; padding-top: 80px; }
+      .who { grid-template-columns: 1fr; align-content: center; gap: 28px; padding-top: 80px; padding-bottom: 76px; }
       .who .title { font-size: 17vw; }
       .facts { display: none; }
-      .bio { display: none; }
+      .bio { font-size: 14px; }
+      .status span { display: none; }
+    }
+    /* ---------- Sin película (GSAP no ha cargado): todo visible, como una página normal ---------- */
+    .no-film #intro, .no-film .hero, .no-film #timeline { height: auto; min-height: 100vh; min-height: 100svh; overflow: visible; }
+    .no-film .intro-img, .no-film .intro-mask, .no-film .intro-cap, .no-film .scroll-cue, .no-film #story,
+    .no-film .progress, .no-film .chapter, .no-film .tl-rail { display: none; }
+    .no-film .intro-shade { opacity: 1; }
+    .no-film .who { position: relative; opacity: 1; min-height: 100vh; min-height: 100svh; }
+    .no-film .who .reveal-i, .no-film .term .l, .no-film .chart .area, .no-film .final > div > * { opacity: 1; }
+    .no-film .chart .lineP { stroke-dasharray: none; }
+    .no-film .tl-track { position: relative; height: auto; flex-wrap: wrap; align-items: flex-start; padding-top: 180px; padding-bottom: 80px; }
+    .no-film .tl-item:first-child { margin-left: 0; }
+
+    .rotate { display: none; }
+    @media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+      /* Móvil en horizontal: las escenas no caben a esa altura */
+      .rotate {
+        position: fixed; inset: 0; z-index: 99; display: grid; place-content: center; justify-items: center; gap: 14px;
+        padding: 24px; text-align: center; background: var(--ink);
+      }
+      .rotate svg { width: 44px; height: 44px; fill: none; stroke: var(--gold); stroke-width: 1.5; stroke-linecap: round; animation: turn 2.4s ease-in-out infinite; }
+      .rotate p { font-family: var(--display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: .04em; }
+      .rotate small { font-size: 14px; color: var(--muted); }
+    }
+    @keyframes turn { 0%, 30% { transform: rotate(90deg); } 60%, 100% { transform: rotate(0); } }
+    @media (min-width: 861px) and (max-width: 1180px) {
+      /* Tablet: la barra solo cabe con lo esencial */
+      .mark span, .status span, #chName, .gh span { display: none; }
+    }
+    @media (max-width: 860px) and (max-height: 899px) {
+      /* Móviles bajos: la captura y la bio no caben junto a las fichas */
+      .hero .visual, .bio { display: none; }
+    }
+    @media (max-width: 860px) {
+      .visual .shot img { max-height: 15vh; }
+      .hero-inner { padding-top: 62px; }
+      .name { font-size: 14vw; margin-top: 8px; }
+      .tagline { font-size: 15px; }
+      .specs li { padding: 5px 0; }
+      .hero .ctas { flex-wrap: nowrap; gap: 8px; }
+      .hero .btn { padding: 11px 13px; font-size: 11px; letter-spacing: .08em; white-space: nowrap; }
+      .who { gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      .hud { letter-spacing: .06em; }
+      .hud .gh, .chapter { display: none; }
+      .nav { gap: 12px; }
+      .nav a { white-space: nowrap; }
+      .lang button + button::before { margin-right: 6px; }
+    }
+    @media (max-width: 400px) {
+      .hud { font-size: 10px; letter-spacing: .04em; }
+      .nav { gap: 10px; }
+    }
+    @media (max-height: 820px) and (min-width: 861px) {
+      .hero-inner { padding-top: 70px; padding-bottom: 24px; }
+      .name { font-size: clamp(3.4rem, min(10vw, 13vh), 10rem); }
+      .specs li { padding: 7px 0; line-height: 1.4; }
     }
     @media (max-height: 700px) and (min-width: 861px) {
-      .specs li { padding: 8px 0; }
-      .name { font-size: clamp(4rem, 10vw, 10rem); }
+      .specs li { padding: 5px 0; }
+      .name { font-size: clamp(3rem, min(10vw, 12vh), 10rem); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .grain, .scroll-cue span, .rb-wave, .status i, .stack-track { animation: none; }
+      .grain, .scroll-cue span, .rb-wave, .status i, .stack-track, .tele-live i, .rotate svg { animation: none; }
     }
   </style>
 </head>
@@ -516,6 +604,26 @@
   /* La carga empieza antes que GSAP: el logo se llena con el progreso real */
   (function () {
     var root = document.documentElement;
+    // Los enlaces internos nunca tocan la URL; si se pulsan durante la carga, el salto se hace al terminar
+    document.addEventListener('click', function (e) {
+      // «Copiar correo»: si el portapapeles no está disponible, abre el correo
+      var copy = e.target.closest && e.target.closest('#copyMail');
+      if (copy) {
+        var mail = 'rubenblascoarmengod@gmail.com';
+        if (!navigator.clipboard) { location.href = 'mailto:' + mail; return; }
+        navigator.clipboard.writeText(mail).then(function () {
+          if (copy.__was) return;   // ya muestra «Copiado»
+          copy.__was = copy.innerHTML;
+          copy.textContent = root.lang === 'en' ? 'Copied ✓' : 'Copiado ✓';
+          setTimeout(function () { copy.innerHTML = copy.__was; copy.__was = null; }, 2000);
+        }, function () { location.href = 'mailto:' + mail; });
+        return;
+      }
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      e.preventDefault();
+      if (window.__goto) window.__goto(a.getAttribute('href')); else window.__pending = a.getAttribute('href');
+    });
     function size() {
       var w = innerWidth, h = innerHeight;
       root.style.setProperty('--logoW', Math.min(w * (w < 700 ? .78 : .5), h * .8) + 'px');
@@ -523,7 +631,7 @@
     size(); addEventListener('resize', size);
     // Solo se espera a lo que se ve al entrar: fuentes y página. El 3D y las capturas llegan después
     var total = 2, done = 0, t0 = performance.now();
-    var MIN = matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 2400;
+    var MIN = matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 1400;
     function tick() { done++; }
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(tick);
     addEventListener('load', tick);
@@ -541,6 +649,11 @@
     });
   })();
   </script>
+  <div class="rotate" role="status">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+    <p data-en="Turn your phone">Gira el móvil</p>
+    <small data-en="This film is made to be watched upright.">Esta película está pensada para verse en vertical.</small>
+  </div>
   <div class="grain" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
   <div class="bar top" aria-hidden="true"></div>
@@ -549,10 +662,13 @@
   <header class="hud">
     <div class="hud-side">
       <a class="mark" href="#intro" aria-label="Inicio" data-en-label="Home"><b>RB</b><span>Rubén Blasco</span></a>
-      <span class="status" data-en="&lt;i aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Available"><i aria-hidden="true"></i>Disponible</span>
+      <span class="status" data-en="&lt;i aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span&gt;Open to collaborate&lt;/span&gt;"><i aria-hidden="true"></i><span>Disponible para colaborar</span></span>
     </div>
-    <div class="chapter" aria-live="polite"><span class="num" id="chNum">00</span><span id="chName">Sobre mí</span></div>
+    <div class="chapter" aria-live="polite"><span class="num" id="chNum">00</span><span id="chName" data-en="About me">Sobre mí</span></div>
     <div class="hud-side">
+      <nav class="nav" aria-label="Secciones" data-en-label="Sections">
+        <a href="#who" data-en="About">Sobre mí</a><a href="#os" data-en="Projects">Proyectos</a><a href="#end" data-en="Contact">Contacto</a>
+      </nav>
       <div class="lang" role="group" aria-label="Idioma · Language">
         <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
       </div>
@@ -588,7 +704,7 @@
             <span class="line"><span>Blasco</span></span>
             <span class="line"><span><em>Armengod.</em></span></span>
           </h1>
-          <span class="role reveal-i" data-en="Asynchronous, robust hardware logic">Lógica de hardware asíncrona y robusta</span>
+          <span class="role reveal-i" data-en="High school student · Open to sponsorships and collaborations">Estudiante de Bachillerato · Abierto a patrocinios y colaboraciones</span>
         </div>
         <div class="who-side">
           <div class="portrait reveal-i">
@@ -682,6 +798,7 @@
             <li data-en="&lt;b&gt;Access&lt;/b&gt;Telnet, WebSockets and Cloudflare Tunnel with HMAC-SHA256: from the internet, with no public IP."><b>Acceso</b>Telnet, WebSockets y Cloudflare Tunnel con HMAC-SHA256: desde internet, sin IP pública.</li>
             <li data-en="&lt;b&gt;Blasco AI&lt;/b&gt;A Gemini-powered assistant that receives live telemetry with every message."><b>Blasco AI</b>Asistente con Gemini que recibe la telemetría en vivo en cada mensaje.</li>
             <li data-en="&lt;b&gt;Hardware&lt;/b&gt;NFC, DHT11 and HC-SR04 with auto-recovery and pins you can remap from the captive portal."><b>Hardware</b>NFC, DHT11 y HC-SR04 con autorrecuperación y pines reasignables desde el portal cautivo.</li>
+            <li data-en="&lt;b&gt;Running&lt;/b&gt;2,000+ hours of uptime without issues and 2,000+ rows in its database."><b>En marcha</b>+2.000 horas de uptime sin problemas y +2.000 filas en su base de datos.</li>
           </ul>
           <div class="ctas">
             <a class="btn solid" href="https://blascoos.qzz.io/" data-en="Visit the site ↗" target="_blank" rel="noopener">Ver la web ↗</a>
@@ -689,19 +806,17 @@
           </div>
         </div>
         <div class="visual">
-          <div class="term" aria-label="Terminal de ejemplo de Blasco OS" data-en-label="Sample Blasco OS terminal">
-            <div class="bar3"><i></i><i></i><i></i></div>
-            <div class="l"><span class="p">blasco@esp32</span>:~$ boot</div>
-            <div class="l"><span class="g">[core0]</span> wifi · ntp · littlefs . ok</div>
-            <div class="l"><span class="g">[core0]</span> tunnel · hmac-sha256 .. ok</div>
-            <div class="l"><span class="g">[core1]</span> cmdQueue ............. ok</div>
-            <div class="l"><span class="g">[spi]</span>   NFC · MFRC522 ........ ok</div>
-            <div class="l"><span class="g">[gpio]</span>  DHT11 · HC-SR04 ...... ok</div>
-            <div class="l"><span class="g">[ai]</span>    blasco ai · gemini ... ok</div>
-            <div class="l"><span class="p">blasco@esp32</span>:~$ <span class="g">_</span></div>
+          <div class="term tele" role="img" aria-label="Telemetría de ejemplo de Blasco OS: carga de los dos núcleos, sensores y más de 2.000 horas de uptime" data-en-label="Sample Blasco OS telemetry: load of both cores, sensors and 2,000+ hours of uptime">
+            <div class="tele-head"><span data-en="Blasco OS · Telemetry">Blasco OS · Telemetría</span><span class="tele-live"><i aria-hidden="true"></i>v0.3.0</span></div>
+            <div class="l tele-row m"><b>Core 0</b><span class="d" data-en="network · OTA">red · OTA</span><span class="meter"><i id="t-c0"></i></span><span class="v" id="t-c0v">64 %</span></div>
+            <div class="l tele-row m"><b>Core 1</b><span class="d">hardware</span><span class="meter"><i id="t-c1"></i></span><span class="v" id="t-c1v">41 %</span></div>
+            <div class="l tele-row"><b>DHT11</b><span class="d" id="t-env">23,4 °C · 48 %</span></div>
+            <div class="l tele-row"><b>HC-SR04</b><span class="d" id="t-dist">112 cm</span></div>
+            <div class="l tele-row"><b>NFC</b><span class="d"><span data-en="last card">última tarjeta</span> · 04:A2:9F:1C</span></div>
+            <div class="l tele-row up"><b>Uptime</b><span class="d" id="t-up">2.000 h 14 min 07 s</span></div>
           </div>
           <figure class="shot">
-            <img src="assets/cinematic/blascoos-login.jpg" data-en-alt="ESP32 Blasco OS control panel sign-in" alt="Acceso al panel de control de ESP32 Blasco OS" width="1440" height="900" loading="lazy" decoding="async">
+            <img src="/assets/cinematic/blascoos-login.jpg" data-en-alt="ESP32 Blasco OS control panel sign-in" alt="Acceso al panel de control de ESP32 Blasco OS" width="1440" height="900" loading="lazy" decoding="async">
             <figcaption data-en="blascoos.qzz.io · panel sign-in · OS v0.3.0">blascoos.qzz.io · acceso al panel · OS v0.3.0</figcaption>
           </figure>
         </div>
@@ -721,6 +836,7 @@
             <li data-en="&lt;b&gt;ISIN&lt;/b&gt;Type the ISIN and it works out the ticker, currency, fund manager and category on its own."><b>ISIN</b>Escribes el ISIN y resuelve solo el ticker, la divisa, la gestora y la categoría.</li>
             <li data-en="&lt;b&gt;WhatsApp&lt;/b&gt;Automatic summaries of returns and capital gains, straight to your phone."><b>WhatsApp</b>Resúmenes automáticos de rentabilidad y plusvalías, directos al móvil.</li>
             <li data-en="&lt;b&gt;Security&lt;/b&gt;Isolated users with JWT HMAC-SHA256, Bcrypt and MySQL 8. Open source, MIT."><b>Seguridad</b>Usuarios aislados con JWT HMAC-SHA256, Bcrypt y MySQL 8. Open source, MIT.</li>
+            <li data-en="&lt;b&gt;In use&lt;/b&gt;300+ funds being tracked."><b>En uso</b>+300 fondos en seguimiento.</li>
           </ul>
           <div class="ctas">
             <a class="btn solid" href="https://fondtracker.onrender.com/" data-en="Open the app ↗" target="_blank" rel="noopener">Abrir la app ↗</a>
@@ -736,7 +852,7 @@
           </svg>
           <div class="bubble" data-en="&lt;small&gt;FondTracker · WhatsApp&lt;/small&gt;Your portfolio summary is ready: current value, amount invested and gain for each fund."><small>FondTracker · WhatsApp</small>Tu resumen de cartera está listo: valor actual, aportado y plusvalía de cada fondo.</div>
           <figure class="shot">
-            <img src="assets/cinematic/fondtracker-login.jpg" data-en-alt="FondTracker sign-in screen with Google and GitHub" alt="Pantalla de acceso de FondTracker con Google y GitHub" width="1040" height="604" loading="lazy" decoding="async">
+            <img src="/assets/cinematic/fondtracker-login.jpg" data-en-alt="FondTracker sign-in screen with Google and GitHub" alt="Pantalla de acceso de FondTracker con Google y GitHub" width="1040" height="604" loading="lazy" decoding="async">
             <figcaption data-en="fondtracker.onrender.com · sign in with Google and GitHub">fondtracker.onrender.com · acceso con Google y GitHub</figcaption>
           </figure>
         </div>
@@ -793,9 +909,9 @@
           </svg>
           <h2 id="endTitle" data-en="Let’s talk.">¿Hablamos?</h2>
           <p class="lede" data-en="Always open to talking about hardware, systems architecture or the future of low-level development.">Siempre abierto a hablar de hardware, arquitectura de sistemas o del futuro del bajo nivel.</p>
-          <a class="mail" href="mailto:rubenblascoarmengod@gmail.com">rubenblascoarmengod@gmail.com</a>
           <div class="contact">
-            <a class="btn solid" id="cvBtn" href="cv.pdf" download data-en="Download CV">Descargar CV</a>
+            <a class="btn solid" href="mailto:rubenblascoarmengod@gmail.com" title="rubenblascoarmengod@gmail.com" data-en="Email me ✉">Escríbeme ✉</a>
+            <button type="button" class="btn" id="copyMail" title="rubenblascoarmengod@gmail.com" data-en="Copy email">Copiar correo</button>
             <a class="btn" href="https://github.com/rubenblascoa" target="_blank" rel="noopener">GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/rubenblascoa/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="https://instagram.com/rubenblascoa" target="_blank" rel="noopener">Instagram</a>
@@ -808,7 +924,7 @@
 
   <noscript><p style="padding:24px;text-align:center">Este portfolio necesita JavaScript · This portfolio needs JavaScript. Contacto / contact: <a href="https://github.com/rubenblascoa">GitHub</a> · <a href="mailto:rubenblascoarmengod@gmail.com">rubenblascoarmengod@gmail.com</a></p></noscript>
 
-  <script src="assets/cinematic/pcb-data.js"></script>
+  <script src="/assets/cinematic/pcb-data.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -819,6 +935,29 @@
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const $ = (s, r = document) => r.querySelector(s);
     const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+    // Sin GSAP (CDN bloqueada o caída) no hay película: se enseña todo como una página normal
+    if (!window.gsap || !window.ScrollTrigger || !window.PCB) { staticPage(); return; }
+    function staticPage() {
+      const root = document.documentElement;
+      root.classList.add('no-film');
+      $('#t-c0').style.width = '64%'; $('#t-c1').style.width = '41%';
+      $('#rbEndFill').setAttribute('transform', 'translate(0 0)');
+      const go = href => { const t = $(href === '#who' ? '#intro' : href); if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+      $$('.lang button').forEach(b => {
+        b.setAttribute('aria-pressed', String(b.dataset.lang === root.lang));
+        b.addEventListener('click', () => {
+          try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+          location.href = b.dataset.lang === 'en' ? '/en/' : '/';
+        });
+      });
+      window.__loaded.then(() => {
+        $('#loader').remove();
+        root.classList.remove('is-loading');
+        window.__goto = go;
+        if (window.__pending) go(window.__pending);
+      });
+    }
 
     /* ---------- 1. Montar la placa desde los Gerber ---------- */
     const P = window.PCB;
@@ -855,8 +994,10 @@
     let story = null, intro = null;
 
     /* ---------- Idioma ---------- */
-    const urlLang = new URLSearchParams(location.search).get('lang');
-    let lang = urlLang === 'en' || urlLang === 'es' ? urlLang : (() => { try { return localStorage.getItem('lang') === 'en' ? 'en' : 'es'; } catch (e) { return 'es'; } })();
+    // Cada página trae su idioma escrito (/ en español, /en/ en inglés) y guarda el otro en data-es / data-en
+    const BASE = document.documentElement.lang === 'en' ? 'en' : 'es', ALT = BASE === 'es' ? 'en' : 'es';
+    const PATH = { es: '/', en: '/en/' };
+    let lang = BASE;
 
     /* ---------- 2. Scroll suave ---------- */
     gsap.registerPlugin(ScrollTrigger);
@@ -872,14 +1013,18 @@
       gsap.ticker.lagSmoothing(0);
     }
     // Una escena fijada no está donde dice su offsetTop: se salta al inicio de su ScrollTrigger
-    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-      const t = $(a.getAttribute('href')); if (!t) return;
-      e.preventDefault();
+    // Los clics los recoge el script de la carga (sin tocar la URL) y llegan aquí
+    const goTo = href => {
+      const t = $(href); if (!t) return;
       const pin = ScrollTrigger.getAll().find(st => st.pin && st.trigger === t);
-      const y = t.id === 'intro' ? 0 : pin ? pin.start : t.getBoundingClientRect().top + scrollY;
+      // En un protagonista se para cuando ya se ve todo (fichas, telemetría y gráfica);
+      // en el resto, 1 px dentro de la escena, no en el borde con la anterior
+      const y = t.id === 'intro' ? 0 : t.id === 'who' ? intro.scrollTrigger.labelToScroll('about')
+        : pin && t.classList.contains('hero') ? pin.start + (pin.end - pin.start) * .7
+        : pin ? pin.start + 1 : t.getBoundingClientRect().top + scrollY;
       if (lenis) lenis.scrollTo(y, { duration: Math.min(3, .8 + Math.abs(y - scrollY) / 6000) });
       else window.scrollTo(0, y);
-    }));
+    };
 
     /* ---------- 3. HUD ---------- */
     const chNum = $('#chNum'), chName = $('#chName'), prog = $('#progress');
@@ -1009,7 +1154,7 @@
     addEventListener('resize', placeHole);
 
     // Cada palabra del manifiesto se enciende con el scroll
-    const stmt = $('#statement'), stmtText = { es: stmt.textContent.trim(), en: stmt.dataset.enText };
+    const stmt = $('#statement'), stmtText = { [BASE]: stmt.textContent.trim(), [ALT]: stmt.dataset[ALT + 'Text'] };
     const stmtLit = { p: 0 };
     function paintStatement() {
       const ws = stmt.children, n = ws.length;
@@ -1025,7 +1170,7 @@
       defaults: { ease: 'none' },
       onUpdate: () => syncGL(),
       scrollTrigger: {
-        trigger: '#intro', start: 'top top', end: () => '+=' + window.innerHeight * 4.5,
+        trigger: '#intro', start: 'top top', end: () => '+=' + window.innerHeight * 3.5,
         pin: true, scrub: reduce ? true : 1, invalidateOnRefresh: true, anticipatePin: 1,
         onToggle: s => s.isActive && setChapter('00', '00')
       }
@@ -1039,6 +1184,7 @@
       .fromTo('#who .line > span', { yPercent: 110 }, { yPercent: 0, duration: .6, stagger: .12, ease: 'power3.out' }, 1.9)
       .fromTo('#who .reveal-i', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, stagger: .15, ease: 'power2.out' }, 2.2)
       .to(stmtLit, { p: 1, duration: 1.4, onUpdate: paintStatement }, 2.6)
+      .addLabel('about', 4.1)   // presentación completa: aquí lleva el enlace «Sobre mí»
       // salida: todo se va a negro para que empiece la placa
       .to('#who', { opacity: 0, y: -50, duration: .5, ease: 'power2.in' }, 4.3)
       .to('#introImg', { opacity: 0, duration: .6 }, 4.4)
@@ -1080,7 +1226,7 @@
     story = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
-        trigger: '#story', start: 'top top', end: () => '+=' + window.innerHeight * 10,
+        trigger: '#story', start: 'top top', end: () => '+=' + window.innerHeight * 6.5,
         pin: true, scrub: reduce ? true : 1, invalidateOnRefresh: true, anticipatePin: 1,
         onToggle: s => s.isActive && syncStoryChapter()
       },
@@ -1211,53 +1357,106 @@
     gsap.timeline({ scrollTrigger: { trigger: '#end', start: 'top 85%', end: 'top 15%', scrub: reduce ? true : 1 } })
       .to(endFill, { k: 1, duration: 1, ease: 'power1.inOut', onUpdate: () => rbEnd.setAttribute('transform', `translate(0 ${120 - 120 * endFill.k})`) }, 0)
       .fromTo('#final > div > *', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6, stagger: .08, ease: 'power2.out' }, .15);
-    // Si el CV aún no está subido, el botón no se enseña
-    fetch('cv.pdf', { method: 'HEAD' }).then(r => { if (!r.ok) $('#cvBtn').remove(); }).catch(() => $('#cvBtn').remove());
+
+    /* ---------- Teclado: si el foco cae en algo que la película aún no ha enseñado, la escena avanza hasta ahí ---------- */
+    let focusSec = null;
+    document.addEventListener('focusin', e => {
+      const el = e.target;
+      if (!el.matches(':focus-visible') || el.closest('.hud, .skip')) return;
+      const item = el.closest('.tl-item');
+      if (item) {
+        // Trayectoria horizontal: el scroll que deja la tarjeta a la vista
+        const pin = ScrollTrigger.getAll().find(st => st.pin && st.trigger === tlSec);
+        const p = Math.min(1, Math.max(0, (item.offsetLeft - innerWidth * .3) / (track.scrollWidth - innerWidth)));
+        const y = pin.start + p * (pin.end - pin.start);
+        if (lenis) lenis.scrollTo(y, { duration: .8 }); else window.scrollTo(0, y);
+        focusSec = tlSec;
+        return;
+      }
+      const sec = el.closest('#intro, .hero, #end');
+      if (!sec || sec === focusSec) return;
+      focusSec = sec;
+      goTo(sec.id === 'intro' ? '#who' : '#' + sec.id);
+    });
+    document.addEventListener('focusout', e => { if (!focusSec || !focusSec.contains(e.relatedTarget)) focusSec = null; });
+
+    /* ---------- Telemetría de ejemplo de Blasco OS: solo se mueve mientras se ve ---------- */
+    const T = { c0: 64, c1: 41, t: 23.4, h: 48, d: 112, up: 2000 * 3600 + 14 * 60 + 7 };
+    // 'always': en español, toLocaleString escribiría «2000» sin el punto de los miles
+    const num = (v, dec = 0) => v.toLocaleString(lang === 'en' ? 'en-US' : 'es-ES', { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: 'always' });
+    const pad = v => String(v).padStart(2, '0');
+    function paintTele() {
+      for (const k of ['c0', 'c1']) { $('#t-' + k).style.width = T[k] + '%'; $(`#t-${k}v`).textContent = Math.round(T[k]) + ' %'; }
+      $('#t-env').textContent = `${num(T.t, 1)} °C · ${Math.round(T.h)} %`;
+      $('#t-dist').textContent = `${Math.round(T.d)} cm`;
+      $('#t-up').textContent = `${num(Math.floor(T.up / 3600))} h ${pad(Math.floor(T.up / 60) % 60)} min ${pad(T.up % 60)} s`;
+    }
+    {
+      // Paseo aleatorio dentro de márgenes realistas; el uptime avanza segundo a segundo
+      const walk = (v, min, max, step) => Math.min(max, Math.max(min, v + (Math.random() - .5) * step));
+      const tick = () => {
+        T.up++; T.c0 = walk(T.c0, 42, 82, 10); T.c1 = walk(T.c1, 28, 62, 8);
+        T.t = walk(T.t, 22.8, 24.4, .2); T.h = walk(T.h, 45, 51, 1); T.d = walk(T.d, 104, 120, 6);
+        paintTele();
+      };
+      let timer = 0;
+      paintTele();
+      new IntersectionObserver(([e]) => {
+        clearInterval(timer);
+        timer = e.isIntersecting && !reduce ? setInterval(tick, 1000) : 0;
+      }).observe($('.tele'));
+    }
 
     /* ---------- Cambio de idioma ---------- */
+    // Los mismos textos que escribe tools/build-en.mjs en la cabecera de /en/
     const META = {
-      es: { title: document.title, desc: $('meta[name="description"]').content, locale: 'es_ES', url: 'https://rubenblascoa.github.io/' },
+      es: { title: 'Rubén Blasco Armengod | Firmware, ESP32 y sistemas embebidos',
+            desc: 'Rubén Blasco Armengod, desarrollador de firmware y sistemas embebidos. Proyectos: ESP32 Blasco OS (FreeRTOS, ESP32-S3) y FondTracker, seguimiento de fondos en tiempo real.',
+            locale: 'es_ES' },
       en: { title: 'Rubén Blasco Armengod | Firmware, ESP32 & embedded systems',
             desc: 'Rubén Blasco Armengod, firmware and embedded systems developer. Projects: ESP32 Blasco OS (FreeRTOS, ESP32-S3) and FondTracker, real-time investment fund tracking.',
-            locale: 'en_US', url: 'https://rubenblascoa.github.io/?lang=en' }
+            locale: 'en_US' }
     };
     function applyLang(l) {
       lang = l;
       document.documentElement.lang = l;
-      $$('[data-en]').forEach(el => {
-        if (el.__es == null) el.__es = el.innerHTML;
-        el.innerHTML = l === 'en' ? el.dataset.en : el.__es;
+      const alt = l !== BASE;
+      $$(`[data-${ALT}]`).forEach(el => {
+        if (el.__base == null) el.__base = el.innerHTML;
+        el.innerHTML = alt ? el.dataset[ALT] : el.__base;
       });
-      for (const [key, attr] of [['enLabel', 'aria-label'], ['enAlt', 'alt']]) {
-        $$(`[data-${key === 'enLabel' ? 'en-label' : 'en-alt'}]`).forEach(el => {
-          if (el['__es' + attr] == null) el['__es' + attr] = el.getAttribute(attr);
-          el.setAttribute(attr, l === 'en' ? el.dataset[key] : el['__es' + attr]);
+      for (const [suffix, attr] of [['label', 'aria-label'], ['alt', 'alt']]) {
+        const key = ALT + suffix[0].toUpperCase() + suffix.slice(1);
+        $$(`[data-${ALT}-${suffix}]`).forEach(el => {
+          if (el['__base' + attr] == null) el['__base' + attr] = el.getAttribute(attr);
+          el.setAttribute(attr, alt ? el.dataset[key] : el['__base' + attr]);
         });
       }
       $$('[data-stat]').forEach(el => { el.textContent = P.stats[el.dataset.stat]; });
       buildStatement();
+      paintTele();   // los decimales y los miles cambian de formato
       chName.textContent = CH[l][chKey];
       const m = META[l];
       document.title = m.title;
       $('meta[name="description"]').content = m.desc;
       $('meta[property="og:locale"]').content = m.locale;
-      $('link[rel="canonical"]').href = m.url;
+      $('link[rel="canonical"]').href = 'https://rubenblascoa.github.io' + PATH[l];
       $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
     }
+    $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     $$('.lang button').forEach(b => b.addEventListener('click', () => {
       const l = b.dataset.lang;
       if (l === lang) return;
       applyLang(l);
       try { localStorage.setItem('lang', l); } catch (e) {}
-      history.replaceState(null, '', (l === 'en' ? '?lang=en' : location.pathname) + location.hash);
+      history.replaceState(null, '', PATH[l]);
       ScrollTrigger.refresh();   // los textos cambian de largo: la trayectoria horizontal se vuelve a medir
     }));
-    if (lang === 'en') applyLang('en');
 
     /* ---------- 9. Fin de la carga: el RB blanco se convierte en ventana ---------- */
     // La placa 3D se prepara en paralelo desde ya: su puesta a punto (≈ un fotograma largo) cae durante la carga,
     // no mientras se hace scroll. La carga no la espera
-    import('./assets/cinematic/pcb3d.js')
+    import('/assets/cinematic/pcb3d.js')
       .then(m => m.createPCB3D($('#gl')))
       .then(api => { gl = api; gl.use(storyView); syncGL(); })
       .catch(e => console.warn('Vista 3D no disponible:', e));
@@ -1271,6 +1470,8 @@
           if (lenis) lenis.start();
           ScrollTrigger.refresh();
           syncGL();
+          window.__goto = goTo;
+          if (window.__pending) { goTo(window.__pending); window.__pending = null; }
         }
       })
         .to('#loader', { opacity: 0, duration: reduce ? 0 : 1.1, ease: 'power2.inOut' })

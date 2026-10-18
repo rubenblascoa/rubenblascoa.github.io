@@ -1,9 +1,10 @@
 # Rubén Blasco Armengod | Portfolio
 
-> Portfolio personal de Rubén Blasco Armengod, estudiante y desarrollador autodidacta de firmware y sistemas embebidos (C++ embebido, Python, TypeScript; FreeRTOS, ESP32-S3). Es una única página estática, en español (https://rubenblascoa.github.io/) y en inglés (https://rubenblascoa.github.io/?lang=en), que cuenta su trabajo como una película con scroll: del chip al sistema.
+> Portfolio personal de Rubén Blasco Armengod, estudiante y desarrollador autodidacta de firmware y sistemas embebidos (C++ embebido, Python, TypeScript; FreeRTOS, ESP32-S3). Es una única página estática, en español (https://rubenblascoa.github.io/) y en inglés (https://rubenblascoa.github.io/en/), que cuenta su trabajo como una película con scroll: del chip al sistema.
 
 ## Quién es
 
+- Estudiante de Bachillerato, abierto a patrocinios y colaboraciones.
 - Desarrollador de sistemas y firmware: "Aprendo haciendo: empiezo con un problema real, entiendo el hardware hasta los registros y no paro hasta que funciona."
 - Dos proyectos en producción real: ESP32 Blasco OS y FondTracker.
 - Actualmente profundiza en optimización multinúcleo con FreeRTOS y herramientas de red inalámbricas.
@@ -12,9 +13,9 @@
 ## Proyectos
 
 - **ESP32 Blasco OS** — https://blascoos.qzz.io/ · código: https://github.com/rubenblascoa/esp32-panelcontrol
-  Entorno de ejecución multiprograma para ESP32-S3 sobre FreeRTOS: el Core 0 lleva red, almacenamiento (LittleFS) y OTA; el Core 1 se dedica al hardware. Acceso 100% inalámbrico por Telnet, WebSockets y Cloudflare Tunnel con HMAC-SHA256 (desde internet, sin IP pública). Asistente Blasco AI (Gemini) con telemetría en vivo. Módulos NFC (MFRC522), DHT11 y HC-SR04 con autorrecuperación y pines reasignables desde el portal cautivo. Placa propia de 124,97 × 64,52 mm a dos capas, fabricada con PCBWay.
+  Entorno de ejecución multiprograma para ESP32-S3 sobre FreeRTOS: el Core 0 lleva red, almacenamiento (LittleFS) y OTA; el Core 1 se dedica al hardware. Acceso 100% inalámbrico por Telnet, WebSockets y Cloudflare Tunnel con HMAC-SHA256 (desde internet, sin IP pública). Asistente Blasco AI (Gemini) con telemetría en vivo. Módulos NFC (MFRC522), DHT11 y HC-SR04 con autorrecuperación y pines reasignables desde el portal cautivo. Placa propia de 124,97 × 64,52 mm a dos capas, fabricada con PCBWay. Más de 2.000 horas de uptime sin problemas y más de 2.000 filas en su base de datos.
 - **FondTracker** — https://fondtracker.onrender.com/ · código: https://github.com/rubenblascoa/fondtracker
-  Seguimiento de fondos de inversión y ETFs en tiempo real: motor híbrido de precios (Yahoo Finance para ETFs y QueFondos para fondos españoles, +490 fondos), alta por ISIN, resúmenes automáticos por WhatsApp, usuarios aislados con JWT HMAC-SHA256, Bcrypt y MySQL 8. Open source (MIT).
+  Seguimiento de fondos de inversión y ETFs en tiempo real: motor híbrido de precios (Yahoo Finance para ETFs y QueFondos para fondos españoles, +490 fondos), alta por ISIN, resúmenes automáticos por WhatsApp, usuarios aislados con JWT HMAC-SHA256, Bcrypt y MySQL 8. Más de 300 fondos en seguimiento. Open source (MIT).
 - **Recopilación de proyectos Python** — https://github.com/rubenblascoa/Recopilacion-de-Proyectos
   Más de 30 proyectos: interfaces con Tkinter, automatización, scripts de red y backend con Django y MySQL.
 
