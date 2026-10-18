@@ -39,6 +39,7 @@ Sitio web personal de **Rubén Blasco Armengod**, una única página estática y
 index.html                 La película completa (HTML, CSS y la lógica de las escenas), en español
 en/index.html              La misma página en inglés, generada (no se edita a mano)
 tools/build-en.mjs         Genera en/index.html a partir de index.html
+.github/workflows/         build-en.yml: GitHub ejecuta el generador solo cada vez que cambia index.html
 privacidad/ · en/privacy/  Política de privacidad (sin cookies ni formularios), escrita a mano en los dos idiomas
 assets/fonts/              Tipografías propias (woff2) y fonts.css
 assets/vendor/             GSAP, Lenis y Three.js servidos desde el sitio (sin CDN externas)
@@ -74,7 +75,7 @@ assets/cinematic/
 ### 3. Idiomas
 * Español en `/` e inglés en `/en/`: cada página trae su idioma ya escrito en el HTML, que es lo que leen los buscadores.
 * El selector **ES / EN** de la barra superior cambia el texto sin recargar ni perder la posición, actualiza la URL y recuerda la elección del visitante. Los enlaces antiguos `/?lang=en` llevan a `/en/`.
-* Los textos en inglés se escriben en `index.html`, en atributos `data-en` junto al original. **Después de cambiar `index.html`, ejecuta `node tools/build-en.mjs`** para regenerar `en/index.html` (el script avisa si algo no cuadra en vez de generar una página a medias).
+* Los textos en inglés se escriben en `index.html`, en atributos `data-en` junto al original. **Solo hay que editar `index.html`:** al subirlo, GitHub Actions regenera `en/index.html` y lo publica solo (commit «Regenerar /en/…» del bot). Si algo no cuadra, la acción falla y GitHub te avisa por correo en vez de publicar una página a medias. Para verlo en local antes de subir: `node tools/build-en.mjs`.
 
 ### 4. SEO
 * Título, descripción, `canonical`, Open Graph de perfil y Twitter con tarjeta de 1200×630.
@@ -100,7 +101,7 @@ assets/cinematic/
 
 ### Despliegue en producción
 
-Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere variables de entorno ni backend. Solo hay que regenerar la versión en inglés (`node tools/build-en.mjs`) antes de subir si has tocado `index.html`.
+Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere variables de entorno ni backend. La versión en inglés se regenera sola en GitHub al subir `index.html`.
 
 ---
 

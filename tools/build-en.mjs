@@ -1,11 +1,13 @@
 // Genera en/index.html a partir de index.html: la misma película con el inglés ya escrito en el HTML.
 // Los textos en español pasan a data-es (y data-es-label, data-es-alt, data-es-text) para el selector ES / EN.
-// Uso: node tools/build-en.mjs
+// Se ejecuta solo en GitHub (.github/workflows/build-en.yml) cada vez que cambia index.html.
+// A mano: node tools/build-en.mjs
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-let html = readFileSync(root + 'index.html', 'utf8');
+// Saltos de línea de Windows (\r\n) → \n: así funciona igual si index.html se editó en Windows
+let html = readFileSync(root + 'index.html', 'utf8').replace(/\r\n/g, '\n');
 
 const decode = s => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
 const encode = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -97,6 +99,8 @@ html = out + html.slice(pos);
 if (/\sdata-en(-\w+)?="/.test(html)) throw new Error('Quedan atributos data-en sin convertir');
 
 mkdirSync(root + 'en', { recursive: true });
-writeFileSync(root + 'en/index.html', html.replace(/^<!DOCTYPE html>\n/i,
-  m => m + '<!-- Generado por tools/build-en.mjs a partir de index.html. No editar a mano. -->\n'));
+// El aviso de index.html («la versión en inglés se genera sola…») se cambia por el de página generada
+const NOTE = /^(<!DOCTYPE html>\n)(<!-- [^\n]*-->\n)?/i;
+writeFileSync(root + 'en/index.html', html.replace(NOTE,
+  (m, doctype) => doctype + '<!-- Generado por tools/build-en.mjs a partir de index.html. No editar a mano. -->\n'));
 console.log('en/index.html listo');

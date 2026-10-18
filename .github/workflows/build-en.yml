@@ -1,0 +1,43 @@
+# Cada vez que cambia index.html (o el generador), GitHub regenera en/index.html y lo sube solo.
+# Así basta con editar index.html: la versión en inglés nunca se queda vieja.
+name: Generar versión en inglés
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - tools/build-en.mjs
+  workflow_dispatch:   # botón «Run workflow» en la pestaña Actions, por si se quiere lanzar a mano
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-en
+  cancel-in-progress: false
+
+jobs:
+  build-en:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generar en/index.html
+        run: node tools/build-en.mjs
+
+      - name: Subir en/index.html si ha cambiado
+        run: |
+          if git diff --quiet -- en/index.html; then
+            echo "en/index.html ya estaba al día"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add en/index.html
+          git commit -m "Regenerar /en/ a partir de index.html"
+          git push
