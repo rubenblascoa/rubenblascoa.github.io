@@ -41,6 +41,7 @@ en/index.html              La misma página en inglés, generada (no se edita a 
 tools/build-en.mjs         Genera en/index.html a partir de index.html
 privacidad/ · en/privacy/  Política de privacidad (sin cookies ni formularios), escrita a mano en los dos idiomas
 assets/fonts/              Tipografías propias (woff2) y fonts.css
+assets/vendor/             GSAP, Lenis y Three.js servidos desde el sitio (sin CDN externas)
 assets/legal/legal.css     Estilos de las páginas legales
 assets/cinematic/
   pcb-data.js              Capas de la placa generadas desde los Gerber reales (pistas, pads, taladros, serigrafía)
@@ -68,7 +69,7 @@ assets/cinematic/
 * **Carga:** solo se espera a las fuentes y a la página; Three.js (minificado) y las texturas se descargan en paralelo y la puesta a punto del 3D (compilación de *shaders*, subida de texturas y sombras) ocurre durante la pantalla de carga.
 * **Animación:** las capas que aparecen con fundido tienen su propia capa de GPU, la serigrafía (miles de trazos) no se redibuja fotograma a fotograma, y el lienzo 3D y el de código solo pintan mientras se ven.
 * **Accesibilidad:** `prefers-reduced-motion` desactiva las animaciones continuas; enlace para saltar al contacto; textos alternativos en todas las imágenes; con el teclado, la escena avanza hasta el enlace que recibe el foco.
-* **A prueba de fallos:** si GSAP no carga (CDN caída o bloqueada), la web se enseña como una página normal, sin película pero completa. En un móvil en horizontal aparece un aviso para girarlo.
+* **A prueba de fallos:** si GSAP no llega a cargar, la web se enseña como una página normal, sin película pero completa. En un móvil en horizontal aparece un aviso para girarlo.
 
 ### 3. Idiomas
 * Español en `/` e inglés en `/en/`: cada página trae su idioma ya escrito en el HTML, que es lo que leen los buscadores.
@@ -113,7 +114,7 @@ Si lo reutilizas para tu propio portfolio, cambia los datos personales (nombre, 
 
 El aviso de autoría está en [`NOTICE`](NOTICE) y el texto legal completo en [`LICENSE`](LICENSE).
 
-No entran en esta licencia las tipografías de `assets/fonts/`, que son de sus autores (SIL Open Font License 1.1, ver [`OFL.txt`](assets/fonts/OFL.txt)), ni GSAP, Lenis y Three.js, que se cargan desde CDN con sus propias licencias.
+No entran en esta licencia las tipografías de `assets/fonts/`, que son de sus autores (SIL Open Font License 1.1, ver [`OFL.txt`](assets/fonts/OFL.txt)), ni GSAP, Lenis y Three.js (`assets/vendor/`), que conservan sus propias licencias ([detalle](assets/vendor/README.md)).
 
 ---
 

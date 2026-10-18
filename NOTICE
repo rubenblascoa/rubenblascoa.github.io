@@ -18,8 +18,8 @@ Si lo reutilizas para tu propio portfolio, cambia los datos personales
 No están incluidos en esta licencia: las tipografías de assets/fonts/
 (Big Shoulders Display, Inter, JetBrains Mono y Playfair Display), que son
 de sus autores y se distribuyen con la SIL Open Font License 1.1
-(assets/fonts/OFL.txt), ni las librerías GSAP, Lenis y Three.js, que se
-cargan desde CDN con sus propias licencias.
+(assets/fonts/OFL.txt), ni las librerías GSAP, Lenis y Three.js de
+assets/vendor/, que conservan sus propias licencias (assets/vendor/README.md).
 
 -----------------------------------------------------------------------
 This portfolio is licensed under CC BY 4.0. You may use, copy, modify
