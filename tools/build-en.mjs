@@ -37,6 +37,7 @@ once(`<link rel="canonical" href="${SITE}/">`, `<link rel="canonical" href="${SI
 once(`<meta property="og:url" content="${SITE}/">`, `<meta property="og:url" content="${SITE}/en/">`);
 once('<meta property="og:locale" content="es_ES">', '<meta property="og:locale" content="en_US">');
 once('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="es_ES">');
+once('<a href="/privacidad/" id="privacyLink"', '<a href="/en/privacy/" id="privacyLink"');
 html = html.replaceAll(`content="${ES.desc}"`, `content="${EN.desc}"`);
 html = html.replaceAll(`content="${ES.social}"`, `content="${EN.social}"`);
 html = html.replaceAll(`content="${ES.alt}"`, `content="${EN.alt}"`);

@@ -32,4 +32,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rubenblascoa.github.io/"/>
   </url>
+  <url>
+    <loc>https://rubenblascoa.github.io/privacidad/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenblascoa.github.io/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rubenblascoa.github.io/privacidad/"/>
+  </url>
+  <url>
+    <loc>https://rubenblascoa.github.io/en/privacy/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rubenblascoa.github.io/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://rubenblascoa.github.io/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://rubenblascoa.github.io/privacidad/"/>
+  </url>
 </urlset>

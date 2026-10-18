@@ -39,6 +39,9 @@ Sitio web personal de **Rubén Blasco Armengod**, una única página estática y
 index.html                 La película completa (HTML, CSS y la lógica de las escenas), en español
 en/index.html              La misma página en inglés, generada (no se edita a mano)
 tools/build-en.mjs         Genera en/index.html a partir de index.html
+privacidad/ · en/privacy/  Política de privacidad (sin cookies ni formularios), escrita a mano en los dos idiomas
+assets/fonts/              Tipografías propias (woff2) y fonts.css
+assets/legal/legal.css     Estilos de las páginas legales
 assets/cinematic/
   pcb-data.js              Capas de la placa generadas desde los Gerber reales (pistas, pads, taladros, serigrafía)
   pcb3d.js                 Modelo 3D de la placa en Three.js (portado de la landing de Blasco OS)
@@ -85,7 +88,7 @@ assets/cinematic/
 * **Maquetado:** HTML5 semántico + CSS propio
 * **Animación:** [GSAP](https://gsap.com) + ScrollTrigger, scroll suave con [Lenis](https://lenis.darkroom.engineering)
 * **3D:** [Three.js](https://threejs.org) 0.160
-* **Tipografía:** Google Fonts — `Big Shoulders Display`, `Inter`, `JetBrains Mono`, `Playfair Display`
+* **Tipografía:** `Big Shoulders Display`, `Inter`, `JetBrains Mono` y `Playfair Display`, servidas desde `assets/fonts/` (solo latín y latín extendido), sin Google Fonts
 * **Hosting:** GitHub Pages (cualquier hosting estático sirve)
 
 ### Despliegue local
@@ -109,6 +112,8 @@ Este portfolio se publica bajo **[Creative Commons Atribución 4.0 (CC BY 4.0)](
 Si lo reutilizas para tu propio portfolio, cambia los datos personales (nombre, foto, contacto y proyectos) por los tuyos.
 
 El aviso de autoría está en [`NOTICE`](NOTICE) y el texto legal completo en [`LICENSE`](LICENSE).
+
+No entran en esta licencia las tipografías de `assets/fonts/`, que son de sus autores (SIL Open Font License 1.1, ver [`OFL.txt`](assets/fonts/OFL.txt)), ni GSAP, Lenis y Three.js, que se cargan desde CDN con sus propias licencias.
 
 ---
 

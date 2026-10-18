@@ -54,14 +54,13 @@
   <link rel="icon" type="image/svg+xml" href="/assets/cinematic/favicon.svg">
   <link rel="apple-touch-icon" href="/assets/cinematic/apple-touch-icon.png">
 
-  <!-- Fuentes sin bloquear el render; las CDN de los scripts, ya conectadas -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías servidas desde el propio sitio (sin Google Fonts); las CDN de los scripts, ya conectadas -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/big-shoulders-display-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap"></noscript>
 
   <script type="application/ld+json">
   {
@@ -709,7 +708,7 @@
         </div>
         <div class="who-side">
           <div class="portrait reveal-i">
-            <img src="https://github.com/rubenblascoa.png" alt="Rubén Blasco Armengod" width="64" height="64" decoding="async">
+            <img src="/assets/cinematic/avatar.jpg" alt="Rubén Blasco Armengod" width="64" height="64" decoding="async">
             <p data-en="&lt;b&gt;Student and self-taught&lt;/b&gt;&lt;br&gt;Firmware · Systems · Hardware"><b>Estudiante y autodidacta</b><br>Firmware · Sistemas · Hardware</p>
           </div>
           <p class="statement" id="statement" data-en-text="Two projects in real production. I learn by doing: I start with a real problem, understand the hardware down to the registers and don’t stop until it works.">Dos proyectos en producción real. Aprendo haciendo: empiezo con un problema real, entiendo el hardware hasta los registros y no paro hasta que funciona.</p>
@@ -917,7 +916,7 @@
             <a class="btn" href="https://www.linkedin.com/in/rubenblascoa/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="https://instagram.com/rubenblascoa" target="_blank" rel="noopener">Instagram</a>
           </div>
-          <p class="fine"><span>© 2026 Rubén Blasco Armengod</span><a href="https://github.com/rubenblascoa/rubenblascoa.github.io/blob/main/LICENSE" target="_blank" rel="noopener license" data-en="Licence CC BY 4.0">Licencia CC BY 4.0</a><a href="#intro" data-en="Back to top ↑">Volver al inicio ↑</a></p>
+          <p class="fine"><span>© 2026 Rubén Blasco Armengod</span><a href="https://github.com/rubenblascoa/rubenblascoa.github.io/blob/main/LICENSE" target="_blank" rel="noopener license" data-en="Licence CC BY 4.0">Licencia CC BY 4.0</a><a href="/privacidad/" id="privacyLink" data-en="Privacy">Privacidad</a><a href="#intro" data-en="Back to top ↑">Volver al inicio ↑</a></p>
         </div>
       </div>
     </section>
@@ -1436,6 +1435,7 @@
       $$('[data-stat]').forEach(el => { el.textContent = P.stats[el.dataset.stat]; });
       buildStatement();
       paintTele();   // los decimales y los miles cambian de formato
+      $('#privacyLink').href = l === 'en' ? '/en/privacy/' : '/privacidad/';
       chName.textContent = CH[l][chKey];
       const m = META[l];
       document.title = m.title;

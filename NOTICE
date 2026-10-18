@@ -15,10 +15,18 @@ en el pie de tu web o en tu README:
 Si lo reutilizas para tu propio portfolio, cambia los datos personales
 (nombre, foto, contacto y proyectos) por los tuyos.
 
+No están incluidos en esta licencia: las tipografías de assets/fonts/
+(Big Shoulders Display, Inter, JetBrains Mono y Playfair Display), que son
+de sus autores y se distribuyen con la SIL Open Font License 1.1
+(assets/fonts/OFL.txt), ni las librerías GSAP, Lenis y Three.js, que se
+cargan desde CDN con sus propias licencias.
+
 -----------------------------------------------------------------------
 This portfolio is licensed under CC BY 4.0. You may use, copy, modify
 and redistribute it for any purpose, including commercially, as long as
 you credit "Rubén Blasco Armengod" with a link to the original
 repository and to the license. The full legal text is in the LICENSE file.
+The fonts in assets/fonts/ (SIL OFL 1.1, see assets/fonts/OFL.txt) and the
+GSAP, Lenis and Three.js libraries keep their own licences.
 -----------------------------------------------------------------------
 
