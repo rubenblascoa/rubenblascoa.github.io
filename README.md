@@ -21,7 +21,7 @@
 **Portfolio cinemático: del chip al sistema, contado como una película con scroll.**
 
 ![Views](https://komarev.com/ghpvc/?username=rubenblascoa&repo=rubenblascoa.github.io&label=Views&icon=0&color=121011&style=flat-square)
-[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg?style=flat-square)](LICENSE)
 [![Stack](https://img.shields.io/badge/Stack-HTML%20%7C%20GSAP%20%7C%20Three.js-black?style=flat-square)](#)
 [![Live Site](https://img.shields.io/badge/Live-Online-brightgreen?style=flat-square)](https://rubenblascoa.github.io/)
 
@@ -97,6 +97,16 @@ assets/cinematic/
 ### Despliegue en producción
 
 Al ser un sitio 100% estático, basta con subir los archivos a GitHub Pages; no requiere variables de entorno ni backend. Solo hay que regenerar la versión en inglés (`node tools/build-en.mjs`) antes de subir si has tocado `index.html`.
+
+---
+
+## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:scale.svg?color=white"><img src="https://api.iconify.design/lucide:scale.svg?color=black" width="26" align="center"></picture> Licencia
+
+Este portfolio se publica bajo **[Creative Commons Atribución 4.0 (CC BY 4.0)](LICENSE)**. Puedes usarlo, copiarlo y modificarlo libremente, también con fines comerciales, **siempre que reconozcas la autoría** con un enlace a este repositorio. Por ejemplo, en el pie de tu web o en tu README:
+
+> Basado en el portfolio de [Rubén Blasco Armengod](https://github.com/rubenblascoa/rubenblascoa.github.io), CC BY 4.0
+
+Si lo reutilizas para tu propio portfolio, cambia los datos personales (nombre, foto, contacto y proyectos) por los tuyos.
 
 ---
 
