@@ -108,6 +108,8 @@ Este portfolio se publica bajo **[Creative Commons Atribución 4.0 (CC BY 4.0)](
 
 Si lo reutilizas para tu propio portfolio, cambia los datos personales (nombre, foto, contacto y proyectos) por los tuyos.
 
+El aviso de autoría está en [`NOTICE`](NOTICE) y el texto legal completo en [`LICENSE`](LICENSE).
+
 ---
 
 ## <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:mail.svg?color=white"><img src="https://api.iconify.design/lucide:mail.svg?color=black" width="26" align="center"></picture> Contacto
